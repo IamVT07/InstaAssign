@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign Buddy😎 - Your Academic Partner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.light-mode {
+            color: #181a1b;
+            background: linear-gradient(180deg, #f6f8fa 0%, #e9ecef 100%);
+        }
+
+        body.light-mode, body.light-mode h1, body.light-mode h2, body.light-mode h3, body.light-mode h4, body.light-mode h5, body.light-mode h6, body.light-mode p, body.light-mode label, body.light-mode .section-heading, body.light-mode .review-text, body.light-mode .feature-card, body.light-mode .service-card, body.light-mode .review-form, body.light-mode .cta-section, body.light-mode .modal-content, body.light-mode .footer-contact, body.light-mode footer {
+            color: #181a1b !important;
+        }
+
+        body.light-mode .text-muted, body.light-mode .service-card p, body.light-mode .feature-card p, body.light-mode .review-text, body.light-mode .form-group label {
+            color: #333 !important;
+        }
+
+        body.light-mode header {
+            background: linear-gradient(135deg, #fff 0%, #e9ecef 100%);
+            border-bottom: 2px solid #2ec27e;
+            box-shadow: 0 4px 20px rgba(46, 194, 126, 0.08);
+        }
+
+
+        body.light-mode .hero,
+        body.light-mode .service-card,
+        body.light-mode .feature-card,
+        body.light-mode .review-card,
+        body.light-mode .review-form,
+        body.light-mode .cta-section,
+        body.light-mode .modal-content {
+            background: #fff !important;
+            color: #181a1b !important;
+            border-color: #2ec27e !important;
+            box-shadow: 0 4px 24px 0 rgba(46, 194, 126, 0.10), 0 1.5px 8px rgba(0,0,0,0.06);
+            transition: box-shadow 0.3s, background 0.3s, color 0.3s;
+        }
+
+        body.light-mode .service-card,
+        body.light-mode .feature-card,
+        body.light-mode .review-card {
+            transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+        }
+
+        body.light-mode .service-card:hover,
+        body.light-mode .feature-card:hover,
+        body.light-mode .review-card:hover {
+            box-shadow: 0 8px 32px 0 rgba(46, 194, 126, 0.18), 0 4px 16px rgba(0,0,0,0.10);
+            transform: translateY(-6px) scale(1.025);
+            background: #f6fefb !important;
+        }
+
+        body.light-mode .order-btn,
+        body.light-mode .call-btn,
+        body.light-mode .whatsapp-cta,
+        body.light-mode .phone-option,
+        body.light-mode .submit-btn {
+            background: linear-gradient(135deg, #2ec27e, #1a7f5a) !important;
+            color: #fff !important;
+            box-shadow: 0 2px 8px rgba(46, 194, 126, 0.10);
+            transition: box-shadow 0.3s, background 0.3s, transform 0.2s;
+        }
+
+        body.light-mode .order-btn:hover,
+        body.light-mode .call-btn:hover,
+        body.light-mode .whatsapp-cta:hover,
+        body.light-mode .phone-option:hover,
+        body.light-mode .submit-btn:hover {
+            background: linear-gradient(135deg, #1a7f5a, #2ec27e) !important;
+            box-shadow: 0 6px 24px rgba(46, 194, 126, 0.18);
+            transform: scale(1.06) translateY(-2px);
+        }
+
+        body.light-mode .floating-whatsapp {
+            background: linear-gradient(135deg, #2ec27e 0%, #1a7f5a 100%) !important;
+            border: 2.5px solid #e9ecef !important;
+            box-shadow: 0 8px 32px rgba(46, 194, 126, 0.18), 0 2px 8px rgba(0,0,0,0.08);
+            transition: box-shadow 0.3s, background 0.3s, transform 0.2s;
+        }
+
+        body.light-mode .floating-whatsapp:hover {
+            background: linear-gradient(135deg, #1a7f5a 0%, #2ec27e 100%) !important;
+            box-shadow: 0 12px 36px rgba(46, 194, 126, 0.22), 0 4px 16px rgba(0,0,0,0.12);
+            transform: scale(1.13) translateY(-4px);
+        }
+
+        body.light-mode .modal {
+            background: rgba(246, 248, 250, 0.92) !important;
+            transition: background 0.3s;
+        }
+
+        body.light-mode .section-heading,
+        body.light-mode .feature-icon,
+        body.light-mode .service-card h3,
+        body.light-mode .review-info h4,
+        body.light-mode .cta-section h2 {
+            color: #2ec27e !important;
+        }
+
+        body.light-mode .order-btn,
+        body.light-mode .call-btn,
+        body.light-mode .whatsapp-cta,
+        body.light-mode .phone-option,
+        body.light-mode .submit-btn {
+            background: linear-gradient(135deg, #2ec27e, #1a7f5a) !important;
+            color: #fff !important;
+        }
+
+        body.light-mode .order-btn:hover,
+        body.light-mode .call-btn:hover,
+        body.light-mode .whatsapp-cta:hover,
+        body.light-mode .phone-option:hover,
+        body.light-mode .submit-btn:hover {
+            background: linear-gradient(135deg, #1a7f5a, #2ec27e) !important;
+        }
+
+        body.light-mode .price {
+            color: #2ec27e !important;
+        }
+
+        body.light-mode .price-unit {
+            color: #1a7f5a !important;
+        }
+
+        body.light-mode .footer-contact,
+        body.light-mode footer {
+            background: #f6f8fa !important;
+            color: #232323 !important;
+            border-top: 2px solid #2ec27e !important;
+        }
+
+        body.light-mode .phone-link {
+            color: #2ec27e !important;
+        }
+
+        body.light-mode .phone-link:hover {
+            color: #1a7f5a !important;
+        }
+
+        .theme-toggle-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.7rem;
+            margin-left: 1rem;
+            color: #2ec27e;
+            transition: color 0.3s;
+        }
+        .theme-toggle-btn:hover {
+            color: #1a7f5a;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 20px rgba(18, 32, 0, 0.2);
+            border-bottom: 2px solid #00ff41;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .header-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.2rem;
+        }
+        .nav-menu a {
+            color: #2ec27e;
+            font-weight: 600;
+            font-size: 1.08rem;
+            text-decoration: none;
+            padding: 0.2em 0.7em;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-menu a:hover, .nav-menu a.active {
+            background: #2ec27e22;
+            color: #1a7f5a;
+        }
+
+        /* Responsive Header for Mobile */
+        @media (max-width: 800px) {
+            .header-content {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.5rem;
+            }
+            .header-left, .header-center, .header-right {
+                order: unset;
+                width: auto;
+            }
+            .header-center {
+                flex: 1;
+                justify-content: center;
+            }
+            .nav-menu {
+                flex-direction: row;
+                gap: 0.7rem;
+                width: auto;
+                display: flex !important;
+                background: none;
+                position: static;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0;
+            }
+            .header-right {
+                justify-content: flex-end;
+            }
+            .hamburger {
+                display: none !important;
+            }
+            body.light-mode .nav-menu {
+                background: none !important;
+            }
+            .nav-menu a {
+                color: #2ec27e;
+                font-size: 1.1rem;
+                padding: 0.7em 0.7em;
+            }
+            .container {
+                padding: 0 4px;
+            }
+            header {
+                padding: 0.5rem 0;
+            }
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        body.light-mode .nav-menu a {
+            color: #1a7f5a;
+        }
+        body.light-mode .nav-menu a:hover, body.light-mode .nav-menu a.active {
+            background: #2ec27e33;
+            color: #2ec27e;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #00ff41;
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .call-btn {
+            background: linear-gradient(135deg, #00ff41, #00cc33);
+            color: #000;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 65, 0.4);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .call-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(0, 255, 65, 0.6);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(26, 26, 26, 0.9));
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            border-radius: 15px;
+            border: 2px solid #00ff41;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h2 {
+            color: #00ff41;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Section Heading */
+        .section-heading {
+            text-align: center;
+            color: #00ff41;
+            font-size: 2rem;
+            margin: 3rem 0 2rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), transparent);
+            border-radius: 10px;
+            border-left: 4px solid #00ff41;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        /* Services Grid */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .service-card {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid rgba(0, 255, 65, 0.3);
+            transition: all 0.3s ease;
+            animation: fadeIn 0.6s ease-out backwards;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+        .service-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ff41;
+            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.3);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            color: #00ff41;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .service-card p {
+            color: #b0b0b0;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .price {
+            font-size: 1.6rem;
+            color: #00ff41;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .price-unit {
+            font-size: 0.9rem;
+            color: #888;
+            font-weight: normal;
+        }
+
+        .order-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00ff41, #00cc33);
+            color: #000;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .order-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 255, 65, 0.5);
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 3px solid #00ff41;
+            transition: all 0.3s ease;
+            animation: fadeIn 0.6s ease-out backwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .feature-card:hover {
+            transform: translateX(10px);
+            background: rgba(0, 255, 65, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: #00ff41;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Reviews Section */
+        .reviews-container {
+            margin: 3rem 0;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .review-card {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid rgba(0, 255, 65, 0.3);
+            animation: fadeIn 0.6s ease-out backwards;
+        }
+
+        .review-card:nth-child(1) { animation-delay: 0.1s; }
+        .review-card:nth-child(2) { animation-delay: 0.2s; }
+        .review-card:nth-child(3) { animation-delay: 0.3s; }
+        .review-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00ff41, #00cc33);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .review-info h4 {
+            color: #00ff41;
+            margin-bottom: 0.2rem;
+        }
+
+        .review-rating {
+            color: #ffbb00;
+        }
+
+        .review-text {
+            color: #b0b0b0;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* Review Form */
+        .review-form {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid #00ff41;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .review-form h3 {
+            color: #00ff41;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #b0b0b0;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #00ff41, #00cc33);
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(0, 255, 65, 0.5);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #000, #1a1a1a);
+            border-radius: 15px;
+            border: 2px solid #00ff41;
+            margin: 3rem 0;
+        }
+
+        .cta-section h2 {
+            color: #00ff41;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .whatsapp-cta {
+            background: linear-gradient(135deg, #00ff41, #00cc33);
+            color: #000;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 255, 65, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 2px solid rgba(0, 255, 65, 0.3);
+            margin-top: 3rem;
+        }
+
+        .footer-contact {
+            margin: 1rem 0;
+        }
+
+        .phone-link {
+            color: #00ff41;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .phone-link:hover {
+            color: #00cc33;
+        }
+
+
+        /* Enhanced Floating WhatsApp */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            box-shadow: 0 8px 32px rgba(18, 140, 126, 0.25), 0 2px 8px rgba(0,0,0,0.10);
+            border: 2.5px solid #fff;
+            transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
+            z-index: 1000;
+            cursor: pointer;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-whatsapp svg {
+            width: 36px;
+            height: 36px;
+            display: block;
+        }
+
+        .floating-whatsapp:hover {
+            background: linear-gradient(135deg, #128c7e 0%, #25d366 100%);
+            box-shadow: 0 12px 36px rgba(18, 140, 126, 0.35), 0 4px 16px rgba(0,0,0,0.15);
+            transform: scale(1.13) translateY(-4px);
+        }
+
+        /* Modal for phone numbers */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a1a, #000);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #00ff41;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content h3 {
+            color: #00ff41;
+            margin-bottom: 1.5rem;
+        }
+
+        .phone-option {
+            display: block;
+            background: linear-gradient(135deg, #00ff41, #00cc33);
+            color: #000;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .phone-option:hover {
+            transform: scale(1.05);
+        }
+
+        .close-modal {
+            background: transparent;
+            color: #b0b0b0;
+            border: none;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            header {
+                padding: 1rem 0;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .header-left {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .header-left img {
+                height: 50px !important;
+                width: 50px !important;
+            }
+
+            h1 {
+                font-size: 1.5rem !important;
+            }
+
+            .header-center {
+                width: 100%;
+                order: 3;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.8rem;
+            }
+
+            .nav-menu a {
+                font-size: 0.95rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .header-right {
+                order: 2;
+            }
+
+            .theme-toggle-btn {
+                margin-left: 0;
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                padding: 2rem 1.5rem;
+                margin: 1.5rem auto;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-heading {
+                font-size: 1.5rem;
+                padding: 0.8rem;
+                margin: 2rem 0 1.5rem;
+            }
+
+            .services {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .service-icon {
+                font-size: 2.5rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .price {
+                font-size: 1.4rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .feature-card {
+                padding: 1.2rem;
+            }
+
+            .feature-icon {
+                font-size: 1.8rem;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .review-card {
+                padding: 1.5rem;
+            }
+
+            .review-form {
+                padding: 1.5rem;
+                margin: 0 10px;
+            }
+
+            .cta-section {
+                padding: 2rem 1.5rem;
+                margin: 2rem 0;
+            }
+
+            .cta-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .whatsapp-cta {
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
+            }
+
+            .order-btn,
+            .call-btn {
+                padding: 0.7rem 1.3rem;
+                font-size: 0.95rem;
+            }
+
+            .floating-whatsapp {
+                bottom: 20px;
+                right: 20px;
+                width: 56px;
+                height: 56px;
+            }
+
+            .floating-whatsapp svg {
+                width: 30px;
+                height: 30px;
+            }
+
+            .modal-content {
+                margin: 0 20px;
+                padding: 1.5rem;
+                max-width: 90%;
+            }
+
+            .phone-option {
+                padding: 0.8rem;
+                font-size: 0.95rem;
+            }
+
+            footer {
+                padding: 1.5rem 1rem;
+            }
+
+            .footer-address-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 0 10px;
+            }
+
+            .footer-address-container a {
+                font-size: 0.95rem;
+                margin: 0.3rem 0;
+            }
+
+            .phone-link {
+                font-size: 1.1rem;
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.3rem !important;
+            }
+
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .nav-menu a {
+                font-size: 0.9rem;
+                padding: 0.35rem 0.6rem;
+            }
+
+            .section-heading {
+                font-size: 1.3rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .whatsapp-cta {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <img src="BL.png" alt="Assign Buddy Logo" style="height: 60px; width: 60px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.10); background: #fff; border: 3px solid #2ec27e;" />
+                    <h1 style="margin: 0; font-size: 2rem; font-weight: 600; letter-spacing: 0.02em;">Assign Buddy😎</h1>
+                    <button class="hamburger" id="hamburgerBtn" aria-label="Open navigation menu" title="Open navigation menu" style="display:none">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <div class="header-center">
+                    <nav class="nav-menu" id="navMenu">
+                        <a href="#">Home</a>
+                        <a href="#our-services">Services</a>
+                        <a href="#why-choose-us">Functionality</a>
+                        <a href="#student-reviews">Reviews</a>
+                    </nav>
+                </div>
+                <div class="header-right">
+                    <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <script>
+    // Hamburger menu toggle for mobile
+    function handleResize() {
+        const hamburger = document.getElementById('hamburgerBtn');
+        const navMenu = document.getElementById('navMenu');
+        if (window.innerWidth <= 800) {
+            hamburger.style.display = 'inline-flex';
+            navMenu.classList.remove('show');
+        } else {
+            hamburger.style.display = 'none';
+            navMenu.classList.remove('show');
+        }
+    }
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('DOMContentLoaded', handleResize);
+    document.getElementById('hamburgerBtn').addEventListener('click', function() {
+        const navMenu = document.getElementById('navMenu');
+        navMenu.classList.toggle('show');
+    });
+    // Optional: Hide menu when clicking a link (mobile UX)
+    document.querySelectorAll('#navMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 800) {
+                document.getElementById('navMenu').classList.remove('show');
+            }
+        });
+    });
+    </script>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h2>🎓 Assignments Se Pareshan? We've Got You Covered! 💯</h2>
+            <p><strong>Last minute ka kaam bhi? No Problem!</strong> 🚀<br>
+            Fast delivery ✅ | Best quality ✅ | Pocket-friendly rates ✅<br>
+            <em>Apna kaam time pe complete karwao - stress-free! 😎</em></p>
+            <a href="https://wa.me/919005315241?text=Hello!%20Main%20aapki%20services%20ke%20baare%20mein%20jaanna%20chahta%20hoon." class="order-btn">💬 WhatsApp Par Baat Karo</a>
+        </div>
+
+        <!-- Services Section -->
+        <h2 class="section-heading" id="our-services">📝 Our Services - Aapke Liye Kya Kya Kar Sakte Hain</h2>
+        <div class="services">
+            <!-- Assignment Writing -->
+            <div class="service-card">
+                <span class="service-icon">✍️</span>
+                <h3>Assignment Writing</h3>
+                <p>Well-researched aur plagiarism-free assignments. Proper formatting ke saath on-time delivery guaranteed! 📖</p>
+                <div class="price">₹11.50 <span class="price-unit">per page</span></div>
+                <a href="https://wa.me/919005315241?text=Hello!%20Mujhe%20Assignment%20Writing%20service%20chahiye.%20Please%20details%20share%20karein." class="order-btn">Order Now</a>
+            </div>
+
+            <!-- PDF Making -->
+            <div class="service-card">
+                <span class="service-icon">📄</span>
+                <h3>PDF Making</h3>
+                <p>Professional PDF documents with perfect formatting, images, aur neat organization. Ready to submit! 📑</p>
+                <div class="price">₹8 <span class="price-unit">per page</span></div>
+                <a href="https://wa.me/919005315241?text=Hello!%20Mujhe%20PDF%20Making%20service%20chahiye.%20Please%20details%20share%20karein." class="order-btn">Order Now</a>
+            </div>
+
+            <!-- PPT -->
+            <div class="service-card">
+                <span class="service-icon">📊</span>
+                <h3>PowerPoint Presentations</h3>
+                <p>Eye-catching PPT slides with professional design, graphics aur animations. Impress karo sabko! 🎨</p>
+                <div class="price">₹8.50 <span class="price-unit">per slide</span></div>
+                <a href="https://wa.me/919005315241?text=Hello!%20Mujhe%20PowerPoint%20Presentation%20service%20chahiye.%20Please%20details%20share%20karein." class="order-btn">Order Now</a>
+            </div>
+
+            <!-- Project Reports -->
+            <div class="service-card">
+                <span class="service-icon">📋</span>
+                <h3>Project Reports / Synopsis</h3>
+                <p>Complete project reports aur synopsis with proper structure, formatting aur professional presentation! 📝</p>
+                <div class="price">₹12.50 <span class="price-unit">per page</span></div>
+                <a href="https://wa.me/919005315241?text=Hello!%20Mujhe%20Project%20Report%20ya%20Synopsis%20service%20chahiye.%20Please%20details%20share%20karein." class="order-btn">Order Now</a>
+            </div>
+
+            <!-- Research Work -->
+            <div class="service-card">
+                <span class="service-icon">🔬</span>
+                <h3>Research Work</h3>
+                <p>In-depth research with proper citations, references aur data analysis. Academic standards ke according! 📚</p>
+                 <div class="price">Based on Complexity</div>
+                <a href="https://wa.me/919005315241?text=Hello!%20Mujhe%20Research%20Work%20service%20chahiye.%20Please%20details%20share%20karein." class="order-btn">Order Now</a>
+            </div>
+
+            <!-- Custom Projects -->
+            <div class="service-card">
+                <span class="service-icon">🎨</span>
+                <h3>Custom Projects</h3>
+                <p>Charts, diagrams, models, reports - jo bhi chahiye! Apne requirements ke according customize karenge. 🛠️</p>
+                <div class="price">Based on Complexity</div>
+                <a href="https://wa.me/919005315241?text=Hello!%20Mujhe%20Custom%20Project%20work%20chahiye.%20Please%20details%20share%20karein." class="order-btn">Order Now</a>
+            </div>
+        </div>
+
+        <!-- Why Choose Us -->
+        <h2 class="section-heading" id="why-choose-us">🌟 Why Choose Us - Hum Kyun Best Hain</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h4 style="color: #00ff41; margin-bottom: 0.5rem;">Fast Delivery</h4>
+                <p>Quick turnaround time - apka kaam time se pehle! ⏰</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💯</div>
+                <h4 style="color: #00ff41; margin-bottom: 0.5rem;">Top Quality</h4>
+                <p>Professional work jo academic standards ko meet kare! ✅</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h4 style="color: #00ff41; margin-bottom: 0.5rem;">Affordable Rates</h4>
+                <p>Student-friendly pricing - pocket pe halka! 💸</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h4 style="color: #00ff41; margin-bottom: 0.5rem;">100% Confidential</h4>
+                <p>Aapki privacy completely secure - no tension! 🔐</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📞</div>
+                <h4 style="color: #00ff41; margin-bottom: 0.5rem;">24/7 Support</h4>
+                <p>Kisi bhi time available - day or night! 🌙</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✅</div>
+                <h4 style="color: #00ff41; margin-bottom: 0.5rem;">Free Revisions</h4>
+                <p>Satisfied nahi? Free mein revise karenge! 🔄</p>
+            </div>
+        </div>
+
+        <!-- Student Reviews -->
+        <h2 class="section-heading" id="student-reviews">⭐ Student Reviews - Dekho Students Kya Kehte Hain</h2>
+        <div class="reviews-container">
+            <div class="reviews-grid">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">👨</div>
+                        <div class="review-info">
+                            <h4>Rahul Sharma</h4>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Bhai ekdum mast kaam kiya! Last minute mein assignment diya tha, par time se pehle mil gaya. Quality bhi top class thi. Highly recommend! 👍"</p>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">👩</div>
+                        <div class="review-info">
+                            <h4>Priya Patel</h4>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"PPT ke liye contact kiya tha. Itna accha design banaya ki professor ne appreciate bhi kiya! Price bhi reasonable hai. Thank you so much! 😊"</p>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">👨</div>
+                        <div class="review-info">
+                            <h4>Amit Kumar</h4>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Research project mein help kiya inhone. Proper references aur formatting ke saath mila. Bahut helpful service hai students ke liye! 💯"</p>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">👩</div>
+                        <div class="review-info">
+                            <h4>Neha Singh</h4>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Mujhe urgent PDF chahiye thi, 2 ghante mein ready kar diya! Quality aur speed dono best hai. Will definitely use again! 🙌"</p>
+                </div>
+            </div>
+
+            <!-- Review Submission Form -->
+            <div class="review-form">
+                <h3>📝 Share Your Experience - Apna Review Likho!</h3>
+                <form id="reviewForm">
+                    <div class="form-group">
+                        <label for="name">Your Name 👤</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">Rating ⭐</label>
+                        <select id="rating" name="rating" style="width: 100%; padding: 0.8rem; background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(0, 255, 65, 0.3); border-radius: 8px; color: #e0e0e0;">
+                            <option value="5">⭐⭐⭐⭐⭐ - Excellent</option>
+                            <option value="4">⭐⭐⭐⭐ - Very Good</option>
+                            <option value="3">⭐⭐⭐ - Good</option>
+                            <option value="2">⭐⭐ - Average</option>
+                            <option value="1">⭐ - Poor</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="review">Your Review 💬</label>
+                        <textarea id="review" name="review" required placeholder="Apna experience share karo..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Review ✅</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>🚀 Ready to Get Started?</h2>
+            <p style="color: #b0b0b0; margin: 1rem 0;">WhatsApp pe message karo aur apne requirements share karo.<br>Hum turant quote denge aur kaam start kar denge! 💪</p>
+            <a href="https://wa.me/919005315241?text=Hello!%20Main%20aapki%20services%20use%20karna%20chahta%20hoon.%20Please%20help%20karein." class="whatsapp-cta">💬 Chat Now on WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p style="color: #b0b0b0;">&copy; 2026 Student Support Services. All rights reserved.</p>
+        <p style="color: #b0b0b0; margin-top: 0.5rem;">Helping students succeed🎓, Leave assignment worries, connect with success. ✅</p>
+        <div class="footer-address-container" style="display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem;">
+            <span style="font-size: 1.2em; margin-right: 0.3em; color: #2ec27e;">📍</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=Chhatrapati+Sahu+Ji+Maharaj+University,+Kanpur" target="_blank" rel="noopener" style="color: #2ec27e; text-decoration: underline; font-weight: 600; font-size: 1.08rem;">
+                CSJM University (Kanpur University), Kalyanpur, Kanpur, Uttar Pradesh 208024
+            </a>
+            <span style="font-size: 1.2em; margin-left: 0.3em; color: #2ec27e;">📍</span>
+        </div>
+        <!-- Floating WhatsApp -->
+        <a href="https://wa.me/919005315241?text=Hi!%20Main%20aapki%20services%20ke%20baare%20mein%20jaanna%20chahta%20hoon." class="floating-whatsapp" title="WhatsApp us" target="_blank" rel="noopener">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+                <circle cx="16" cy="16" r="16" fill="#25D366"/>
+                <path d="M23.472 19.339c-.355-.177-2.104-1.037-2.43-1.156-.326-.119-.563-.177-.8.178-.237.355-.914 1.156-1.12 1.393-.207.237-.414.267-.769.089-.355-.178-1.5-.553-2.86-1.763-1.057-.944-1.77-2.108-1.98-2.463-.207-.355-.022-.546.155-.723.159-.158.355-.414.533-.622.178-.207.237-.355.355-.592.119-.237.06-.444-.03-.622-.089-.178-.8-1.924-1.096-2.637-.289-.693-.583-.599-.8-.61-.207-.009-.444-.011-.681-.011-.237 0-.622.089-.948.444-.326.355-1.24 1.211-1.24 2.955 0 1.744 1.27 3.429 1.447 3.669.178.237 2.5 3.82 6.063 5.209.849.292 1.51.466 2.026.596.851.204 1.626.175 2.24.106.683-.077 2.104-.859 2.403-1.689.296-.83.296-1.541.207-1.689-.089-.148-.326-.237-.681-.414z" fill="#fff"/>
+            </svg>
+        </a>
+
+    <script>
+        // Theme toggle logic
+        const themeBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = document.getElementById('themeIcon');
+        function setTheme(mode) {
+            if (mode === 'light') {
+                document.body.classList.add('light-mode');
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.classList.remove('light-mode');
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        // Load theme from storage
+        (function() {
+            const saved = localStorage.getItem('theme');
+            setTheme(saved === 'light' ? 'light' : 'dark');
+        })();
+        themeBtn.addEventListener('click', function() {
+            setTheme(document.body.classList.contains('light-mode') ? 'dark' : 'light');
+        });
+
+
+        // Review Form Submission
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const rating = document.getElementById('rating').value;
+            const review = document.getElementById('review').value;
+            // Create WhatsApp message with review details
+            const message = `New Review Submission:\n\nName: ${name}\nRating: ${rating} stars\nReview: ${review}`;
+            const whatsappURL = `https://wa.me/919005315241?text=${encodeURIComponent(message)}`;
+            // Open WhatsApp
+            window.open(whatsappURL, '_blank');
+            // Reset form
+            this.reset();
+            // Show confirmation
+            alert('Thank you for your review! 🙏 Redirecting to WhatsApp...');
+        });
+    </script>
+</body>
+</html>
