@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>InstaAssign🫡 - Your Academic Partner</title>
     <style>
         * {
@@ -691,59 +692,45 @@
             transform: scale(1.13) translateY(-4px);
         }
 
-        /* Modal for phone numbers */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            align-items: center;
-            justify-content: center;
-        }
+        /* Container jo buttons ko center karega */
+.social-container {
+    display: flex;
+    gap: 20px; /* Buttons ke beech ki doori */
+    justify-content: center; /* Center mein layega */
+    padding: 20px;
+}
 
-        .modal-content {
-            background: linear-gradient(135deg, #1a1a1a, #000);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 2px solid #00ff41;
-            max-width: 400px;
-            text-align: center;
-            animation: fadeIn 0.3s ease-out;
-        }
+/* Button ka Design */
+.social-btn {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border: 2px solid #00ff41; /* Hacker Green Border */
+    background-color: transparent;
+    color: #00ff41; /* Text Color Green */
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 5px; /* Thoda gol kinara */
+    transition: 0.3s; /* Animation speed */
+}
 
-        .modal-content h3 {
-            color: #00ff41;
-            margin-bottom: 1.5rem;
-        }
+/* Jab mouse upar le jayenge (Hover Effect) */
+.social-btn:hover {
+    background-color: #00ff41; /* Background Green ho jayega */
+    color: #000000; /* Text Black ho jayega */
+    box-shadow: 0 0 15px #00ff41; /* Glow karega */
+    transform: translateY(-3px); /* Thoda upar uthega */
+}
 
-        .phone-option {
-            display: block;
-            background: linear-gradient(135deg, #00ff41, #00cc33);
-            color: #000;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .phone-option:hover {
-            transform: scale(1.05);
-        }
-
-        .close-modal {
-            background: transparent;
-            color: #b0b0b0;
-            border: none;
-            cursor: pointer;
-            margin-top: 1rem;
-            font-size: 1rem;
-        }
+/* Mobile ke liye responsive */
+@media (max-width: 600px) {
+    .social-btn span {
+        display: none; /* Mobile pe sirf icon dikhega, text nahi */
+    }
+}
 
         @media (max-width: 768px) {
             .container {
@@ -1041,7 +1028,7 @@
                 <span class="service-icon">✍️</span>
                 <h3>Assignment Writing</h3>
                 <p>Well-researched aur plagiarism-free assignments. Proper formatting ke saath on-time delivery guaranteed! 📖</p>
-                <div class="price">₹11.50 <span class="price-unit">per page</span></div>
+                <div class="price">₹12.50 <span class="price-unit">per page</span></div>
                 <a href="https://wa.me/919005315241?text=Hello!%20Mujhe%20Assignment%20Writing%20service%20chahiye.%20Please%20details%20share%20karein." class="order-btn">Order Now</a>
             </div>
 
@@ -1050,7 +1037,7 @@
                 <span class="service-icon">📄</span>
                 <h3>PDF Making</h3>
                 <p>Professional PDF documents with perfect formatting, images, aur neat organization. Ready to submit! 📑</p>
-                <div class="price">₹8 <span class="price-unit">per page</span></div>
+                <div class="price">₹8.50 <span class="price-unit">per page</span></div>
                 <a href="https://wa.me/919005315241?text=Hello!%20Mujhe%20PDF%20Making%20service%20chahiye.%20Please%20details%20share%20karein." class="order-btn">Order Now</a>
             </div>
 
@@ -1059,7 +1046,7 @@
                 <span class="service-icon">📊</span>
                 <h3>PowerPoint Presentations</h3>
                 <p>Eye-catching PPT slides with professional design, graphics aur animations. Impress karo sabko! 🎨</p>
-                <div class="price">₹8.50 <span class="price-unit">per slide</span></div>
+                <div class="price">₹9.50 <span class="price-unit">per slide</span></div>
                 <a href="https://wa.me/919005315241?text=Hello!%20Mujhe%20PowerPoint%20Presentation%20service%20chahiye.%20Please%20details%20share%20karein." class="order-btn">Order Now</a>
             </div>
 
@@ -1068,7 +1055,7 @@
                 <span class="service-icon">📋</span>
                 <h3>Project Reports / Synopsis</h3>
                 <p>Complete project reports aur synopsis with proper structure, formatting aur professional presentation! 📝</p>
-                <div class="price">₹12.50 <span class="price-unit">per page</span></div>
+                <div class="price">₹13.50 <span class="price-unit">per page</span></div>
                 <a href="https://wa.me/919005315241?text=Hello!%20Mujhe%20Project%20Report%20ya%20Synopsis%20service%20chahiye.%20Please%20details%20share%20karein." class="order-btn">Order Now</a>
             </div>
 
@@ -1218,6 +1205,17 @@
     <footer>
         <p style="color: #b0b0b0;">&copy; 2026 InstaAssign🫡 Student Support Services. All rights reserved.</p>
         <p style="color: #b0b0b0; margin-top: 0.5rem;">Helping students succeed🎓, Leave assignment worries, connect with success. ✅</p>
+        <div class="social-container">
+    <a href="https://instagram.com/instaassign" target="_blank" class="social-btn instagram">
+        <i class="fab fa-instagram"></i>
+        <span>Instagram</span>
+    </a>
+
+    <a href="https://facebook.com/https://www.facebook.com/profile.php?id=61586835487047" target="_blank" class="social-btn facebook">
+        <i class="fab fa-facebook-f"></i>
+        <span>Facebook</span>
+    </a>
+</div>
         <div class="footer-address-container" style="display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem;">
             <span style="font-size: 1.2em; margin-right: 0.3em; color: #2ec27e;">📍</span>
             <a href="https://www.google.com/maps/search/?api=1&query=Chhatrapati+Sahu+Ji+Maharaj+University,+Kanpur" target="_blank" rel="noopener" style="color: #2ec27e; text-decoration: underline; font-weight: 600; font-size: 1.08rem;">
@@ -1278,5 +1276,6 @@
 </body>
 
 </html>
+
 
 
