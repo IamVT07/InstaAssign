@@ -998,10 +998,10 @@ function buildAcademicForm(s) {
       <div class="form-row"><label class="form-label">${s.pagesLabel}</label><input type="number" class="form-input ${fc}" id="fPages" placeholder="e.g. 10" min="1"></div>
       <div class="form-row"><label class="form-label">Deadline *</label><input type="date" class="form-input ${fc}" id="fDeadline" required></div>
     </div>
-    ${s.showLang ? `<div class="form-row"><label class="form-label">Language Preference</label><select class="form-select ${fc}" id="fLang"><option value="Hindi">Hindi</option><option value="English">English</option><option value="Hinglish">Hinglish (Mix)</option></select></div>` : ''}
+    ${s.showLang ? `<div class="form-row"><label class="form-label">Language Preference</label><select class="form-select ${fc}" id="fLang"><option value="Hindi">Hindi</option><option value="English">English</option></select></div>` : ''}
     <div class="form-row">
-      <label class="form-label">Estimated Budget</label>
-      <input type="text" class="form-input ${fc}" id="fBudget" value="${s.budget}" readonly style="opacity:.75;cursor:default;">
+      <label class="form-label">Your Budget *</label>
+      <input type="text" class="form-input ${fc}" id="fBudget" placeholder="e.g. ${s.budget}" required>
       <div class="form-hint">💡 ${s.budgetHint}</div>
     </div>
     <div class="form-row"><label class="form-label">Additional Instructions</label><textarea class="form-textarea ${fc}" id="fNotes" placeholder="Special formatting, references, style, or anything else..."></textarea></div>
@@ -1024,8 +1024,8 @@ function buildBusinessForm(s) {
     </div>
     ${extraFields}
     <div class="form-row">
-      <label class="form-label">Budget Range (optional)</label>
-      <input type="text" class="form-input ${fc}" id="bBudget" placeholder="${s.budget}">
+      <label class="form-label">Your Budget *</label>
+      <input type="text" class="form-input ${fc}" id="bBudget" placeholder="e.g. ${s.budget}" required>
       <div class="form-hint">💡 ${s.budgetHint}</div>
     </div>
     <div class="form-row"><label class="form-label">Additional Notes</label><textarea class="form-textarea ${fc}" id="bNotes" placeholder="Anything else we should know — references, deadline, special requirements..."></textarea></div>
