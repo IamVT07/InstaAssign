@@ -1,1274 +1,1280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="InstaAssign, Insta Assign, Assignment Writing, InstaAssign.in, All Projects">
-    <meta name="description" content="InstaAssign offers high-quality Handwritten Assignments, PPTs & PDF and all services. Get professional work delivered fast. Check our website for the latest affordable rates!">
-    <link rel="icon" type="image/png" href="BL.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <title>InstaAssign🫡 - Your Academic Partner</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #e0e0e0;
-            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
-            min-height: 100vh;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        body.light-mode {
-            color: #181a1b;
-            background: linear-gradient(180deg, #f6f8fa 0%, #e9ecef 100%);
-        }
-
-        body.light-mode, body.light-mode h1, body.light-mode h2, body.light-mode h3, body.light-mode h4, body.light-mode h5, body.light-mode h6, body.light-mode p, body.light-mode label, body.light-mode .section-heading, body.light-mode .review-text, body.light-mode .feature-card, body.light-mode .service-card, body.light-mode .review-form, body.light-mode .cta-section, body.light-mode .modal-content, body.light-mode .footer-contact, body.light-mode footer {
-            color: #181a1b !important;
-        }
-
-        body.light-mode .text-muted, body.light-mode .service-card p, body.light-mode .feature-card p, body.light-mode .review-text, body.light-mode .form-group label {
-            color: #333 !important;
-        }
-
-        body.light-mode header {
-            background: linear-gradient(135deg, #fff 0%, #e9ecef 100%);
-            border-bottom: 2px solid #2ec27e;
-            box-shadow: 0 4px 20px rgba(46, 194, 126, 0.08);
-        }
-
-
-        body.light-mode .hero,
-        body.light-mode .service-card,
-        body.light-mode .feature-card,
-        body.light-mode .review-card,
-        body.light-mode .review-form,
-        body.light-mode .cta-section,
-        body.light-mode .modal-content {
-            background: #fff !important;
-            color: #181a1b !important;
-            border-color: #2ec27e !important;
-            box-shadow: 0 4px 24px 0 rgba(46, 194, 126, 0.10), 0 1.5px 8px rgba(0,0,0,0.06);
-            transition: box-shadow 0.3s, background 0.3s, color 0.3s;
-        }
-
-        body.light-mode .service-card,
-        body.light-mode .feature-card,
-        body.light-mode .review-card {
-            transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
-        }
-
-        body.light-mode .service-card:hover,
-        body.light-mode .feature-card:hover,
-        body.light-mode .review-card:hover {
-            box-shadow: 0 8px 32px 0 rgba(46, 194, 126, 0.18), 0 4px 16px rgba(0,0,0,0.10);
-            transform: translateY(-6px) scale(1.025);
-            background: #f6fefb !important;
-        }
-
-        body.light-mode .order-btn,
-        body.light-mode .call-btn,
-        body.light-mode .whatsapp-cta,
-        body.light-mode .phone-option,
-        body.light-mode .submit-btn {
-            background: linear-gradient(135deg, #2ec27e, #1a7f5a) !important;
-            color: #fff !important;
-            box-shadow: 0 2px 8px rgba(46, 194, 126, 0.10);
-            transition: box-shadow 0.3s, background 0.3s, transform 0.2s;
-        }
-
-        body.light-mode .order-btn:hover,
-        body.light-mode .call-btn:hover,
-        body.light-mode .whatsapp-cta:hover,
-        body.light-mode .phone-option:hover,
-        body.light-mode .submit-btn:hover {
-            background: linear-gradient(135deg, #1a7f5a, #2ec27e) !important;
-            box-shadow: 0 6px 24px rgba(46, 194, 126, 0.18);
-            transform: scale(1.06) translateY(-2px);
-        }
-
-        body.light-mode .floating-whatsapp {
-            background: linear-gradient(135deg, #2ec27e 0%, #1a7f5a 100%) !important;
-            border: 2.5px solid #e9ecef !important;
-            box-shadow: 0 8px 32px rgba(46, 194, 126, 0.18), 0 2px 8px rgba(0,0,0,0.08);
-            transition: box-shadow 0.3s, background 0.3s, transform 0.2s;
-        }
-
-        body.light-mode .floating-whatsapp:hover {
-            background: linear-gradient(135deg, #1a7f5a 0%, #2ec27e 100%) !important;
-            box-shadow: 0 12px 36px rgba(46, 194, 126, 0.22), 0 4px 16px rgba(0,0,0,0.12);
-            transform: scale(1.13) translateY(-4px);
-        }
-
-        body.light-mode .modal {
-            background: rgba(246, 248, 250, 0.92) !important;
-            transition: background 0.3s;
-        }
-
-        body.light-mode .section-heading,
-        body.light-mode .feature-icon,
-        body.light-mode .service-card h3,
-        body.light-mode .review-info h4,
-        body.light-mode .cta-section h2 {
-            color: #2ec27e !important;
-        }
-
-        body.light-mode .order-btn,
-        body.light-mode .call-btn,
-        body.light-mode .whatsapp-cta,
-        body.light-mode .phone-option,
-        body.light-mode .submit-btn {
-            background: linear-gradient(135deg, #2ec27e, #1a7f5a) !important;
-            color: #fff !important;
-        }
-
-        body.light-mode .order-btn:hover,
-        body.light-mode .call-btn:hover,
-        body.light-mode .whatsapp-cta:hover,
-        body.light-mode .phone-option:hover,
-        body.light-mode .submit-btn:hover {
-            background: linear-gradient(135deg, #1a7f5a, #2ec27e) !important;
-        }
-
-        body.light-mode .price {
-            color: #2ec27e !important;
-        }
-
-        body.light-mode .price-unit {
-            color: #1a7f5a !important;
-        }
-
-        body.light-mode .footer-contact,
-        body.light-mode footer {
-            background: #f6f8fa !important;
-            color: #232323 !important;
-            border-top: 2px solid #2ec27e !important;
-        }
-
-        body.light-mode .phone-link {
-            color: #2ec27e !important;
-        }
-
-        body.light-mode .phone-link:hover {
-            color: #1a7f5a !important;
-        }
-
-        .theme-toggle-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.7rem;
-            margin-left: 1rem;
-            color: #2ec27e;
-            transition: color 0.3s;
-        }
-        .theme-toggle-btn:hover {
-            color: #1a7f5a;
-        }
-
-        /* Header Section */
-        header {
-            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
-            padding: 1.5rem 0;
-            box-shadow: 0 4px 20px rgba(18, 32, 0, 0.2);
-            border-bottom: 2px solid #00ff41;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .header-center {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2.2rem;
-        }
-        .nav-menu a {
-            color: #2ec27e;
-            font-weight: 600;
-            font-size: 1.08rem;
-            text-decoration: none;
-            padding: 0.2em 0.7em;
-            border-radius: 6px;
-            transition: background 0.2s, color 0.2s;
-        }
-        .nav-menu a:hover, .nav-menu a.active {
-            background: #2ec27e22;
-            color: #1a7f5a;
-        }
-
-        /* Responsive Header for Mobile */
-        @media (max-width: 800px) {
-            .header-content {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                gap: 0.5rem;
-            }
-            .header-left, .header-center, .header-right {
-                order: unset;
-                width: auto;
-            }
-            .header-center {
-                flex: 1;
-                justify-content: center;
-            }
-            .nav-menu {
-                flex-direction: row;
-                gap: 0.7rem;
-                width: auto;
-                display: flex !important;
-                background: none;
-                position: static;
-                box-shadow: none;
-                border-radius: 0;
-                padding: 0;
-            }
-            .header-right {
-                justify-content: flex-end;
-            }
-            .hamburger {
-                display: none !important;
-            }
-            body.light-mode .nav-menu {
-                background: none !important;
-            }
-            .nav-menu a {
-                color: #2ec27e;
-                font-size: 1.1rem;
-                padding: 0.7em 0.7em;
-            }
-            .container {
-                padding: 0 4px;
-            }
-            header {
-                padding: 0.5rem 0;
-            }
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-        }
-
-        body.light-mode .nav-menu a {
-            color: #1a7f5a;
-        }
-        body.light-mode .nav-menu a:hover, body.light-mode .nav-menu a.active {
-            background: #2ec27e33;
-            color: #2ec27e;
-        }
-
-        h1 {
-            font-size: 2rem;
-            color: #00ff41;
-            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
-            animation: slideIn 0.8s ease-out;
-        }
-
-        .call-btn {
-            background: linear-gradient(135deg, #00ff41, #00cc33);
-            color: #000;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 255, 65, 0.4);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .call-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(0, 255, 65, 0.6);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(26, 26, 26, 0.9));
-            padding: 3rem 2rem;
-            margin: 2rem auto;
-            border-radius: 15px;
-            border: 2px solid #00ff41;
-            text-align: center;
-            animation: fadeIn 1s ease-out;
-        }
-
-        .hero h2 {
-            color: #00ff41;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: #b0b0b0;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        /* Section Heading */
-        .section-heading {
-            text-align: center;
-            color: #00ff41;
-            font-size: 2rem;
-            margin: 3rem 0 2rem;
-            padding: 1rem;
-            background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), transparent);
-            border-radius: 10px;
-            border-left: 4px solid #00ff41;
-            animation: slideIn 0.8s ease-out;
-        }
-
-        /* Services Grid */
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .service-card {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 2px solid rgba(0, 255, 65, 0.3);
-            transition: all 0.3s ease;
-            animation: fadeIn 0.6s ease-out backwards;
-        }
-
-        .service-card:nth-child(1) { animation-delay: 0.1s; }
-        .service-card:nth-child(2) { animation-delay: 0.2s; }
-        .service-card:nth-child(3) { animation-delay: 0.3s; }
-        .service-card:nth-child(4) { animation-delay: 0.4s; }
-        .service-card:nth-child(5) { animation-delay: 0.5s; }
-        .service-card:nth-child(6) { animation-delay: 0.6s; }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: #00ff41;
-            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.3);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .service-card h3 {
-            color: #00ff41;
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        .service-card p {
-            color: #b0b0b0;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .price {
-            font-size: 1.6rem;
-            color: #00ff41;
-            font-weight: bold;
-            margin: 1rem 0;
-        }
-
-        .price-unit {
-            font-size: 0.9rem;
-            color: #888;
-            font-weight: normal;
-        }
-
-        .order-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #00ff41, #00cc33);
-            color: #000;
-            padding: 0.8rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-
-        .order-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(0, 255, 65, 0.5);
-        }
-
-        /* Features Section */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .feature-card {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 3px solid #00ff41;
-            transition: all 0.3s ease;
-            animation: fadeIn 0.6s ease-out backwards;
-        }
-
-        .feature-card:nth-child(1) { animation-delay: 0.1s; }
-        .feature-card:nth-child(2) { animation-delay: 0.2s; }
-        .feature-card:nth-child(3) { animation-delay: 0.3s; }
-        .feature-card:nth-child(4) { animation-delay: 0.4s; }
-        .feature-card:nth-child(5) { animation-delay: 0.5s; }
-        .feature-card:nth-child(6) { animation-delay: 0.6s; }
-
-        .feature-card:hover {
-            transform: translateX(10px);
-            background: rgba(0, 255, 65, 0.1);
-        }
-
-        .feature-icon {
-            font-size: 2rem;
-            color: #00ff41;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Reviews Section */
-        .reviews-container {
-            margin: 3rem 0;
-        }
-
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .review-card {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 2px solid rgba(0, 255, 65, 0.3);
-            animation: fadeIn 0.6s ease-out backwards;
-        }
-
-        .review-card:nth-child(1) { animation-delay: 0.1s; }
-        .review-card:nth-child(2) { animation-delay: 0.2s; }
-        .review-card:nth-child(3) { animation-delay: 0.3s; }
-        .review-card:nth-child(4) { animation-delay: 0.4s; }
-
-        .review-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .review-avatar {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #00ff41, #00cc33);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-right: 1rem;
-        }
-
-        .review-info h4 {
-            color: #00ff41;
-            margin-bottom: 0.2rem;
-        }
-
-        .review-rating {
-            color: #ffbb00;
-        }
-
-        .review-text {
-            color: #b0b0b0;
-            font-style: italic;
-            line-height: 1.6;
-        }
-
-        /* Review Form */
-        .review-form {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 2px solid #00ff41;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .review-form h3 {
-            color: #00ff41;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            color: #b0b0b0;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(0, 255, 65, 0.3);
-            border-radius: 8px;
-            color: #e0e0e0;
-            font-family: inherit;
-        }
-
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, #00ff41, #00cc33);
-            color: #000;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 5px 20px rgba(0, 255, 65, 0.5);
-        }
-
-        /* CTA Section */
-        .cta-section {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, #000, #1a1a1a);
-            border-radius: 15px;
-            border: 2px solid #00ff41;
-            margin: 3rem 0;
-        }
-
-        .cta-section h2 {
-            color: #00ff41;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .whatsapp-cta {
-            background: linear-gradient(135deg, #00ff41, #00cc33);
-            color: #000;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            display: inline-block;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-cta:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(0, 255, 65, 0.6);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 2px solid rgba(0, 255, 65, 0.3);
-            margin-top: 3rem;
-        }
-
-        .footer-contact {
-            margin: 1rem 0;
-        }
-
-        .phone-link {
-            color: #00ff41;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin: 0 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .phone-link:hover {
-            color: #00cc33;
-        }
-
-
-        /* Enhanced Floating WhatsApp */
-        .floating-whatsapp {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-            box-shadow: 0 8px 32px rgba(18, 140, 126, 0.25), 0 2px 8px rgba(0,0,0,0.10);
-            border: 2.5px solid #fff;
-            transition: box-shadow 0.3s, transform 0.2s, background 0.3s;
-            z-index: 1000;
-            cursor: pointer;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .floating-whatsapp svg {
-            width: 36px;
-            height: 36px;
-            display: block;
-        }
-
-        .floating-whatsapp:hover {
-            background: linear-gradient(135deg, #128c7e 0%, #25d366 100%);
-            box-shadow: 0 12px 36px rgba(18, 140, 126, 0.35), 0 4px 16px rgba(0,0,0,0.15);
-            transform: scale(1.13) translateY(-4px);
-        }
-
-        /* Container jo buttons ko center karega */
-.social-container {
-    display: flex;
-    gap: 20px; /* Buttons ke beech ki doori */
-    justify-content: center; /* Center mein layega */
-    padding: 20px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="InstaAssign – Professional Academic & Business Services. Assignments, PPTs, PDFs, Website Development, Graphic Design. Fast delivery, affordable rates.">
+<meta name="keywords" content="InstaAssign, Assignment Writing, PDF Making, PPT, Website Development, Graphic Design, Kanpur">
+<link rel="icon" type="image/png" href="Logo1.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<title>InstaAssign – Academic & Business Partner</title>
+<style>
+:root {
+  --academic: #00c896;
+  --academic-dark: #009e78;
+  --academic-dim: rgba(0,200,150,0.12);
+  --academic-glow: rgba(0,200,150,0.4);
+  --business: #4f8ef7;
+  --business-dark: #2d6de0;
+  --business-dim: rgba(79,142,247,0.12);
+  --business-glow: rgba(79,142,247,0.4);
+  --gold: #f5c842;
+  --bg: #07090f;
+  --bg2: #0e1118;
+  --bg3: #13161f;
+  --card: rgba(14,17,24,0.95);
+  --text: #e2e8f0;
+  --text-muted: #7a8499;
+  --border: rgba(255,255,255,0.07);
+  --radius: 16px;
+  --shadow-academic: 0 20px 60px rgba(0,200,150,0.12);
+  --shadow-business: 0 20px 60px rgba(79,142,247,0.12);
+}
+body.light {
+  --bg: #f4f6fb; --bg2: #eaecf5; --bg3: #ffffff;
+  --card: rgba(255,255,255,0.98); --text: #1a1d28;
+  --text-muted: #5a6380; --border: rgba(0,0,0,0.08);
 }
 
-/* Button ka Design */
-.social-btn {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
-    border: 2px solid #00ff41; /* Hacker Green Border */
-    background-color: transparent;
-    color: #00ff41; /* Text Color Green */
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    font-size: 16px;
-    border-radius: 5px; /* Thoda gol kinara */
-    transition: 0.3s; /* Animation speed */
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Sora',sans-serif; background:var(--bg); color:var(--text);
+  line-height:1.6; min-height:100vh; overflow-x:hidden; transition:background .4s,color .4s;
+}
+body::before {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(ellipse 600px 400px at 15% 20%, rgba(0,200,150,0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 350px at 85% 70%, rgba(79,142,247,0.05) 0%, transparent 70%);
+}
+.container { max-width:1200px; margin:0 auto; padding:0 24px; position:relative; z-index:1; }
+
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:var(--bg2); }
+::-webkit-scrollbar-thumb { background:var(--academic); border-radius:3px; }
+
+/* ===== HEADER ===== */
+header {
+  position:sticky; top:0; z-index:200;
+  background:rgba(7,9,15,0.93); backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border); padding:.9rem 0; transition:background .3s;
+}
+body.light header { background:rgba(244,246,251,0.96); }
+
+.header-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; position:relative; }
+
+.logo-area { display:flex; align-items:center; gap:.8rem; flex-shrink:0; }
+.logo-img {
+  width:46px; height:46px; border-radius:50%; border:2px solid var(--academic);
+  box-shadow:0 0 16px var(--academic-glow); object-fit:cover; background:#fff;
+  animation:logoPulse 4s ease-in-out infinite;
+}
+@keyframes logoPulse {
+  0%,100%{box-shadow:0 0 16px var(--academic-glow);}
+  50%{box-shadow:0 0 28px var(--academic-glow),0 0 50px rgba(0,200,150,0.15);}
+}
+.logo-text {
+  font-family:'Sora',sans-serif; font-weight:800; font-size:1.35rem;
+  background:linear-gradient(135deg, var(--academic), var(--business));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
 }
 
-/* Jab mouse upar le jayenge (Hover Effect) */
-.social-btn:hover {
-    background-color: #00ff41; /* Background Green ho jayega */
-    color: #000000; /* Text Black ho jayega */
-    box-shadow: 0 0 15px #00ff41; /* Glow karega */
-    transform: translateY(-3px); /* Thoda upar uthega */
+/* Desktop nav */
+.desktop-nav { display:flex; gap:.25rem; align-items:center; }
+.desktop-nav a {
+  font-size:.84rem; font-weight:600; color:var(--text-muted); text-decoration:none;
+  padding:.4rem .8rem; border-radius:8px; transition:all .2s; letter-spacing:.01em; white-space:nowrap;
+}
+.desktop-nav a:hover, .desktop-nav a.active { color:var(--text); background:var(--border); }
+.desktop-nav .nav-a { color:var(--academic); }
+.desktop-nav .nav-b { color:var(--business); }
+.desktop-nav .nav-a:hover { background:var(--academic-dim); color:var(--academic); }
+.desktop-nav .nav-b:hover { background:var(--business-dim); color:var(--business); }
+
+.header-actions { display:flex; align-items:center; gap:.55rem; flex-shrink:0; }
+.btn-wa-header {
+  display:flex; align-items:center; gap:.45rem;
+  background:var(--academic); color:#000; font-weight:700; font-size:.82rem;
+  padding:.52rem 1rem; border-radius:8px; text-decoration:none;
+  transition:all .25s; white-space:nowrap;
+}
+.btn-wa-header:hover { background:var(--academic-dark); transform:translateY(-2px); box-shadow:0 6px 20px var(--academic-glow); }
+
+.theme-btn {
+  background:none; border:1px solid var(--border); color:var(--text);
+  font-size:1.05rem; width:38px; height:38px; border-radius:8px;
+  cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .2s;
+}
+.theme-btn:hover { background:var(--border); }
+
+/* Hamburger */
+.hamburger-btn {
+  display:none; flex-direction:column; justify-content:center; gap:5px;
+  width:38px; height:38px; background:none; border:1px solid var(--border);
+  border-radius:8px; cursor:pointer; padding:9px; transition:all .2s; flex-shrink:0;
+}
+.hamburger-btn span {
+  display:block; height:2px; background:var(--text); border-radius:2px; transition:all .3s;
+}
+.hamburger-btn.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+.hamburger-btn.open span:nth-child(2) { opacity:0; transform:translateX(-8px); }
+.hamburger-btn.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+
+/* Mobile nav drawer */
+.mobile-nav {
+  display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:190;
+  background:rgba(7,9,15,0.98); backdrop-filter:blur(20px);
+  flex-direction:column; align-items:center; justify-content:center; gap:1rem;
+  opacity:0; pointer-events:none; transition:opacity .3s;
+}
+body.light .mobile-nav { background:rgba(244,246,251,0.98); }
+.mobile-nav.open { opacity:1; pointer-events:all; display:flex; }
+.mobile-nav a {
+  font-size:1.4rem; font-weight:700; color:var(--text-muted);
+  text-decoration:none; padding:.6rem 2rem; border-radius:12px;
+  transition:all .2s; text-align:center; width:100%; max-width:280px;
+}
+.mobile-nav a:hover { background:var(--border); color:var(--text); }
+.mobile-nav .nav-a { color:var(--academic); }
+.mobile-nav .nav-b { color:var(--business); }
+.mobile-nav-close {
+  position:absolute; top:1.2rem; right:1.2rem;
+  background:none; border:1px solid var(--border); color:var(--text-muted);
+  width:40px; height:40px; border-radius:10px; cursor:pointer; font-size:1.1rem;
+  display:flex; align-items:center; justify-content:center; transition:all .2s;
+}
+.mobile-nav-close:hover { background:var(--border); color:var(--text); }
+.mobile-nav-wa {
+  margin-top:.5rem; display:inline-flex; align-items:center; gap:.6rem;
+  background:var(--academic); color:#000; font-weight:700;
+  padding:.75rem 2rem; border-radius:10px; text-decoration:none; font-size:1rem;
+  max-width:280px; width:100%; justify-content:center;
 }
 
-/* Mobile ke liye responsive */
-@media (max-width: 600px) {
-    .social-btn span {
-        display: none; /* Mobile pe sirf icon dikhega, text nahi */
-    }
+@media(max-width:900px){ .desktop-nav { display:none; } .hamburger-btn { display:flex; } }
+@media(max-width:500px){
+  .btn-wa-header span { display:none; }
+  .btn-wa-header { padding:.52rem .75rem; }
+  .logo-text { font-size:1.15rem; }
 }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 15px;
-            }
+/* ===== HERO ===== */
+.hero { padding:4.5rem 0 3rem; text-align:center; position:relative; }
+.hero-badge {
+  display:inline-flex; align-items:center; gap:.5rem;
+  background:var(--academic-dim); border:1px solid rgba(0,200,150,0.3);
+  color:var(--academic); font-size:.78rem; font-weight:700;
+  padding:.38rem .95rem; border-radius:50px; margin-bottom:1.6rem;
+  letter-spacing:.06em; text-transform:uppercase; animation:fadeUp .6s ease both;
+}
+.hero h1 {
+  font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.6rem);
+  font-weight:900; line-height:1.15; margin-bottom:1.1rem; animation:fadeUp .7s .1s ease both;
+}
+.accent-green { color:var(--academic); }
+.accent-blue { color:var(--business); }
+.hero-sub {
+  font-size:1.05rem; color:var(--text-muted); max-width:560px; margin:0 auto 2rem;
+  line-height:1.75; animation:fadeUp .7s .2s ease both;
+}
+body.light .hero-sub { color:#5a6380; }
+.hero-ctas { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; animation:fadeUp .7s .3s ease both; margin-bottom:1rem; }
 
-            header {
-                padding: 1rem 0;
-            }
+.btn-primary {
+  display:inline-flex; align-items:center; gap:.55rem;
+  background:linear-gradient(135deg,var(--academic),var(--academic-dark));
+  color:#000; font-weight:700; font-size:.92rem;
+  padding:.82rem 1.8rem; border-radius:10px; text-decoration:none;
+  transition:all .3s; border:none; cursor:pointer;
+  box-shadow:0 6px 24px var(--academic-glow); font-family:'Sora',sans-serif;
+}
+.btn-primary:hover { transform:translateY(-3px); box-shadow:0 10px 32px var(--academic-glow); }
+.btn-secondary {
+  display:inline-flex; align-items:center; gap:.55rem;
+  background:linear-gradient(135deg,var(--business),var(--business-dark));
+  color:#fff; font-weight:700; font-size:.92rem;
+  padding:.82rem 1.8rem; border-radius:10px; text-decoration:none;
+  transition:all .3s; border:none; cursor:pointer;
+  box-shadow:0 6px 24px var(--business-glow); font-family:'Sora',sans-serif;
+}
+.btn-secondary:hover { transform:translateY(-3px); box-shadow:0 10px 32px var(--business-glow); }
+.btn-outline {
+  display:inline-flex; align-items:center; gap:.55rem;
+  background:transparent; color:var(--text); font-weight:600; font-size:.92rem;
+  padding:.82rem 1.8rem; border-radius:10px; text-decoration:none;
+  border:1px solid var(--border); transition:all .3s; font-family:'Sora',sans-serif; cursor:pointer;
+}
+.btn-outline:hover { background:var(--border); }
 
-            .header-content {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
+.stats-bar {
+  display:flex; justify-content:center; gap:3rem; flex-wrap:wrap;
+  padding:2.2rem 0; margin-top:2.5rem; border-top:1px solid var(--border);
+  animation:fadeUp .7s .4s ease both;
+}
+.stat { text-align:center; }
+.stat-num { font-family:'JetBrains Mono',monospace; font-size:1.7rem; font-weight:700; color:var(--academic); display:block; }
+.stat-label { font-size:.8rem; color:var(--text-muted); margin-top:.2rem; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
 
-            .header-left {
-                width: 100%;
-                justify-content: center;
-            }
+/* ===== SECTION LABELS ===== */
+.section-label {
+  display:inline-flex; align-items:center; gap:.45rem;
+  font-size:.77rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  padding:.32rem .9rem; border-radius:50px; margin-bottom:.9rem;
+}
+.label-academic { background:var(--academic-dim); color:var(--academic); border:1px solid rgba(0,200,150,0.25); }
+.label-business { background:var(--business-dim); color:var(--business); border:1px solid rgba(79,142,247,0.25); }
+.section-title {
+  font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3.5vw,2.4rem);
+  font-weight:900; margin-bottom:.7rem; line-height:1.2;
+}
+.section-sub { color:var(--text-muted); font-size:.96rem; max-width:520px; line-height:1.7; }
+body.light .section-sub { color:#5a6380; }
+.section-divider { height:1px; background:linear-gradient(90deg,transparent,var(--border),transparent); margin:4.5rem 0; }
+.section-header { margin-bottom:2.5rem; }
 
-            .header-left img {
-                height: 50px !important;
-                width: 50px !important;
-            }
+/* ===== CARDS ===== */
+.academic-section, .business-section { padding:3.5rem 0 1.5rem; }
 
-            h1 {
-                font-size: 1.5rem !important;
-            }
+.academic-grid, .business-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:1.4rem;
+}
 
-            .header-center {
-                width: 100%;
-                order: 3;
-            }
+.academic-card, .business-card {
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  overflow:hidden; transition:all .35s cubic-bezier(.23,1,.32,1);
+  box-shadow:0 4px 24px rgba(0,0,0,0.25); position:relative;
+}
+.academic-card::before, .business-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  transform:scaleX(0); transform-origin:left; transition:transform .4s;
+}
+.academic-card::before { background:linear-gradient(90deg,var(--academic),var(--academic-dark)); }
+.business-card::before { background:linear-gradient(90deg,var(--business),var(--business-dark)); }
+.academic-card:hover::before, .business-card:hover::before { transform:scaleX(1); }
+.academic-card:hover { transform:translateY(-6px); border-color:rgba(0,200,150,0.3); box-shadow:var(--shadow-academic); }
+.business-card:hover { transform:translateY(-6px); border-color:rgba(79,142,247,0.3); box-shadow:var(--shadow-business); }
 
-            .nav-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.8rem;
-            }
+.card-header { padding:1.4rem 1.4rem .9rem; display:flex; align-items:flex-start; gap:1rem; }
+.card-icon {
+  width:50px; height:50px; border-radius:12px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center; font-size:1.5rem; border:1px solid transparent;
+}
+.icon-a { background:var(--academic-dim); border-color:rgba(0,200,150,0.2); }
+.icon-b { background:var(--business-dim); border-color:rgba(79,142,247,0.2); }
+.card-title-area { flex:1; }
+.card-title { font-weight:700; font-size:1rem; margin-bottom:.22rem; color:var(--text); }
+.card-price { font-family:'JetBrains Mono',monospace; font-size:.84rem; font-weight:600; }
+.price-a { color:var(--academic); }
+.price-b { color:var(--business); }
+.card-body { padding:0 1.4rem 1.4rem; }
+.card-desc { font-size:.88rem; color:var(--text-muted); line-height:1.65; margin-bottom:1.1rem; }
+body.light .card-desc { color:#5a6380; }
+.audience-tags { display:flex; gap:.45rem; flex-wrap:wrap; margin-bottom:1.1rem; }
+.tag { font-size:.71rem; font-weight:600; padding:.22rem .6rem; border-radius:50px; letter-spacing:.03em; }
+.tag-school { background:rgba(245,200,66,0.12); color:var(--gold); border:1px solid rgba(245,200,66,0.25); }
+.tag-college { background:var(--academic-dim); color:var(--academic); border:1px solid rgba(0,200,150,0.25); }
+.tag-biz { background:var(--business-dim); color:var(--business); border:1px solid rgba(79,142,247,0.25); }
 
-            .nav-menu a {
-                font-size: 0.95rem;
-                padding: 0.4rem 0.8rem;
-            }
+.btn-card {
+  width:100%; padding:.72rem; font-weight:700; font-size:.86rem;
+  border:none; border-radius:8px; cursor:pointer; font-family:'Sora',sans-serif;
+  transition:all .25s; display:flex; align-items:center; justify-content:center; gap:.45rem;
+}
+.btn-card-a { background:linear-gradient(135deg,var(--academic),var(--academic-dark)); color:#000; }
+.btn-card-a:hover { box-shadow:0 6px 20px var(--academic-glow); transform:translateY(-2px); }
+.btn-card-b { background:linear-gradient(135deg,var(--business),var(--business-dark)); color:#fff; }
+.btn-card-b:hover { box-shadow:0 6px 20px var(--business-glow); transform:translateY(-2px); }
 
-            .header-right {
-                order: 2;
-            }
+/* ===== WHY US ===== */
+.why-section { padding:3.5rem 0 1.5rem; }
+.why-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1.2rem; }
+.why-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1.4rem; transition:all .3s; }
+.why-card:hover { transform:translateY(-4px); border-color:rgba(0,200,150,0.25); }
+.why-icon { font-size:1.75rem; margin-bottom:.7rem; display:block; }
+.why-title { font-weight:700; font-size:.93rem; margin-bottom:.35rem; }
+.why-text { font-size:.83rem; color:var(--text-muted); line-height:1.6; }
+body.light .why-text { color:#5a6380; }
 
-            .theme-toggle-btn {
-                margin-left: 0;
-                font-size: 1.5rem;
-            }
+/* ===== REVIEWS ===== */
+.reviews-section { padding:3.5rem 0 1.5rem; }
+.reviews-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.4rem; margin-bottom:2.5rem; }
+.review-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1.4rem; transition:all .3s; }
+.review-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,0.2); }
+.review-top { display:flex; align-items:center; gap:.75rem; margin-bottom:.9rem; }
+.review-avatar { width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.25rem; flex-shrink:0; }
+.av-green { background:var(--academic-dim); border:1px solid rgba(0,200,150,0.25); }
+.av-blue { background:var(--business-dim); border:1px solid rgba(79,142,247,0.25); }
+.review-name { font-weight:700; font-size:.92rem; }
+.review-stars { color:#f5c842; font-size:.82rem; }
+.review-text { font-size:.88rem; color:var(--text-muted); line-height:1.7; font-style:italic; }
+body.light .review-text { color:#5a6380; }
+.review-form-box { background:var(--card); border:1px solid var(--academic); border-radius:var(--radius); padding:2rem; max-width:540px; margin:0 auto; }
+.review-form-title { font-weight:800; font-size:1.05rem; margin-bottom:1.4rem; text-align:center; color:var(--academic); }
 
-            .hero {
-                padding: 2rem 1.5rem;
-                margin: 1.5rem auto;
-            }
+/* ===== CTA ===== */
+.cta-section { padding:4rem 0; }
+.cta-box {
+  background:linear-gradient(135deg,rgba(0,200,150,0.07),rgba(79,142,247,0.07));
+  border:1px solid var(--border); border-radius:24px; padding:3.5rem 2rem;
+  text-align:center; position:relative; overflow:hidden;
+}
+.cta-box::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(circle at 20% 50%,rgba(0,200,150,0.05) 0%,transparent 50%),
+             radial-gradient(circle at 80% 50%,rgba(79,142,247,0.05) 0%,transparent 50%);
+}
+.cta-box>*{position:relative;}
+.cta-title { font-family:'Playfair Display',serif; font-size:clamp(1.5rem,3.5vw,2.3rem); font-weight:900; margin-bottom:.8rem; }
+.cta-sub { color:var(--text-muted); font-size:.97rem; margin-bottom:1.8rem; line-height:1.7; }
+body.light .cta-sub { color:#5a6380; }
+.cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
 
-            .hero h2 {
-                font-size: 1.5rem;
-            }
+/* ===== FOOTER ===== */
+footer { border-top:1px solid var(--border); padding:2.5rem 0 1.5rem; margin-top:4rem; }
+.footer-grid { display:grid; grid-template-columns:1fr auto; gap:2rem; align-items:start; margin-bottom:2rem; }
+@media(max-width:600px){ .footer-grid{ grid-template-columns:1fr; } }
+.footer-brand .logo-text { font-size:1.15rem; margin-bottom:.5rem; display:block; }
+.footer-desc { font-size:.83rem; color:var(--text-muted); line-height:1.7; max-width:320px; }
+body.light .footer-desc { color:#5a6380; }
+.footer-address { font-size:.8rem; color:var(--text-muted); margin-top:.7rem; }
+body.light .footer-address { color:#7a8499; }
+.footer-address a { color:var(--academic); text-decoration:none; }
+.footer-address a:hover { text-decoration:underline; }
+.footer-links { display:flex; flex-direction:column; gap:.45rem; text-align:right; }
+@media(max-width:600px){ .footer-links{ text-align:left; } }
+.footer-link { color:var(--text-muted); font-size:.86rem; text-decoration:none; transition:color .2s; }
+.footer-link:hover { color:var(--academic); }
+.footer-bottom { padding-top:1.4rem; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+.footer-copy { font-size:.8rem; color:var(--text-muted); }
+body.light .footer-copy { color:#7a8499; }
+.social-row { display:flex; gap:.55rem; }
+.social-btn-f { width:34px; height:34px; border-radius:8px; background:var(--card); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:.88rem; text-decoration:none; transition:all .2s; }
+.social-btn-f:hover { background:var(--academic); color:#000; border-color:var(--academic); }
 
-            .hero p {
-                font-size: 1rem;
-            }
+/* ===== FLOATING WA ===== */
+.floating-wa { position:fixed; bottom:24px; right:24px; z-index:500; width:58px; height:58px; border-radius:50%; background:linear-gradient(135deg,#25d366,#128c7e); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 32px rgba(18,140,126,0.45); border:2px solid rgba(255,255,255,0.25); animation:waFloat 3s ease-in-out infinite; text-decoration:none; transition:all .3s; }
+.floating-wa:hover { transform:scale(1.12) translateY(-4px); box-shadow:0 14px 40px rgba(18,140,126,0.55); }
+@keyframes waFloat { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
 
-            .section-heading {
-                font-size: 1.5rem;
-                padding: 0.8rem;
-                margin: 2rem 0 1.5rem;
-            }
+/* ===== MODAL ===== */
+.modal-overlay { display:none; position:fixed; inset:0; z-index:1000; background:rgba(0,0,0,0.78); backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:1rem; }
+.modal-overlay.open { display:flex; }
+.modal { background:var(--bg3); border:1px solid var(--border); border-radius:20px; width:100%; max-width:510px; max-height:92vh; overflow-y:auto; animation:modalIn .3s cubic-bezier(.23,1,.32,1); position:relative; box-shadow:0 30px 80px rgba(0,0,0,0.5); }
+body.light .modal { background:#fff; }
+@keyframes modalIn { from{opacity:0;transform:scale(.9) translateY(20px);} to{opacity:1;transform:scale(1) translateY(0);} }
+.modal-stripe { height:4px; border-radius:20px 20px 0 0; }
+.stripe-a { background:linear-gradient(90deg,var(--academic),var(--academic-dark)); }
+.stripe-b { background:linear-gradient(90deg,var(--business),var(--business-dark)); }
+.modal-head { padding:1.4rem 1.4rem .9rem; display:flex; align-items:flex-start; justify-content:space-between; }
+.modal-title { font-weight:800; font-size:1.15rem; margin-bottom:.22rem; }
+.modal-sub { font-size:.82rem; color:var(--text-muted); }
+body.light .modal-sub { color:#5a6380; }
+.modal-close { background:none; border:1px solid var(--border); color:var(--text-muted); width:32px; height:32px; border-radius:8px; cursor:pointer; font-size:.95rem; display:flex; align-items:center; justify-content:center; transition:all .2s; flex-shrink:0; }
+.modal-close:hover { background:var(--border); color:var(--text); }
+.modal-body { padding:0 1.4rem 1.4rem; }
 
-            .services {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
 
-            .service-card {
-                padding: 1.5rem;
-            }
 
-            .service-icon {
-                font-size: 2.5rem;
-            }
+.form-row { margin-bottom:1.1rem; }
+.form-label { display:block; font-size:.81rem; font-weight:600; color:var(--text-muted); margin-bottom:.4rem; letter-spacing:.02em; }
+body.light .form-label { color:#5a6380; }
+.form-input,.form-select,.form-textarea {
+  width:100%; padding:.72rem .95rem; background:var(--bg2); border:1px solid var(--border);
+  border-radius:8px; color:var(--text); font-family:'Sora',sans-serif; font-size:.88rem; transition:all .2s;
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus { outline:none; }
+.focus-a:focus { border-color:var(--academic); box-shadow:0 0 0 3px var(--academic-dim); }
+.focus-b:focus { border-color:var(--business); box-shadow:0 0 0 3px var(--business-dim); }
+body.light .form-input, body.light .form-select, body.light .form-textarea { background:#f0f2f8; color:#1a1d28; border-color:rgba(0,0,0,0.1); }
+.form-textarea { min-height:90px; resize:vertical; }
+.form-select { appearance:none; cursor:pointer; }
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+@media(max-width:480px){ .form-grid{ grid-template-columns:1fr; } }
+.form-hint { font-size:.74rem; color:var(--text-muted); margin-top:.28rem; }
+body.light .form-hint { color:#7a8499; }
 
-            .service-card h3 {
-                font-size: 1.2rem;
-            }
+.submit-btn-form {
+  width:100%; padding:.88rem; font-family:'Sora',sans-serif; font-weight:700;
+  font-size:.9rem; letter-spacing:.02em; border:none; border-radius:10px;
+  cursor:pointer; display:flex; align-items:center; justify-content:center; gap:.55rem;
+  transition:all .3s; margin-top:.5rem;
+}
+.submit-a { background:linear-gradient(135deg,var(--academic),var(--academic-dark)); color:#000; box-shadow:0 6px 24px var(--academic-glow); }
+.submit-a:hover { box-shadow:0 10px 32px var(--academic-glow); transform:translateY(-2px); }
+.submit-b { background:linear-gradient(135deg,var(--business),var(--business-dark)); color:#fff; box-shadow:0 6px 24px var(--business-glow); }
+.submit-b:hover { box-shadow:0 10px 32px var(--business-glow); transform:translateY(-2px); }
 
-            .price {
-                font-size: 1.4rem;
-            }
+.wa-note { margin-top:.9rem; padding:.85rem; background:rgba(37,211,102,0.07); border:1px solid rgba(37,211,102,0.18); border-radius:8px; font-size:.79rem; color:var(--text-muted); text-align:center; line-height:1.55; }
+body.light .wa-note { color:#5a6380; }
 
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .feature-card {
-                padding: 1.2rem;
-            }
-
-            .feature-icon {
-                font-size: 1.8rem;
-            }
-
-            .reviews-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .review-card {
-                padding: 1.5rem;
-            }
-
-            .review-form {
-                padding: 1.5rem;
-                margin: 0 10px;
-            }
-
-            .cta-section {
-                padding: 2rem 1.5rem;
-                margin: 2rem 0;
-            }
-
-            .cta-section h2 {
-                font-size: 1.5rem;
-            }
-
-            .whatsapp-cta {
-                padding: 0.9rem 2rem;
-                font-size: 1rem;
-            }
-
-            .order-btn,
-            .call-btn {
-                padding: 0.7rem 1.3rem;
-                font-size: 0.95rem;
-            }
-
-            .floating-whatsapp {
-                bottom: 20px;
-                right: 20px;
-                width: 56px;
-                height: 56px;
-            }
-
-            .floating-whatsapp svg {
-                width: 30px;
-                height: 30px;
-            }
-
-            .modal-content {
-                margin: 0 20px;
-                padding: 1.5rem;
-                max-width: 90%;
-            }
-
-            .phone-option {
-                padding: 0.8rem;
-                font-size: 0.95rem;
-            }
-
-            footer {
-                padding: 1.5rem 1rem;
-            }
-
-            .footer-address-container {
-                flex-direction: column;
-                text-align: center;
-                padding: 0 10px;
-            }
-
-            .footer-address-container a {
-                font-size: 0.95rem;
-                margin: 0.3rem 0;
-            }
-
-            .phone-link {
-                font-size: 1.1rem;
-                display: block;
-                margin: 0.5rem 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.3rem !important;
-            }
-
-            .hero h2 {
-                font-size: 1.3rem;
-            }
-
-            .hero p {
-                font-size: 0.95rem;
-            }
-
-            .nav-menu a {
-                font-size: 0.9rem;
-                padding: 0.35rem 0.6rem;
-            }
-
-            .section-heading {
-                font-size: 1.3rem;
-            }
-
-            .service-card h3 {
-                font-size: 1.1rem;
-            }
-
-            .whatsapp-cta {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.95rem;
-            }
-        }
-    </style>
+/* Responsive */
+@media(max-width:900px){ .academic-grid,.business-grid{ grid-template-columns:1fr; } }
+@media(max-width:700px){ .stats-bar{gap:1.5rem;} .why-grid{grid-template-columns:1fr 1fr;} .hero{padding:3rem 0 2rem;} }
+@media(max-width:480px){ .why-grid{grid-template-columns:1fr;} .hero-ctas{flex-direction:column;align-items:stretch;} .hero-ctas>*{justify-content:center;} .cta-btns{flex-direction:column;align-items:stretch;} .cta-btns>*{justify-content:center;} }
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="header-left">
-                    <img src="BL.png" alt="InstaAssign Logo" style="height: 60px; width: 60px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.10); background: #fff; border: 3px solid #2ec27e;" />
-                    <h1 style="margin: 0; font-size: 2rem; font-weight: 600; letter-spacing: 0.02em;">InstaAssign🫡</h1>
-                </div>
-                <div class="header-center">
-                    <nav class="nav-menu" id="navMenu">
-                        <a href="#">Home</a>
-                        <a href="#our-services">Services</a>
-                        <a href="#why-choose-us">Functionality</a>
-                        <a href="#student-reviews">Reviews</a>
-                    </nav>
-                </div>
-                <div class="header-right">
-                    <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle light/dark mode" aria-label="Toggle light/dark mode">
-                        <span id="themeIcon">🌙</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <div class="container">
-        <!-- Hero Section -->
-        <div class="hero">
-            <h2>🎓 Assignments Se Pareshan? We've Got You Covered! 💯</h2>
-            <p><strong>Last minute ka kaam bhi? No Problem!</strong> 🚀<br>
-            Fast delivery ✅ | Best quality ✅ | Pocket-friendly rates ✅<br>
-            <em>Apna kaam time pe complete karwao - stress-free! 😎</em></p>
-            <a href="https://wa.me/919005315241?text=Hello!%20Main%20aapki%20services%20ke%20baare%20mein%20jaanna%20chahta%20hoon." class="order-btn">💬 WhatsApp Par Baat Karo</a>
-        </div>
-
-        <!-- Services Section -->
-        <h2 class="section-heading" id="our-services">📝 Our Services - Aapke Liye Kya Kya Kar Sakte Hain</h2>
-        <div class="services">
-            <!-- Assignment Writing -->
-            <div class="service-card">
-                <span class="service-icon">✍️</span>
-                <h3>Assignment Writing</h3>
-                <p>Well-researched aur plagiarism-free assignments. Proper formatting ke saath on-time delivery guaranteed! 📖</p>
-                <div class="price">Upto ₹15-₹35 <span class="price-unit">per page</span></div>
-                <a href="https://wa.me/919005315241?text=Hello!%20Mujhe%20Assignment%20Writing%20service%20chahiye.%20Please%20details%20share%20karein." class="order-btn">Order Now</a>
-            </div>
-
-            <!-- PDF Making -->
-            <div class="service-card">
-                <span class="service-icon">📄</span>
-                <h3>PDF Making</h3>
-                <p>Professional PDF documents with perfect formatting, images, aur neat organization. Ready to submit! 📑</p>
-                <div class="price">Upto ₹10-₹15 <span class="price-unit">per page</span></div>
-                <a href="https://wa.me/919005315241?text=Hello!%20Mujhe%20PDF%20Making%20service%20chahiye.%20Please%20details%20share%20karein." class="order-btn">Order Now</a>
-            </div>
-
-            <!-- PPT -->
-            <div class="service-card">
-                <span class="service-icon">📊</span>
-                <h3>PowerPoint Presentations</h3>
-                <p>Eye-catching PPT slides with professional design, graphics aur animations. Impress karo sabko! 🎨</p>
-                <div class="price">Upto ₹10-₹20 <span class="price-unit">per slide</span></div>
-                <a href="https://wa.me/919005315241?text=Hello!%20Mujhe%20PowerPoint%20Presentation%20service%20chahiye.%20Please%20details%20share%20karein." class="order-btn">Order Now</a>
-            </div>
-
-            <!-- Project Reports -->
-            <div class="service-card">
-                <span class="service-icon">📋</span>
-                <h3>Project Reports / Synopsis</h3>
-                <p>Complete project reports aur synopsis with proper structure, formatting aur professional presentation! 📝</p>
-                <div class="price">Upto ₹18-₹30 <span class="price-unit">per page</span></div>
-                <a href="https://wa.me/919005315241?text=Hello!%20Mujhe%20Project%20Report%20ya%20Synopsis%20service%20chahiye.%20Please%20details%20share%20karein." class="order-btn">Order Now</a>
-            </div>
-
-            <!-- Research Work -->
-            <div class="service-card">
-                <span class="service-icon">🔬</span>
-                <h3>Research Work</h3>
-                <p>In-depth research with proper citations, references aur data analysis. Academic standards ke according! 📚</p>
-                 <div class="price">Based on Complexity</div>
-                <a href="https://wa.me/919005315241?text=Hello!%20Mujhe%20Research%20Work%20service%20chahiye.%20Please%20details%20share%20karein." class="order-btn">Order Now</a>
-            </div>
-
-            <!-- Custom Projects -->
-            <div class="service-card">
-                <span class="service-icon">🎨</span>
-                <h3>Custom Projects</h3>
-                <p>Charts, diagrams, models, reports, websites, plagiarism checking, aur saare academic works and also graphics designing - jo bhi chahiye! Apne requirements ke according customize karenge. 🛠️</p>
-                <div class="price">Based on Complexity</div>
-                <a href="https://wa.me/919005315241?text=Hello!%20Mujhe%20Custom%20Project%20work%20chahiye.%20Please%20details%20share%20karein." class="order-btn">Order Now</a>
-            </div>
-        </div>
-
-        <!-- Why Choose Us -->
-        <h2 class="section-heading" id="why-choose-us">🌟 Why Choose Us - Hum Kyun Best Hain</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h4 style="color: #00ff41; margin-bottom: 0.5rem;">Fast Delivery</h4>
-                <p>Quick turnaround time - apka kaam time se pehle! ⏰</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💯</div>
-                <h4 style="color: #00ff41; margin-bottom: 0.5rem;">Top Quality</h4>
-                <p>Professional work jo academic standards ko meet kare! ✅</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💰</div>
-                <h4 style="color: #00ff41; margin-bottom: 0.5rem;">Affordable Rates</h4>
-                <p>Student-friendly pricing - pocket pe halka! 💸</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h4 style="color: #00ff41; margin-bottom: 0.5rem;">100% Confidential</h4>
-                <p>Aapki privacy completely secure - no tension! 🔐</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📞</div>
-                <h4 style="color: #00ff41; margin-bottom: 0.5rem;">24/7 Support</h4>
-                <p>Kisi bhi time available - day or night! 🌙</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">✅</div>
-                <h4 style="color: #00ff41; margin-bottom: 0.5rem;">Revisions</h4>
-                <p>Satisfied nahi? Revision bhi milega! Don't worry! 🔄</p>
-            </div>
-        </div>
-
-        <!-- Student Reviews -->
-        <h2 class="section-heading" id="student-reviews">⭐ Student Reviews - Dekho Students Kya Kehte Hain</h2>
-        <div class="reviews-container">
-            <div class="reviews-grid">
-                <!-- Review 1 -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="review-avatar">👨</div>
-                        <div class="review-info">
-                            <h4>Rahul Sharma</h4>
-                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <p class="review-text">"Bhai ekdum mast kaam kiya! Last minute mein assignment diya tha, par time se pehle mil gaya. Quality bhi top class thi. Highly recommend! 👍"</p>
-                </div>
-
-                <!-- Review 2 -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="review-avatar">👩</div>
-                        <div class="review-info">
-                            <h4>Priya Patel</h4>
-                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <p class="review-text">"PPT ke liye contact kiya tha. Itna accha design banaya ki professor ne appreciate bhi kiya! Price bhi reasonable hai. Thank you so much! 😊"</p>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="review-avatar">👨</div>
-                        <div class="review-info">
-                            <h4>Amit Kumar</h4>
-                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <p class="review-text">"Research project mein help kiya inhone. Proper references aur formatting ke saath mila. Bahut helpful service hai students ke liye! 💯"</p>
-                </div>
-
-                <!-- Review 4 -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="review-avatar">👩</div>
-                        <div class="review-info">
-                            <h4>Neha Singh</h4>
-                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <p class="review-text">"Mujhe urgent PDF chahiye thi, 2 ghante mein ready kar diya! Quality aur speed dono best hai. Will definitely use again! 🙌"</p>
-                </div>
-            </div>
-
-            <!-- Review Submission Form -->
-            <div class="review-form">
-                <h3>📝 Share Your Experience - Apna Review Likho!</h3>
-                <form id="reviewForm">
-                    <div class="form-group">
-                        <label for="name">Your Name 👤</label>
-                        <input type="text" id="name" name="name" required placeholder="Enter your name">
-                    </div>
-                    <div class="form-group">
-                        <label for="rating">Rating ⭐</label>
-                        <select id="rating" name="rating" style="width: 100%; padding: 0.8rem; background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(0, 255, 65, 0.3); border-radius: 8px; color: #e0e0e0;">
-                            <option value="5">⭐⭐⭐⭐⭐ - Excellent</option>
-                            <option value="4">⭐⭐⭐⭐ - Very Good</option>
-                            <option value="3">⭐⭐⭐ - Good</option>
-                            <option value="2">⭐⭐ - Average</option>
-                            <option value="1">⭐ - Poor</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="review">Your Review 💬</label>
-                        <textarea id="review" name="review" required placeholder="Apna experience share karo..."></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Submit Review ✅</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- CTA Section -->
-        <div class="cta-section">
-            <h2>🚀 Ready to Get Started?</h2>
-            <p style="color: #b0b0b0; margin: 1rem 0;">WhatsApp pe message karo aur apne requirements share karo.<br>Hum turant quote denge aur kaam start kar denge! 💪</p>
-            <a href="https://wa.me/919005315241?text=Hello!%20Main%20aapki%20services%20use%20karna%20chahta%20hoon.%20Please%20help%20karein." class="whatsapp-cta">💬 Chat Now on WhatsApp</a>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p style="color: #b0b0b0;">&copy; 2026 InstaAssign🫡 Student Support Services. All rights reserved.</p>
-        <p style="color: #b0b0b0; margin-top: 0.5rem;">Helping students succeed🎓, Leave assignment worries, connect with success. ✅</p>
-        <div class="social-container">
-    <div class="social-container">
-    <a href="https://instagram.com/instaassign" target="_blank" class="social-btn">
-        <i class="fa-brands fa-instagram"></i>
-        <span>Instagram</span>
-    </a>
-
-    <a href="https://www.threads.net/@instaassign" target="_blank" class="social-btn">
-        <i class="fa-brands fa-threads"></i>
-        <span>Threads</span>
-    </a>
-
-    <a href="mailto:instaassign01@gmail.com" class="social-btn">
-        <i class="fa-solid fa-envelope"></i>
-        <span>Email Us</span>
-    </a>
-</div>
-</div>
-</div>
-        <div class="footer-address-container" style="display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem;">
-            <span style="font-size: 1.2em; margin-right: 0.3em; color: #2ec27e;">📍</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Chhatrapati+Sahu+Ji+Maharaj+University,+Kanpur" target="_blank" rel="noopener" style="color: #2ec27e; text-decoration: underline; font-weight: 600; font-size: 1.08rem;">
-                CSJM University (Kanpur University), Kalyanpur, Kanpur, Uttar Pradesh 208024
-            </a>
-            <span style="font-size: 1.2em; margin-left: 0.3em; color: #2ec27e;">📍</span>
-        </div>
-        <!-- Floating WhatsApp -->
-        <a href="https://wa.me/919005315241?text=Hi!%20Main%20aapki%20services%20ke%20baare%20mein%20jaanna%20chahta%20hoon." class="floating-whatsapp" title="WhatsApp us" target="_blank" rel="noopener">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
-                <circle cx="16" cy="16" r="16" fill="#25D366"/>
-                <path d="M23.472 19.339c-.355-.177-2.104-1.037-2.43-1.156-.326-.119-.563-.177-.8.178-.237.355-.914 1.156-1.12 1.393-.207.237-.414.267-.769.089-.355-.178-1.5-.553-2.86-1.763-1.057-.944-1.77-2.108-1.98-2.463-.207-.355-.022-.546.155-.723.159-.158.355-.414.533-.622.178-.207.237-.355.355-.592.119-.237.06-.444-.03-.622-.089-.178-.8-1.924-1.096-2.637-.289-.693-.583-.599-.8-.61-.207-.009-.444-.011-.681-.011-.237 0-.622.089-.948.444-.326.355-1.24 1.211-1.24 2.955 0 1.744 1.27 3.429 1.447 3.669.178.237 2.5 3.82 6.063 5.209.849.292 1.51.466 2.026.596.851.204 1.626.175 2.24.106.683-.077 2.104-.859 2.403-1.689.296-.83.296-1.541.207-1.689-.089-.148-.326-.237-.681-.414z" fill="#fff"/>
-            </svg>
+<!-- HEADER -->
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo-area">
+        <img src="Logo1.png" alt="InstaAssign Logo" class="logo-img">
+        <span class="logo-text">InstaAssign</span>
+      </div>
+      <nav class="desktop-nav">
+        <a href="#academic" class="nav-a">Academic</a>
+        <a href="#business" class="nav-b">Business</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#reviews">Reviews</a>
+      </nav>
+      <div class="header-actions">
+        <a href="https://wa.me/919005315241" target="_blank" class="btn-wa-header">
+          <i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span>
         </a>
+        <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
 
-    <script>
-        // Theme toggle logic
-        const themeBtn = document.getElementById('themeToggleBtn');
-        const themeIcon = document.getElementById('themeIcon');
-        function setTheme(mode) {
-            if (mode === 'light') {
-                document.body.classList.add('light-mode');
-                themeIcon.textContent = '☀️';
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.body.classList.remove('light-mode');
-                themeIcon.textContent = '🌙';
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-        // Load theme from storage
-        (function() {
-            const saved = localStorage.getItem('theme');
-            setTheme(saved === 'light' ? 'light' : 'dark');
-        })();
-        themeBtn.addEventListener('click', function() {
-            setTheme(document.body.classList.contains('light-mode') ? 'dark' : 'light');
-        });
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="mobileNavClose"><i class="fa-solid fa-xmark"></i></button>
+  <a href="#academic" class="nav-a" onclick="closeMobileNav()">🎓 Academic Services</a>
+  <a href="#business" class="nav-b" onclick="closeMobileNav()">💼 Business Services</a>
+  <a href="#why-us" onclick="closeMobileNav()">🌟 Why Us</a>
+  <a href="#reviews" onclick="closeMobileNav()">⭐ Reviews</a>
+  <a href="https://wa.me/919005315241" target="_blank" class="mobile-nav-wa" onclick="closeMobileNav()">
+    <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero container">
+  <div class="hero-badge"><i class="fa-solid fa-star"></i> Trusted by 500+ Students & Businesses</div>
+  <h1>Your <span class="accent-green">Academic</span> &amp;<br><span class="accent-blue">Business</span> Partner</h1>
+  <p class="hero-sub">From school assignments to professional websites — InstaAssign delivers quality work fast. Fill a form, we quote on WhatsApp. Simple as that. 🚀</p>
+  <div class="hero-ctas">
+    <a href="#academic" class="btn-primary"><i class="fa-solid fa-graduation-cap"></i> Academic Services</a>
+    <a href="#business" class="btn-secondary"><i class="fa-solid fa-briefcase"></i> Business Services</a>
+  </div>
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Happy Clients</span></div>
+    <div class="stat"><span class="stat-num">24hr</span><span class="stat-label">Fast Delivery</span></div>
+    <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Confidential</span></div>
+    <div class="stat"><span class="stat-num">₹0</span><span class="stat-label">Hidden Charges</span></div>
+  </div>
+</section>
+
+<!-- ===== ACADEMIC SECTION ===== -->
+<section class="academic-section" id="academic">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label label-academic"><i class="fa-solid fa-graduation-cap"></i> Academic Services</div>
+      <h2 class="section-title">For Schools, Colleges &amp; Students</h2>
+      <p class="section-sub">Professional academic assistance at every level. Fill the form — we confirm details and pricing on WhatsApp.</p>
+    </div>
+    <div class="academic-grid">
+
+      <div class="academic-card">
+        <div class="card-header">
+          <div class="card-icon icon-a">✍️</div>
+          <div class="card-title-area">
+            <div class="card-title">Assignment Writing</div>
+            <div class="card-price price-a">₹15–₹35 / page</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Well-researched, plagiarism-free handwritten or typed assignments with proper formatting and guaranteed on-time delivery.</p>
+          <div class="audience-tags">
+            <span class="tag tag-school">School</span><span class="tag tag-college">College</span><span class="tag tag-college">University</span>
+          </div>
+          <button class="btn-card btn-card-a" onclick="openModal('assignment')"><i class="fa-brands fa-whatsapp"></i> Order via Form</button>
+        </div>
+      </div>
+
+      <div class="academic-card">
+        <div class="card-header">
+          <div class="card-icon icon-a">📄</div>
+          <div class="card-title-area">
+            <div class="card-title">PDF / Document Making</div>
+            <div class="card-price price-a">₹150–₹300 / document</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Professionally formatted PDFs with images, tables, and neat organisation — ready for any submission portal.</p>
+          <div class="audience-tags">
+            <span class="tag tag-school">School</span><span class="tag tag-college">College</span><span class="tag tag-biz">Parents</span>
+          </div>
+          <button class="btn-card btn-card-a" onclick="openModal('pdf')"><i class="fa-brands fa-whatsapp"></i> Order via Form</button>
+        </div>
+      </div>
+
+      <div class="academic-card">
+        <div class="card-header">
+          <div class="card-icon icon-a">📊</div>
+          <div class="card-title-area">
+            <div class="card-title">PowerPoint Presentations</div>
+            <div class="card-price price-a">₹200–₹500 / deck</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Eye-catching slides with professional design, custom graphics and animations. Make every presentation memorable.</p>
+          <div class="audience-tags">
+            <span class="tag tag-school">School</span><span class="tag tag-college">College</span><span class="tag tag-college">Seminar</span>
+          </div>
+          <button class="btn-card btn-card-a" onclick="openModal('ppt')"><i class="fa-brands fa-whatsapp"></i> Order via Form</button>
+        </div>
+      </div>
+
+      <div class="academic-card">
+        <div class="card-header">
+          <div class="card-icon icon-a">📋</div>
+          <div class="card-title-area">
+            <div class="card-title">Project Reports / Synopsis</div>
+            <div class="card-price price-a">₹400–₹1,000 / report</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Complete reports and synopsis with structured chapters, proper formatting, bibliography, and professional presentation.</p>
+          <div class="audience-tags">
+            <span class="tag tag-college">College</span><span class="tag tag-college">University</span><span class="tag tag-biz">Diploma</span>
+          </div>
+          <button class="btn-card btn-card-a" onclick="openModal('report')"><i class="fa-brands fa-whatsapp"></i> Order via Form</button>
+        </div>
+      </div>
+
+      <div class="academic-card">
+        <div class="card-header">
+          <div class="card-icon icon-a">🔬</div>
+          <div class="card-title-area">
+            <div class="card-title">Research Work</div>
+            <div class="card-price price-a">₹20–₹35 / page</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">In-depth research with proper citations, references, and data analysis — fully meeting academic standards.</p>
+          <div class="audience-tags">
+            <span class="tag tag-college">PG / PhD</span><span class="tag tag-college">University</span>
+          </div>
+          <button class="btn-card btn-card-a" onclick="openModal('research')"><i class="fa-brands fa-whatsapp"></i> Order via Form</button>
+        </div>
+      </div>
+
+      <div class="academic-card">
+        <div class="card-header">
+          <div class="card-icon icon-a">⭐</div>
+          <div class="card-title-area">
+            <div class="card-title">Custom Academic Work</div>
+            <div class="card-price price-a">As per Requirements</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Plagiarism reports, editing, case studies, lab reports, viva prep, notes, MCQs — if it's academic, just ask!</p>
+          <div class="audience-tags">
+            <span class="tag tag-college">Flexible</span><span class="tag tag-college">Any Level</span>
+          </div>
+          <button class="btn-card btn-card-a" onclick="openModal('customAcademic')"><i class="fa-brands fa-whatsapp"></i> Request Custom Work</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="section-divider"></div></div>
+
+<!-- ===== BUSINESS SECTION ===== -->
+<section class="business-section" id="business">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label label-business"><i class="fa-solid fa-briefcase"></i> Business Services</div>
+      <h2 class="section-title">Professional Digital Solutions</h2>
+      <p class="section-sub">Elevate your brand with our digital services. From websites to stunning visuals — we build what businesses need.</p>
+    </div>
+    <div class="business-grid">
+
+      <div class="business-card">
+        <div class="card-header">
+          <div class="card-icon icon-b">🌐</div>
+          <div class="card-title-area">
+            <div class="card-title">Website Development</div>
+            <div class="card-price price-b">₹4,000–₹8,000+</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Responsive, modern websites for businesses, portfolios, and institutions. Landing pages to full web apps — built to impress.</p>
+          <div class="audience-tags">
+            <span class="tag tag-biz">Small Business</span><span class="tag tag-biz">Portfolio</span><span class="tag tag-school">Schools</span>
+          </div>
+          <button class="btn-card btn-card-b" onclick="openModal('website')"><i class="fa-brands fa-whatsapp"></i> Get a Quote</button>
+        </div>
+      </div>
+
+      <div class="business-card">
+        <div class="card-header">
+          <div class="card-icon icon-b">🎨</div>
+          <div class="card-title-area">
+            <div class="card-title">Graphic Design</div>
+            <div class="card-price price-b">₹300–₹1,000 / design</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Logos, banners, brochures, flyers, posters, and brand identity kits — designs that speak for your brand.</p>
+          <div class="audience-tags">
+            <span class="tag tag-biz">Branding</span><span class="tag tag-biz">Social Media</span><span class="tag tag-biz">Print</span>
+          </div>
+          <button class="btn-card btn-card-b" onclick="openModal('design')"><i class="fa-brands fa-whatsapp"></i> Get a Quote</button>
+        </div>
+      </div>
+
+      <div class="business-card">
+        <div class="card-header">
+          <div class="card-icon icon-b">📱</div>
+          <div class="card-title-area">
+            <div class="card-title">Social Media Creatives</div>
+            <div class="card-price price-b">₹250–₹750 / post</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Scroll-stopping Instagram, Facebook and LinkedIn content — reels thumbnails, story designs, carousels and ad creatives.</p>
+          <div class="audience-tags">
+            <span class="tag tag-biz">Instagram</span><span class="tag tag-biz">LinkedIn</span><span class="tag tag-biz">Facebook</span>
+          </div>
+          <button class="btn-card btn-card-b" onclick="openModal('social')"><i class="fa-brands fa-whatsapp"></i> Get a Quote</button>
+        </div>
+      </div>
+
+      <div class="business-card">
+        <div class="card-header">
+          <div class="card-icon icon-b">💼</div>
+          <div class="card-title-area">
+            <div class="card-title">Business Presentations</div>
+            <div class="card-price price-b">₹500–₹1,000 / deck</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Pitch decks, investor presentations, company profiles and proposal decks — executive-grade quality that wins.</p>
+          <div class="audience-tags">
+            <span class="tag tag-biz">Pitch Deck</span><span class="tag tag-biz">Investor</span><span class="tag tag-biz">Proposal</span>
+          </div>
+          <button class="btn-card btn-card-b" onclick="openModal('bizppt')"><i class="fa-brands fa-whatsapp"></i> Get a Quote</button>
+        </div>
+      </div>
+
+      <div class="business-card">
+        <div class="card-header">
+          <div class="card-icon icon-b">⭐</div>
+          <div class="card-title-area">
+            <div class="card-title">Custom Business Work</div>
+            <div class="card-price price-b">As per Requirements</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Logo animation, video editing, data entry, business content writing, menu cards, event flyers — anything custom!</p>
+          <div class="audience-tags">
+            <span class="tag tag-biz">Custom</span><span class="tag tag-biz">Flexible</span>
+          </div>
+          <button class="btn-card btn-card-b" onclick="openModal('customBusiness')"><i class="fa-brands fa-whatsapp"></i> Request Custom Work</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="section-divider"></div></div>
+
+<!-- WHY US -->
+<section class="why-section" id="why-us">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label label-academic"><i class="fa-solid fa-shield-halved"></i> Why InstaAssign</div>
+      <h2 class="section-title">Our Promise to You</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><span class="why-icon">⚡</span><div class="why-title">Fast Delivery</div><p class="why-text">Quick turnaround — your work is ready before deadline. Last-minute orders? We handle those too.</p></div>
+      <div class="why-card"><span class="why-icon">💯</span><div class="why-title">Top Quality</div><p class="why-text">Professional standards on every task. We don't cut corners — your submission reflects our reputation.</p></div>
+      <div class="why-card"><span class="why-icon">💰</span><div class="why-title">Affordable Rates</div><p class="why-text">Student-friendly pricing with zero hidden fees. Payment is discussed and finalised over WhatsApp.</p></div>
+      <div class="why-card"><span class="why-icon">🔒</span><div class="why-title">100% Confidential</div><p class="why-text">Your data, your identity — completely private. We never share client information with anyone.</p></div>
+      <div class="why-card"><span class="why-icon">🔄</span><div class="why-title">2 days Free Revisions</div><p class="why-text">Not 100% satisfied? We revise until you are. Your satisfaction is non-negotiable.</p></div>
+      <div class="why-card"><span class="why-icon">📞</span><div class="why-title">24/7 Support</div><p class="why-text">Day or night — we're available on WhatsApp. Reach out anytime with questions or updates.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="section-divider"></div></div>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label label-academic"><i class="fa-solid fa-star"></i> Testimonials</div>
+      <h2 class="section-title">What Our Clients Say</h2>
+    </div>
+    <div class="reviews-grid">
+      
+    </div>
+    <div class="review-form-box">
+      <div class="review-form-title">📝 Share Your Experience</div>
+      <form id="reviewForm">
+        <div class="form-grid">
+          <div class="form-row"><label class="form-label">Your Name</label><input type="text" class="form-input focus-a" id="rName" placeholder="Your name" required></div>
+          <div class="form-row"><label class="form-label">Rating</label>
+            <select class="form-select focus-a" id="rRating">
+              <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ Excellent</option>
+              <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ Very Good</option>
+              <option value="⭐⭐⭐">⭐⭐⭐ Good</option>
+              <option value="⭐⭐">⭐⭐ Average</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row"><label class="form-label">Your Review</label><textarea class="form-textarea focus-a" id="rText" placeholder="Tell us about your experience..." required></textarea></div>
+        <button type="submit" class="submit-btn-form submit-a"><i class="fa-solid fa-paper-plane"></i> Submit Review</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <h2 class="cta-title">Ready to Get Started? 🚀</h2>
+      <p class="cta-sub">Pick your service, fill the form, and we'll be in touch on WhatsApp within minutes.<br>No upfront payment needed — pricing is discussed and agreed before work begins.</p>
+      <div class="cta-btns">
+        <a href="#academic" class="btn-primary"><i class="fa-solid fa-graduation-cap"></i> Academic Services</a>
+        <a href="#business" class="btn-secondary"><i class="fa-solid fa-briefcase"></i> Business Services</a>
+        <a href="https://wa.me/919005315241" target="_blank" class="btn-outline"><i class="fa-brands fa-whatsapp"></i> Direct WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-text">InstaAssign 🫡</span>
+        <p class="footer-desc">Your academic and business partner — delivering quality work with speed, confidentiality, and zero compromise. Proudly serving Kanpur &amp; beyond.</p>
+        <p class="footer-address">📍 <a href="https://www.google.com/maps/search/?api=1&query=CSJM+University+Kanpur" target="_blank">CSJM University, Kalyanpur, Kanpur, UP 208024</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="#academic" class="footer-link">Academic Services</a>
+        <a href="#business" class="footer-link">Business Services</a>
+        <a href="#why-us" class="footer-link">Why InstaAssign</a>
+        <a href="#reviews" class="footer-link">Reviews</a>
+        <a href="https://wa.me/919005315241" target="_blank" class="footer-link" style="color:var(--academic);">WhatsApp Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 InstaAssign. All rights reserved. Helping students succeed 🎓</p>
+      <div class="social-row">
+        <a href="https://instagram.com/instaassign" target="_blank" class="social-btn-f" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.threads.net/@instaassign" target="_blank" class="social-btn-f" title="Threads"><i class="fa-brands fa-threads"></i></a>
+        <a href="mailto:instaassign01@gmail.com" class="social-btn-f" title="Email"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://wa.me/919005315241" target="_blank" class="social-btn-f" title="WhatsApp" style="background:var(--academic);color:#000;border-color:var(--academic);"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WA -->
+<a href="https://wa.me/919005315241" target="_blank" class="floating-wa" title="Chat on WhatsApp">
+  <svg width="29" height="29" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.472 19.339c-.355-.177-2.104-1.037-2.43-1.156-.326-.119-.563-.177-.8.178-.237.355-.914 1.156-1.12 1.393-.207.237-.414.267-.769.089-.355-.178-1.5-.553-2.86-1.763-1.057-.944-1.77-2.108-1.98-2.463-.207-.355-.022-.546.155-.723.159-.158.355-.414.533-.622.178-.207.237-.355.355-.592.119-.237.06-.444-.03-.622-.089-.178-.8-1.924-1.096-2.637-.289-.693-.583-.599-.8-.61-.207-.009-.444-.011-.681-.011-.237 0-.622.089-.948.444-.326.355-1.24 1.211-1.24 2.955 0 1.744 1.27 3.429 1.447 3.669.178.237 2.5 3.82 6.063 5.209.849.292 1.51.466 2.026.596.851.204 1.626.175 2.24.106.683-.077 2.104-.859 2.403-1.689.296-.83.296-1.541.207-1.689-.089-.148-.326-.237-.681-.414z" fill="#fff"/></svg>
+</a>
+
+<!-- ORDER MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="mainModal">
+    <div class="modal-stripe" id="modalStripe"></div>
+    <div class="modal-head">
+      <div>
+        <div class="modal-title" id="modalTitle">Order Service</div>
+        <div class="modal-sub" id="modalSub">Fill in the details. We'll confirm and quote on WhatsApp.</div>
+      </div>
+      <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <form id="orderForm"><!-- Injected by JS --></form>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== THEME =====
+const themeBtn = document.getElementById('themeBtn');
+function applyTheme(t) {
+  document.body.classList.toggle('light', t === 'light');
+  themeBtn.textContent = t === 'light' ? '🌙' : '☀️';
+  localStorage.setItem('theme', t);
+}
+applyTheme(localStorage.getItem('theme') || 'dark');
+themeBtn.addEventListener('click', () => applyTheme(document.body.classList.contains('light') ? 'dark' : 'light'));
+
+// ===== HAMBURGER =====
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileNav    = document.getElementById('mobileNav');
+const mobileClose  = document.getElementById('mobileNavClose');
+function closeMobileNav() { mobileNav.classList.remove('open'); hamburgerBtn.classList.remove('open'); document.body.style.overflow = ''; }
+hamburgerBtn.addEventListener('click', () => {
+  const open = mobileNav.classList.toggle('open');
+  hamburgerBtn.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+mobileClose.addEventListener('click', closeMobileNav);
+
+// ===== ACTIVE NAV =====
+const secs = document.querySelectorAll('section[id]');
+const dNavLinks = document.querySelectorAll('.desktop-nav a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  dNavLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+}, { passive:true });
+
+// ===== CLOSE ON ESC =====
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeMobileNav(); } });
+
+// ===================================================
+// SERVICE DEFINITIONS
+// academic = subject/topic + lang
+// business = service-specific fields
+// custom   = simplified 5-field form
+// ===================================================
+const services = {
 
 
-        // Review Form Submission
-        document.getElementById('reviewForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const rating = document.getElementById('rating').value;
-            const review = document.getElementById('review').value;
-            // Create WhatsApp message with review details
-            const message = `New Review Submission:\n\nName: ${name}\nRating: ${rating} stars\nReview: ${review}`;
-            const whatsappURL = `https://wa.me/919005315241?text=${encodeURIComponent(message)}`;
-            // Open WhatsApp
-            window.open(whatsappURL, '_blank');
-            // Reset form
-            this.reset();
-            // Show confirmation
-            alert('Thank you for your review! 🙏 Redirecting to WhatsApp...');
-        });
-    </script>
+  // ---- ACADEMIC ----
+  assignment: {
+    title: 'Assignment Writing', color: 'a',
+    sub: 'Tell us your subject and we\'ll deliver before your deadline.',
+    type: 'academic',
+    pagesLabel: 'Number of Pages',
+    showLang: true,
+    budget: '₹300–₹700 (base estimate)',
+    budgetHint: 'Based on ₹15–₹35/page'
+  },
+  pdf: {
+    title: 'PDF / Document Making', color: 'a',
+    sub: 'Share your content or notes and we\'ll format it professionally.',
+    type: 'academic',
+    pagesLabel: 'Number of Pages / Docs',
+    showLang: true,
+    budget: '₹150–₹300 (base estimate)',
+    budgetHint: 'Based on ₹150–₹300/doc'
+  },
+  ppt: {
+    title: 'PowerPoint Presentation', color: 'a',
+    sub: 'Share the topic and slide count — we handle the design.',
+    type: 'academic',
+    pagesLabel: 'Number of Slides',
+    showLang: true,
+    budget: '₹200–₹500 (base estimate)',
+    budgetHint: 'Based on ₹200–₹500/deck'
+  },
+  report: {
+    title: 'Project Report / Synopsis', color: 'a',
+    sub: 'Mention your university, subject and formatting requirements.',
+    type: 'academic',
+    pagesLabel: 'Number of Pages',
+    showLang: true,
+    needsRollNo: true,
+    budget: '₹400–₹1,000 (base estimate)',
+    budgetHint: 'Based on ₹400–₹1,000/report'
+  },
+  research: {
+    title: 'Research Work', color: 'a',
+    sub: 'Share topic, level (UG/PG/PhD) and required citation style.',
+    type: 'academic',
+    pagesLabel: 'Approx. Word Count / Pages',
+    showLang: false,
+    needsRollNo: true,
+    budget: 'Depends on complexity',
+    budgetHint: 'Based on ₹20–₹35/page'
+  },
+  customAcademic: {
+    title: 'Custom Academic Work', color: 'a',
+    sub: 'Describe what you need — plagiarism check, editing, notes, or anything else.',
+    type: 'custom'
+  },
+
+  // ---- BUSINESS ----
+  website: {
+    title: 'Website Development', color: 'b',
+    sub: 'Tell us about your business and the kind of website you need.',
+    type: 'business',
+    fields: [
+      { id:'bWebType', label:'Type of Website', placeholder:'e.g. Business site, Portfolio, E-commerce, School website' },
+      { id:'bPages',   label:'Number of Pages / Sections', placeholder:'e.g. 5 pages — Home, About, Services, Gallery, Contact', type:'text' },
+      { id:'bRef',     label:'Reference Websites (optional)', placeholder:'Paste links of sites you like for design inspiration' },
+      { id:'bTimeline',label:'Expected Timeline', placeholder:'e.g. Within 2 weeks, By [date]' },
+    ],
+    budget: '₹4,000–₹8,000+',
+    budgetHint: 'Final quote depends on features and pages'
+  },
+  design: {
+    title: 'Graphic Design', color: 'b',
+    sub: 'Share your brand details and what you need designed.',
+    type: 'business',
+    fields: [
+      { id:'bDesignType', label:'Type of Design', placeholder:'e.g. Logo, Banner, Brochure, Poster, Business Card' },
+      { id:'bQty',        label:'Quantity', placeholder:'e.g. 1 logo + 2 banner sizes' },
+      { id:'bBrand',      label:'Brand / Business Name', placeholder:'Your brand name' },
+      { id:'bColors',     label:'Preferred Colours / Style', placeholder:'e.g. Blue & white, Minimalist, Vibrant' },
+      { id:'bRef2',       label:'Reference Images / Links (optional)', placeholder:'Any visual references or style inspirations' },
+    ],
+    budget: '₹300–₹1,000 / design',
+    budgetHint: 'Final price depends on design complexity'
+  },
+  social: {
+    title: 'Social Media Creatives', color: 'b',
+    sub: 'Tell us about your brand and what type of content you need.',
+    type: 'business',
+    fields: [
+      { id:'bPlatform',  label:'Platform(s)', placeholder:'e.g. Instagram, Facebook, LinkedIn' },
+      { id:'bPostType',  label:'Type of Posts', placeholder:'e.g. Feed post, Story, Reel thumbnail, Carousel, Ad creative' },
+      { id:'bPostQty',   label:'Number of Posts', placeholder:'e.g. 10 posts / month' },
+      { id:'bBrand2',    label:'Brand / Page Name', placeholder:'Your brand or page name' },
+      { id:'bTheme',     label:'Theme / Tone', placeholder:'e.g. Minimal, Colourful, Professional, Festive' },
+    ],
+    budget: '₹250–₹750 / post',
+    budgetHint: 'Final quote based on quantity and complexity'
+  },
+  bizppt: {
+    title: 'Business Presentation', color: 'b',
+    sub: 'Share your content — we design a deck that wins.',
+    type: 'business',
+    fields: [
+      { id:'bPptPurpose', label:'Purpose of Presentation', placeholder:'e.g. Investor pitch, Company profile, Client proposal, Internal report' },
+      { id:'bSlides',     label:'Number of Slides (approx.)', placeholder:'e.g. 15–20 slides', type:'number' },
+      { id:'bContent',    label:'Content Ready?', placeholder:'e.g. I have draft content / Need help with content too' },
+      { id:'bStyle',      label:'Design Style / Theme', placeholder:'e.g. Corporate blue, Bold & modern, Minimal' },
+    ],
+    budget: '₹500–₹1,000 / deck',
+    budgetHint: 'Final price depends on slides and design level'
+  },
+  customBusiness: {
+    title: 'Custom Business Work', color: 'b',
+    sub: 'Describe your unique requirement — we\'ll make it happen.',
+    type: 'custom'
+  }
+};
+
+let currentKey = '';
+
+// ===== FORM GENERATORS =====
+
+function focusClass(color) { return color === 'a' ? 'focus-a' : 'focus-b'; }
+function submitClass(color) { return color === 'a' ? 'submit-a' : 'submit-b'; }
+
+function waNote(isAcademic) {
+  return `<div class="wa-note"><i class="fa-brands fa-whatsapp" style="color:#25d366;margin-right:.3rem;"></i> Your details open in WhatsApp. Payment discussed and agreed before work begins.</div>`;
+}
+
+function buildAcademicForm(s) {
+  const fc = focusClass(s.color);
+  return `
+    <div class="form-grid">
+      <div class="form-row"><label class="form-label">Your Name *</label><input type="text" class="form-input ${fc}" id="fName" placeholder="Full name" required></div>
+      <div class="form-row"><label class="form-label">WhatsApp Number *</label><input type="tel" class="form-input ${fc}" id="fPhone" placeholder="10-digit number" required></div>
+    </div>
+    <div class="form-row"><label class="form-label">Subject / Topic *</label><input type="text" class="form-input ${fc}" id="fSubject" placeholder="e.g. Environmental Science, Indian History" required></div>
+    ${s.needsRollNo ? `<div class="form-grid">
+      <div class="form-row"><label class="form-label">Roll No. *</label><input type="text" class="form-input ${fc}" id="fRollNo" placeholder="e.g. 12345" required></div>
+      <div class="form-row"><label class="form-label">Enrollment No. (if applicable)</label><input type="text" class="form-input ${fc}" id="fEnrollmentNo" placeholder="e.g. 789456123"></div>
+    </div>` : ''}
+    ${s.needsRollNo ? `<div class="form-row"><label class="form-label">Supervisor Name</label><input type="text" class="form-input ${fc}" id="fSupervisor" placeholder="e.g. Dr. John Smith"></div>` : ''}
+    <div class="form-grid">
+      <div class="form-row"><label class="form-label">${s.pagesLabel}</label><input type="number" class="form-input ${fc}" id="fPages" placeholder="e.g. 10" min="1"></div>
+      <div class="form-row"><label class="form-label">Deadline *</label><input type="date" class="form-input ${fc}" id="fDeadline" required></div>
+    </div>
+    ${s.showLang ? `<div class="form-row"><label class="form-label">Language Preference</label><select class="form-select ${fc}" id="fLang"><option value="Hindi">Hindi</option><option value="English">English</option><option value="Hinglish">Hinglish (Mix)</option></select></div>` : ''}
+    <div class="form-row">
+      <label class="form-label">Estimated Budget</label>
+      <input type="text" class="form-input ${fc}" id="fBudget" value="${s.budget}" readonly style="opacity:.75;cursor:default;">
+      <div class="form-hint">💡 ${s.budgetHint}</div>
+    </div>
+    <div class="form-row"><label class="form-label">Additional Instructions</label><textarea class="form-textarea ${fc}" id="fNotes" placeholder="Special formatting, references, style, or anything else..."></textarea></div>
+    <button type="submit" class="submit-btn-form ${submitClass(s.color)}"><i class="fa-brands fa-whatsapp"></i> Send to WhatsApp</button>
+    ${waNote(true)}
+  `;
+}
+
+function buildBusinessForm(s) {
+  const fc = focusClass(s.color);
+  let extraFields = s.fields.map(f => {
+    const inputType = f.type === 'number' ? 'number' : 'text';
+    return `<div class="form-row"><label class="form-label">${f.label}</label><input type="${inputType}" class="form-input ${fc}" id="${f.id}" placeholder="${f.placeholder}"></div>`;
+  }).join('');
+
+  return `
+    <div class="form-grid">
+      <div class="form-row"><label class="form-label">Your Name *</label><input type="text" class="form-input ${fc}" id="bName" placeholder="Full name" required></div>
+      <div class="form-row"><label class="form-label">WhatsApp Number *</label><input type="tel" class="form-input ${fc}" id="bPhone" placeholder="10-digit number" required></div>
+    </div>
+    ${extraFields}
+    <div class="form-row">
+      <label class="form-label">Budget Range (optional)</label>
+      <input type="text" class="form-input ${fc}" id="bBudget" placeholder="${s.budget}">
+      <div class="form-hint">💡 ${s.budgetHint}</div>
+    </div>
+    <div class="form-row"><label class="form-label">Additional Notes</label><textarea class="form-textarea ${fc}" id="bNotes" placeholder="Anything else we should know — references, deadline, special requirements..."></textarea></div>
+    <button type="submit" class="submit-btn-form ${submitClass(s.color)}"><i class="fa-brands fa-whatsapp"></i> Send to WhatsApp</button>
+    ${waNote(false)}
+  `;
+}
+
+function buildCustomForm(s) {
+  const fc = focusClass(s.color);
+  return `
+    <div class="form-row"><label class="form-label">Your Name *</label><input type="text" class="form-input ${fc}" id="cName" placeholder="Full name" required></div>
+    <div class="form-grid">
+      <div class="form-row"><label class="form-label">Contact Number *</label><input type="tel" class="form-input ${fc}" id="cContact" placeholder="Phone / mobile" required></div>
+      <div class="form-row"><label class="form-label">WhatsApp Number *</label><input type="tel" class="form-input ${fc}" id="cWhatsapp" placeholder="WhatsApp number" required></div>
+    </div>
+    <div class="form-row"><label class="form-label">Type of Work *</label><input type="text" class="form-input ${fc}" id="cWorkType" placeholder="${s.color === 'a' ? 'e.g. Plagiarism Check, Editing, Case Study' : 'e.g. Logo Animation, Video Editing, Menu Card'}" required></div>
+    <div class="form-row"><label class="form-label">Project Description *</label><textarea class="form-textarea ${fc}" id="cDesc" placeholder="Describe your requirement in detail — quantity, deadline, format, references, etc." required style="min-height:110px;"></textarea></div>
+    <button type="submit" class="submit-btn-form ${submitClass(s.color)}"><i class="fa-brands fa-whatsapp"></i> Send to WhatsApp</button>
+    ${waNote(s.color === 'a')}
+  `;
+}
+
+// ===== OPEN / CLOSE MODAL =====
+function openModal(key) {
+  const s = services[key];
+  currentKey = key;
+  document.getElementById('modalTitle').textContent = s.title;
+  document.getElementById('modalSub').textContent = s.sub;
+  document.getElementById('modalStripe').className = 'modal-stripe stripe-' + s.color;
+  document.getElementById('mainModal').classList.toggle('business-modal', s.color === 'b');
+
+  const form = document.getElementById('orderForm');
+  if (s.type === 'academic') {
+    form.innerHTML = buildAcademicForm(s);
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('fDeadline').min = today;
+    form.onsubmit = submitAcademic;
+  } else if (s.type === 'business') {
+    form.innerHTML = buildBusinessForm(s);
+    form.onsubmit = submitBusiness;
+  } else {
+    form.innerHTML = buildCustomForm(s);
+    form.onsubmit = submitCustom;
+  }
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === document.getElementById('modalOverlay')) closeModal(); });
+
+// ===== SUBMIT HANDLERS =====
+
+function submitAcademic(e) {
+  e.preventDefault();
+  const s = services[currentKey];
+  const name     = document.getElementById('fName').value.trim();
+  const phone    = document.getElementById('fPhone').value.trim();
+  const subject  = document.getElementById('fSubject').value.trim();
+  const rollNo   = document.getElementById('fRollNo')?.value.trim() || '';
+  const enrollmentNo = document.getElementById('fEnrollmentNo')?.value.trim() || '';
+  const supervisor = document.getElementById('fSupervisor')?.value.trim() || '';
+  const pages    = document.getElementById('fPages')?.value.trim() || '';
+  const deadline = document.getElementById('fDeadline').value;
+  const lang     = document.getElementById('fLang')?.value || '';
+  const notes    = document.getElementById('fNotes').value.trim();
+
+  let msg = `🫡 *InstaAssign – Academic Order*\n\n`;
+  msg += `📋 *Service:* ${s.title}\n`;
+  msg += `👤 *Name:* ${name}\n`;
+  msg += `📱 *WhatsApp:* ${phone}\n`;
+  msg += `📚 *Subject/Topic:* ${subject}\n`;
+  if (rollNo)    msg += `🎓 *Roll No.:* ${rollNo}\n`;
+  if (enrollmentNo) msg += `📚 *Enrollment No.:* ${enrollmentNo}\n`;
+  if (supervisor) msg += `👨‍🏫 *Supervisor:* ${supervisor}\n`;
+  if (pages)    msg += `📄 *${s.pagesLabel}:* ${pages}\n`;
+  msg += `📅 *Deadline:* ${deadline}\n`;
+  if (lang)     msg += `🌐 *Language:* ${lang}\n`;
+  msg += `💰 *Estimate:* ${s.budget}\n`;
+  if (notes)    msg += `📝 *Instructions:* ${notes}\n`;
+  msg += `\n⏳ Please confirm and send final quote!`;
+  window.open(`https://wa.me/919005315241?text=${encodeURIComponent(msg)}`, '_blank');
+  closeModal();
+}
+
+function submitBusiness(e) {
+  e.preventDefault();
+  const s = services[currentKey];
+  const name  = document.getElementById('bName').value.trim();
+  const phone = document.getElementById('bPhone').value.trim();
+  const budget= document.getElementById('bBudget')?.value.trim() || '';
+  const notes = document.getElementById('bNotes')?.value.trim() || '';
+
+  let msg = `🫡 *InstaAssign – Business Enquiry*\n\n`;
+  msg += `📋 *Service:* ${s.title}\n`;
+  msg += `👤 *Name:* ${name}\n`;
+  msg += `📱 *WhatsApp:* ${phone}\n`;
+
+  // Collect all service-specific fields
+  s.fields.forEach(f => {
+    const el = document.getElementById(f.id);
+    if (el && el.value.trim()) msg += `🔹 *${f.label}:* ${el.value.trim()}\n`;
+  });
+
+  if (budget) msg += `💰 *Budget:* ${budget}\n`;
+  if (notes)  msg += `📝 *Notes:* ${notes}\n`;
+  msg += `\n⏳ Please send your quote and timeline!`;
+  window.open(`https://wa.me/919005315241?text=${encodeURIComponent(msg)}`, '_blank');
+  closeModal();
+}
+
+function submitCustom(e) {
+  e.preventDefault();
+  const s = services[currentKey];
+  const name     = document.getElementById('cName').value.trim();
+  const contact  = document.getElementById('cContact').value.trim();
+  const whatsapp = document.getElementById('cWhatsapp').value.trim();
+  const workType = document.getElementById('cWorkType').value.trim();
+  const desc     = document.getElementById('cDesc').value.trim();
+
+  const category = s.color === 'a' ? 'Custom Academic' : 'Custom Business';
+  let msg = `🫡 *InstaAssign – Custom Work Request*\n\n`;
+  msg += `📋 *Category:* ${category}\n`;
+  msg += `👤 *Name:* ${name}\n`;
+  msg += `📞 *Contact:* ${contact}\n`;
+  msg += `📱 *WhatsApp:* ${whatsapp}\n`;
+  msg += `🔧 *Type of Work:* ${workType}\n`;
+  msg += `📝 *Description:* ${desc}\n`;
+  msg += `\n⏳ Awaiting your quote!`;
+  window.open(`https://wa.me/919005315241?text=${encodeURIComponent(msg)}`, '_blank');
+  closeModal();
+}
+
+// ===== SCROLL REVEAL =====
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) { en.target.style.opacity='1'; en.target.style.transform='translateY(0)'; }
+  });
+}, { threshold:0.07 });
+document.querySelectorAll('.academic-card,.business-card,.why-card,.review-card').forEach(el => {
+  el.style.opacity='0'; el.style.transform='translateY(26px)';
+  el.style.transition='opacity .5s ease,transform .5s ease';
+  revObs.observe(el);
+});
+</script>
+<!-- FIREBASE FIRESTORE SCRIPT -->
+<script type="module">
+  // 1. यहाँ हमने getDocs, query, orderBy को भी import कर लिया है ताकि डेटा ला सकें
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, serverTimestamp, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCXNOtwDrX6rzu2PqbQpiQGgUlnBCYZbw4",
+    authDomain: "instaassign.firebaseapp.com",
+    projectId: "instaassign",
+    storageBucket: "instaassign.firebasestorage.app",
+    messagingSenderId: "609807767906",
+    appId: "1:609807767906:web:342cadbf3a174f6a8cf43b"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // ==========================================
+  // NAYA KAAM: Firebase se Reviews lana aur dikhana
+  // ==========================================
+  const reviewsGrid = document.querySelector('.reviews-grid');
+
+  async function loadReviews() {
+    try {
+      // Firebase से डेटा मंगाओ (नए वाले सबसे ऊपर आएं, इसलिए orderBy desc)
+      const q = query(collection(db, "reviews"), orderBy("timestamp", "desc"));
+      const querySnapshot = await getDocs(q);
+
+      // अगर डेटाबेस में रिव्यु हैं, तो पहले से लिखे HTML वाले रिव्यु हटा दो 
+      if (!querySnapshot.empty) {
+        reviewsGrid.innerHTML = ''; 
+      }
+
+      // डेटाबेस से आये हर एक रिव्यु का HTML कार्ड बनाओ
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        
+        const cardHTML = `
+          <div class="review-card">
+            <div class="review-top">
+              <div class="review-avatar av-green">👤</div>
+              <div>
+                <div class="review-name">${data.name}</div>
+                <div class="review-stars">${data.rating}</div>
+              </div>
+            </div>
+            <p class="review-text">"${data.review}"</p>
+          </div>
+        `;
+        
+        // उस कार्ड को वेबसाइट (grid) में जोड़ दो
+        reviewsGrid.innerHTML += cardHTML;
+      });
+    } catch (error) {
+      console.error("Error loading reviews:", error);
+    }
+  }
+
+  // जैसे ही वेबसाइट खुले, तुरंत ये फंक्शन चलाकर रिव्यु लोड कर दो
+  loadReviews();
+
+  // ==========================================
+  // PURANA KAAM: Naya Review Firebase me bhejna
+  // ==========================================
+  const reviewForm = document.getElementById('reviewForm');
+  
+  reviewForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('rName').value.trim();
+    const rating = document.getElementById('rRating').value;
+    const text = document.getElementById('rText').value.trim();
+
+    if (!name || !text) {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "reviews"), {
+        name: name,
+        rating: rating,
+        review: text,
+        timestamp: serverTimestamp()
+      });
+      
+      reviewForm.reset(); 
+      alert('Thank you for your review! 🙏');
+      
+      // जादुई लाइन: जैसे ही नया रिव्यु सबमिट हो, वेबसाइट को बिना रीफ्रेश किए उसे लोड कर दो!
+      loadReviews();
+      
+    } catch (error) {
+      console.error('Error submitting review:', error);
+      alert('Error submitting review. Please check console.');
+    }
+  });
+</script>
+</script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
