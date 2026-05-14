@@ -1096,6 +1096,7 @@ function submitAcademic(e) {
   const pages    = document.getElementById('fPages')?.value.trim() || '';
   const deadline = document.getElementById('fDeadline').value;
   const lang     = document.getElementById('fLang')?.value || '';
+  const budget   = document.getElementById('fBudget')?.value.trim() || '';
   const notes    = document.getElementById('fNotes').value.trim();
 
   let msg = `🫡 *InstaAssign – Academic Order*\n\n`;
@@ -1109,7 +1110,7 @@ function submitAcademic(e) {
   if (pages)    msg += `📄 *${s.pagesLabel}:* ${pages}\n`;
   msg += `📅 *Deadline:* ${deadline}\n`;
   if (lang)     msg += `🌐 *Language:* ${lang}\n`;
-  msg += `💰 *Estimate:* ${s.budget}\n`;
+  if (budget)   msg += `💰 *Your Budget:* ${budget}\n`;
   if (notes)    msg += `📝 *Instructions:* ${notes}\n`;
   msg += `\n⏳ Please confirm and send final quote!`;
   window.open(`https://wa.me/919005315241?text=${encodeURIComponent(msg)}`, '_blank');
@@ -1135,7 +1136,7 @@ function submitBusiness(e) {
     if (el && el.value.trim()) msg += `🔹 *${f.label}:* ${el.value.trim()}\n`;
   });
 
-  if (budget) msg += `💰 *Budget:* ${budget}\n`;
+  if (budget) msg += `💰 *Your Budget:* ${budget}\n`;
   if (notes)  msg += `📝 *Notes:* ${notes}\n`;
   msg += `\n⏳ Please send your quote and timeline!`;
   window.open(`https://wa.me/919005315241?text=${encodeURIComponent(msg)}`, '_blank');
