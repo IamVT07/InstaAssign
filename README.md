@@ -35,7 +35,7 @@ Explore our full range of services, check out our portfolio/rate card, and get i
 ## 👨‍💻 Founder & Lead Developer
 * **Vaibhav Tiwari**
 * Founder, InstaAssign
-* *Final Year Tech Student | Passionate about Web Development, IoT, and building solutions that matter.*
+* Techie Guy | Passionate about Web Development, and building solutions that matter.*
 
 ---
 *For business inquiries, project estimates, or collaborations, please reach out via the contact section on our website.*
