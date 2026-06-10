@@ -458,28 +458,41 @@ const grid = document.getElementById('reviewsGrid');
 
 async function loadReviews() {
   try {
-    const qs = await getDocs(query(collection(db,'reviews'), orderBy('timestamp','desc')));
+    const q  = query(collection(db,'reviews_college'), orderBy('timestamp','desc'));
+    const qs = await getDocs(q);
     if (!qs.empty) grid.innerHTML = '';
     qs.forEach(doc => {
       const d = doc.data();
-      grid.innerHTML += `<div class="review-card reveal"><div class="rev-top"><div class="rev-avatar">👤</div><div><div class="rev-name">${d.name}</div><div class="rev-stars">${d.rating}</div></div></div><p class="rev-text">"${d.review}"</p></div>`;
+      grid.innerHTML += `
+        <div class="review-card reveal">
+          <div class="rev-top">
+            <div class="rev-avatar">👤</div>
+            <div><div class="rev-name">${d.name}</div><div class="rev-stars">${d.rating}</div></div>
+          </div>
+          <p class="rev-text">"${d.review}"</p>
+        </div>`;
     });
+    // re-observe new cards
     grid.querySelectorAll('.reveal').forEach(el => {
-      const o = new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});},{threshold:.07});
-      o.observe(el);
+      const obs = new IntersectionObserver(en => { en.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); },{threshold:.07});
+      obs.observe(el);
     });
-  } catch(e){ console.error(e); }
+  } catch(err){ console.error(err); }
 }
 loadReviews();
 
 document.getElementById('reviewForm').addEventListener('submit', async e => {
   e.preventDefault();
-  const name=document.getElementById('rName').value.trim(), rating=document.getElementById('rRating').value, text=document.getElementById('rText').value.trim();
-  if(!name||!text) return alert('Please fill in all fields');
+  const name   = document.getElementById('rName').value.trim();
+  const rating = document.getElementById('rRating').value;
+  const text   = document.getElementById('rText').value.trim();
+  if (!name || !text) return alert('Please fill in all fields');
   try {
-    await addDoc(collection(db,'reviews'),{name,rating,review:text,timestamp:serverTimestamp()});
-    document.getElementById('reviewForm').reset(); alert('Thank you! 🙏'); loadReviews();
-  } catch(err){console.error(err);alert('Error. Try again.');}
+    await addDoc(collection(db,'reviews_college'), { name, rating, review:text, timestamp: serverTimestamp() });
+    document.getElementById('reviewForm').reset();
+    alert('Thank you for your review! 🙏');
+    loadReviews();
+  } catch(err){ console.error(err); alert('Error submitting. Please try again.'); }
 });
 </script>
 </body>
