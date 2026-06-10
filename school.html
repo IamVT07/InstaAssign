@@ -458,7 +458,7 @@ const grid = document.getElementById('reviewsGrid');
 
 async function loadReviews() {
   try {
-    const q  = query(collection(db,'reviews'), orderBy('timestamp','desc'));
+    const q  = query(collection(db,'reviews_school'), orderBy('timestamp','desc'));
     const qs = await getDocs(q);
     if (!qs.empty) grid.innerHTML = '';
     qs.forEach(doc => {
@@ -488,7 +488,7 @@ document.getElementById('reviewForm').addEventListener('submit', async e => {
   const text   = document.getElementById('rText').value.trim();
   if (!name || !text) return alert('Please fill in all fields');
   try {
-    await addDoc(collection(db,'reviews'), { name, rating, review:text, timestamp: serverTimestamp() });
+    await addDoc(collection(db,'reviews_school'), { name, rating, review:text, timestamp: serverTimestamp() });
     document.getElementById('reviewForm').reset();
     alert('Thank you for your review! 🙏');
     loadReviews();
