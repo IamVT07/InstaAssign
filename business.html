@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="InstaAssign Business – Website Development, Graphic Design, Social Media Creatives, Business Presentations & Digital Solutions. Kanpur, UP.">
+<meta name="keywords" content="InstaAssign Business, Website Development Kanpur, Graphic Design, Social Media, Business PPT, Digital Agency Kanpur">
+<link rel="icon" type="image/png" href="Logo1.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<title>InstaAssign Business – Web Development & Digital Solutions</title>
+<style>
+:root {
+  --display-font: 'Plus Jakarta Sans', sans-serif;
+  --body-font:    'Inter', sans-serif;
+  --mono-font:    'JetBrains Mono', monospace;
+
+  --accent:       #3d8ef8;
+  --accent-dark:  #1d6fd4;
+  --accent-dim:   rgba(61,142,248,0.13);
+  --accent-glow:  rgba(61,142,248,0.38);
+  --accent2:      #b060f5;
+  --accent2-dark: #8e3dd4;
+  --accent2-dim:  rgba(176,96,245,0.13);
+  --accent2-glow: rgba(176,96,245,0.35);
+}
+
+body.light {
+  --bg:    #f0f4ff;
+  --bg2:   #e4ebff;
+  --bg3:   #ffffff;
+  --border:rgba(0,0,0,0.09);
+}
+
+/* circuit-trace dots in hero */
+.hero-dots {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0;
+  background-image: radial-gradient(rgba(61,142,248,.12) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* tech badge strip */
+.tech-strip {
+  display: flex; gap: .55rem; flex-wrap: wrap; margin-top: 1.6rem;
+  justify-content: center;
+  animation: fadeUp .6s .35s ease both;
+}
+.tech-badge {
+  font-size: .7rem; font-weight: 700; padding: .24rem .68rem;
+  border-radius: 6px; letter-spacing: .03em; font-family: var(--mono-font);
+  background: var(--accent-dim); color: var(--accent);
+  border: 1px solid rgba(61,142,248,.2);
+}
+.tech-badge.p { background: var(--accent2-dim); color: var(--accent2); border-color: rgba(176,96,245,.2); }
+
+/* animated border card highlight for business */
+.svc-card.biz:hover {
+  border-color: rgba(61,142,248,.35) !important;
+}
+
+/* process row */
+.process-row {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1.1rem; margin-top: 2.5rem;
+}
+.process-step {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.2rem; position: relative; text-align: center;
+}
+.step-num {
+  font-family: var(--mono-font); font-size: 1.8rem; font-weight: 700;
+  color: var(--accent-dim); line-height: 1; margin-bottom: .5rem; display: block;
+}
+.step-label { font-weight: 700; font-size: .88rem; }
+.step-desc  { font-size: .78rem; color: var(--muted); margin-top: .28rem; line-height: 1.55; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="business.html" class="logo-area" aria-label="InstaAssign Business Home">
+        <img src="Logo1.png" alt="InstaAssign" class="logo-img">
+        </a>
+        <div>
+          <span class="logo-name">InstaAssign</span>
+          <span class="logo-tag">Business</span>
+        </div>
+      </a>
+      <nav class="desktop-nav">
+        <a href="#services" class="nav-accent2">Services</a>
+        <a href="#process">How It Works</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#reviews">Reviews</a>
+      </nav>
+      <div class="site-switcher">
+        <a href="school.html"   class="site-link">🎒 School</a>
+        <a href="college.html"  class="site-link">🎓 College</a>
+        <a href="business.html" class="site-link active">💼 Business</a>
+      </div>
+      <div class="header-actions">
+        <a href="https://wa.me/919005315241" target="_blank" class="btn-wa-hdr">
+          <i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span>
+        </a>
+        <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="mobileNavClose"><i class="fa-solid fa-xmark" aria-label="Chat on WhatsApp" title="Chat on WhatsApp"></i></button>
+  <a href="#services"  class="nav-accent2" onclick="closeMobileNav()">🌐 Services</a>
+  <a href="#process"   onclick="closeMobileNav()">⚙️ How It Works</a>
+  <a href="#why-us"    onclick="closeMobileNav()">🌟 Why Us</a>
+  <a href="#reviews"   onclick="closeMobileNav()">⭐ Reviews</a>
+  <a href="school.html"  style="color:#f5a623">🎒 Go to School</a>
+  <a href="college.html" style="color:#7c6dfa">🎓 Go to College</a>
+  <a href="https://wa.me/919005315241" target="_blank" class="mobile-nav-wa" onclick="closeMobileNav()">
+    <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero container" style="position:relative;">
+  <div class="hero-dots"></div>
+  <div style="position:relative;z-index:1;">
+    <div class="hero-eyebrow">💼 For Businesses, Brands &amp; Startups</div>
+    <h1>Digital solutions that<br>make your <span class="hl-a">brand stand out</span>.</h1>
+    <p class="hero-sub">Websites, logos, social media creatives, business decks and custom digital work — built to impress clients, attract customers and grow your business.</p>
+    <div class="hero-ctas">
+      <a href="#services" class="btn-secondary"><i class="fa-solid fa-briefcase"></i> See Services</a>
+      <a href="https://wa.me/919005315241" target="_blank" class="btn-outline"><i class="fa-brands fa-whatsapp"></i> Get a Free Quote</a>
+    </div>
+    <div class="tech-strip">
+      <span class="tech-badge">HTML / CSS / JS</span>
+      <span class="tech-badge">Responsive Design</span>
+      <span class="tech-badge">Canva Pro</span>
+      <span class="tech-badge p">Adobe Suite</span>
+      <span class="tech-badge p">Social Media</span>
+      <span class="tech-badge p">Pitch Decks</span>
+      <span class="tech-badge">Logo Design</span>
+    </div>
+  </div>
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-num">100+</span><span class="stat-label">Business Clients</span></div>
+    <div class="stat"><span class="stat-num">7 day</span><span class="stat-label">Website Delivery</span></div>
+    <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Original Work</span></div>
+    <div class="stat"><span class="stat-num">₹0</span><span class="stat-label">Hidden Charges</span></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="content-section" id="process">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-eyebrow ey-b"><i class="fa-solid fa-gear"></i> Process</div>
+      <h2 class="sec-title">How it works — 4 simple steps</h2>
+      <p class="sec-sub">From enquiry to delivery — smooth, transparent, and entirely on WhatsApp.</p>
+    </div>
+    <div class="process-row">
+      <div class="process-step reveal"><span class="step-num">01</span><div class="step-label">Fill the Form</div><p class="step-desc">Pick a service and submit the order form with your requirements.</p></div>
+      <div class="process-step reveal"><span class="step-num">02</span><div class="step-label">We Quote</div><p class="step-desc">We review and send you a final price and timeline on WhatsApp.</p></div>
+      <div class="process-step reveal"><span class="step-num">03</span><div class="step-label">Work Begins</div><p class="step-desc">After agreement, work starts. You get progress updates throughout.</p></div>
+      <div class="process-step reveal"><span class="step-num">04</span><div class="step-label">Deliver &amp; Revise</div><p class="step-desc">Final delivery to WhatsApp / email. 2-day free revision window included.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- SERVICES -->
+<section class="content-section" id="services">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-eyebrow ey-b"><i class="fa-solid fa-briefcase"></i> Business Services</div>
+      <h2 class="sec-title">Professional digital solutions</h2>
+      <p class="sec-sub">From a one-page website to a full brand identity — we build what your business needs to grow.</p>
+    </div>
+    <div class="cards-grid">
+
+      <!-- Website Dev -->
+      <div class="svc-card biz reveal">
+        <div class="card-top">
+          <div class="card-ico ico-b">🌐</div>
+          <div class="card-titles">
+            <div class="card-name">Website Development</div>
+            <div class="card-price pr-b">₹4,000–₹8,000+</div>
+          </div>
+        </div>
+        <div class="card-bot">
+          <p class="card-desc">Responsive, modern websites — landing pages, business portfolios, school/institution sites, multi-page web apps. Built fast, looks impressive.</p>
+          <div class="tags">
+            <span class="tag tag-acc2">Small Business</span>
+            <span class="tag tag-acc2">Portfolio</span>
+            <span class="tag tag-gold">Schools / NGOs</span>
+          </div>
+          <button class="btn-card btn-b" onclick="openModal('website')"><i class="fa-brands fa-whatsapp"></i> Get a Quote</button>
+        </div>
+      </div>
+
+      <!-- Graphic Design -->
+      <div class="svc-card biz reveal">
+        <div class="card-top">
+          <div class="card-ico ico-b">🎨</div>
+          <div class="card-titles">
+            <div class="card-name">Graphic Design</div>
+            <div class="card-price pr-b">₹300–₹1,000+ / design</div>
+          </div>
+        </div>
+        <div class="card-bot">
+          <p class="card-desc">Logos, banners, brochures, flyers, posters, menu cards, brand kits — designed to reflect your brand identity and convert attention into action.</p>
+          <div class="tags">
+            <span class="tag tag-acc2">Branding</span>
+            <span class="tag tag-gold">Print</span>
+            <span class="tag tag-acc2">Social Media</span>
+          </div>
+          <button class="btn-card btn-b" onclick="openModal('design')"><i class="fa-brands fa-whatsapp"></i> Get a Quote</button>
+        </div>
+      </div>
+
+      <!-- Social Media -->
+      <div class="svc-card biz reveal">
+        <div class="card-top">
+          <div class="card-ico ico-b">📱</div>
+          <div class="card-titles">
+            <div class="card-name">Social Media Creatives</div>
+            <div class="card-price pr-b">₹250–₹750+ / post</div>
+          </div>
+        </div>
+        <div class="card-bot">
+          <p class="card-desc">Scroll-stopping content for Instagram, Facebook and LinkedIn — feed posts, story designs, reel thumbnails, carousels, ad creatives and monthly packs.</p>
+          <div class="tags">
+            <span class="tag tag-acc2">Instagram</span>
+            <span class="tag tag-acc2">LinkedIn</span>
+            <span class="tag tag-gold">Ads</span>
+          </div>
+          <button class="btn-card btn-b" onclick="openModal('social')"><i class="fa-brands fa-whatsapp"></i> Get a Quote</button>
+        </div>
+      </div>
+
+      <!-- Business PPT -->
+      <div class="svc-card biz reveal">
+        <div class="card-top">
+          <div class="card-ico ico-b">💼</div>
+          <div class="card-titles">
+            <div class="card-name">Business Presentations</div>
+            <div class="card-price pr-b">₹500–₹1,500+ / deck</div>
+          </div>
+        </div>
+        <div class="card-bot">
+          <p class="card-desc">Pitch decks, investor presentations, company profiles and proposal decks — executive-grade design that communicates your value clearly and wins deals.</p>
+          <div class="tags">
+            <span class="tag tag-acc2">Pitch Deck</span>
+            <span class="tag tag-gold">Investor</span>
+            <span class="tag tag-acc2">Proposal</span>
+          </div>
+          <button class="btn-card btn-b" onclick="openModal('bizppt')"><i class="fa-brands fa-whatsapp"></i> Get a Quote</button>
+        </div>
+      </div>
+
+      <!-- Custom Business -->
+      <div class="svc-card biz reveal">
+        <div class="card-top">
+          <div class="card-ico ico-b">⭐</div>
+          <div class="card-titles">
+            <div class="card-name">Custom Digital Work</div>
+            <div class="card-price pr-b">As per Requirements</div>
+          </div>
+        </div>
+        <div class="card-bot">
+          <p class="card-desc">Logo animation, video editing, data entry, business content writing, event flyers, digital visiting cards, WhatsApp catalogues — anything custom!</p>
+          <div class="tags">
+            <span class="tag tag-acc2">Custom</span>
+            <span class="tag tag-gold">Flexible</span>
+          </div>
+          <button class="btn-card btn-b" onclick="openModal('customBusiness')"><i class="fa-brands fa-whatsapp"></i> Request Custom Work</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- WHY US -->
+<section class="content-section" id="why-us">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-eyebrow ey-b"><i class="fa-solid fa-shield-halved"></i> Why InstaAssign Business</div>
+      <h2 class="sec-title">The partner that delivers</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><span class="why-ico">🚀</span><div class="why-title">Fast Delivery</div><p class="why-text">Most designs in 24–48 hrs. Websites delivered in 7 days. Rush timelines discussed case by case.</p></div>
+      <div class="why-card reveal"><span class="why-ico">💎</span><div class="why-title">Professional Quality</div><p class="why-text">Every output is built to impress your clients. We don't deliver mediocre work — period.</p></div>
+      <div class="why-card reveal"><span class="why-ico">💰</span><div class="why-title">Transparent Pricing</div><p class="why-text">No quote games. All pricing discussed and locked on WhatsApp before a single pixel is touched.</p></div>
+      <div class="why-card reveal"><span class="why-ico">🎯</span><div class="why-title">Brand-Focused</div><p class="why-text">We ask about your goals and audience — so every output actually serves your business, not just looks nice.</p></div>
+      <div class="why-card reveal"><span class="why-ico">🔄</span><div class="why-title">Revision Guarantee</div><p class="why-text">Not happy? We revise within 2 days of delivery at zero extra cost. Your approval is the finish line.</p></div>
+      <div class="why-card reveal"><span class="why-ico">📞</span><div class="why-title">Direct Communication</div><p class="why-text">No tickets, no bots. Direct WhatsApp with the person doing your work. Updates at every stage.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- REVIEWS -->
+<section class="content-section" id="reviews">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-eyebrow ey-b"><i class="fa-solid fa-star"></i> Testimonials</div>
+      <h2 class="sec-title">What our business clients say</h2>
+    </div>
+    <div class="reviews-grid" id="reviewsGrid"></div>
+    <div class="review-form-box" style="border-color:var(--accent2);">
+      <div class="rev-form-title" style="color:var(--accent2);">📝 Share Your Experience</div>
+      <form id="reviewForm">
+        <div class="form-grid">
+          <div class="form-row"><label class="form-label">Your Name</label><input type="text" class="form-input focus-b" id="rName" placeholder="Your name" required></div>
+          <div class="form-row"><label class="form-label">Rating</label>
+            <select class="form-select focus-b" id="rRating">
+              <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ Excellent</option>
+              <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ Very Good</option>
+              <option value="⭐⭐⭐">⭐⭐⭐ Good</option>
+              <option value="⭐⭐">⭐⭐ Average</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row"><label class="form-label">Your Review</label><textarea class="form-textarea focus-b" id="rText" placeholder="Tell us about your experience..." required></textarea></div>
+        <button type="submit" class="submit-btn sub-b"><i class="fa-solid fa-paper-plane"></i> Submit Review</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container">
+    <div class="cta-box">
+      <h2 class="cta-title">Ready to build something great? 🚀</h2>
+      <p class="cta-sub">Fill the form and we'll be on WhatsApp with a quote in minutes. No upfront payment — pricing discussed and agreed first.</p>
+      <div class="cta-btns">
+        <a href="#services" class="btn-secondary"><i class="fa-solid fa-briefcase"></i> View Services</a>
+        <a href="https://wa.me/919005315241" target="_blank" class="btn-outline"><i class="fa-brands fa-whatsapp"></i> Direct WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-name">InstaAssign – Business</span>
+        <p class="footer-desc">Professional digital services for businesses, brands and startups across Kanpur and beyond. Websites, design and creatives that actually work.</p>
+        <p class="footer-address">📍 <a href="https://www.google.com/maps/search/?api=1&query=CSJM+University+Kanpur" target="_blank">CSJM University, Kalyanpur, Kanpur, UP 208024</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="#services" class="footer-link">Business Services</a>
+        <a href="#process"  class="footer-link">How It Works</a>
+        <a href="#why-us"   class="footer-link">Why Us</a>
+        <a href="#reviews"  class="footer-link">Reviews</a>
+        <a href="school.html"  class="footer-link">School Division</a>
+        <a href="college.html" class="footer-link">College Division</a>
+        <a href="https://wa.me/919005315241" target="_blank" class="footer-link" style="color:var(--accent);">WhatsApp Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 InstaAssign. All rights reserved. 💼 Building brands that last.</p>
+      <div class="social-row">
+        <a href="https://www.instagram.com/instaassign.in" target="_blank" class="soc-btn"><i class="fa-brands fa-instagram" aria-label="Follow us on Instagram" title="Follow us on Instagram"></i></a>
+        <a href="https://www.threads.net/@instaassign"    target="_blank" class="soc-btn"><i class="fa-brands fa-threads" aria-label="Follow us on Threads" title="Follow us on Threads"></i></a>
+        <a href="mailto:instaassign01@gmail.com"                          class="soc-btn"><i class="fa-solid fa-envelope" aria-label="Email us" title="Email us"></i></a>
+        <a href="https://wa.me/919005315241"              target="_blank" class="soc-btn" style="background:var(--accent);color:#fff;border-color:var(--accent);" aria-label="Chat on WhatsApp" title="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WA -->
+<a href="https://wa.me/919005315241" target="_blank" class="floating-wa" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
+  <svg width="29" height="29" viewBox="0 0 32 32" fill="none">
+    <circle cx="16" cy="16" r="16" fill="#25D366"/>
+    <path d="M23.472 19.339c-.355-.177-2.104-1.037-2.43-1.156-.326-.119-.563-.177-.8.178-.237.355-.914 1.156-1.12 1.393-.207.237-.414.267-.769.089-.355-.178-1.5-.553-2.86-1.763-1.057-.944-1.77-2.108-1.98-2.463-.207-.355-.022-.546.155-.723.159-.158.355-.414.533-.622.178-.207.237-.355.355-.592.119-.237.06-.444-.03-.622-.089-.178-.8-1.924-1.096-2.637-.289-.693-.583-.599-.8-.61-.207-.009-.444-.011-.681-.011-.237 0-.622.089-.948.444-.326.355-1.24 1.211-1.24 2.955 0 1.744 1.27 3.429 1.447 3.669.178.237 2.5 3.82 6.063 5.209.849.292 1.51.466 2.026.596.851.204 1.626.175 2.24.106.683-.077 2.104-.859 2.403-1.689.296-.83.296-1.541.207-1.689-.089-.148-.326-.237-.681-.414z" fill="#fff"/>
+  </svg>
+</a>
+
+<!-- ORDER MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-stripe" id="modalStripe"></div>
+    <div class="modal-head">
+      <div>
+        <div class="modal-title" id="modalTitle">Get a Quote</div>
+        <div class="modal-sub"   id="modalSub">Fill in the details. We quote on WhatsApp.</div>
+      </div>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close Modal" title="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body"><form id="orderForm"></form></div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="style.css">
+<script src="shared.js"></script>
+<script>
+initServices({
+  website: {
+    title: 'Website Development', color: 'b', type: 'business',
+    sub: 'Tell us about your business and the kind of website you need.',
+    fields: [
+      { id:'bWebType',  label:'Type of Website',             placeholder:'e.g. Business site, Portfolio, E-commerce, School website' },
+      { id:'bPages',    label:'Number of Pages / Sections',  placeholder:'e.g. 5 pages — Home, About, Services, Gallery, Contact' },
+      { id:'bRef',      label:'Reference Websites (optional)',placeholder:'Links of sites you like for design inspiration' },
+      { id:'bTimeline', label:'Expected Timeline',           placeholder:'e.g. Within 2 weeks, By [date]' },
+    ],
+    budget: '₹4,000–₹8,000+', budgetHint: 'Final quote based on features and pages'
+  },
+  design: {
+    title: 'Graphic Design', color: 'b', type: 'business',
+    sub: 'Share your brand details and what you need designed.',
+    fields: [
+      { id:'bDesignType', label:'Type of Design',              placeholder:'e.g. Logo, Banner, Brochure, Poster, Business Card' },
+      { id:'bQty',        label:'Quantity',                    placeholder:'e.g. 1 logo + 2 banner sizes' },
+      { id:'bBrand',      label:'Brand / Business Name',       placeholder:'Your brand name' },
+      { id:'bColors',     label:'Preferred Colours / Style',   placeholder:'e.g. Blue & white, Minimalist, Vibrant' },
+      { id:'bRef2',       label:'Reference Images (optional)', placeholder:'Visual references or style inspirations' },
+    ],
+    budget: '₹300–₹1,000 / design', budgetHint: 'Final price based on complexity'
+  },
+  social: {
+    title: 'Social Media Creatives', color: 'b', type: 'business',
+    sub: 'Tell us about your brand and what type of posts you need.',
+    fields: [
+      { id:'bPlatform',  label:'Platform(s)',           placeholder:'e.g. Instagram, Facebook, LinkedIn' },
+      { id:'bPostType',  label:'Type of Posts',         placeholder:'e.g. Feed post, Story, Reel thumbnail, Carousel' },
+      { id:'bPostQty',   label:'Number of Posts',       placeholder:'e.g. 10 posts / month' },
+      { id:'bBrand2',    label:'Brand / Page Name',     placeholder:'Your brand or page name' },
+      { id:'bTheme',     label:'Theme / Tone',          placeholder:'e.g. Minimal, Colourful, Professional, Festive' },
+    ],
+    budget: '₹250–₹750 / post', budgetHint: 'Final quote based on quantity & complexity'
+  },
+  bizppt: {
+    title: 'Business Presentation', color: 'b', type: 'business',
+    sub: 'Share your content — we design a deck that wins.',
+    fields: [
+      { id:'bPptPurpose', label:'Purpose of Presentation',  placeholder:'e.g. Investor pitch, Company profile, Client proposal' },
+      { id:'bSlides',     label:'Number of Slides (approx)',placeholder:'e.g. 15–20 slides', type:'number' },
+      { id:'bContent',    label:'Content Ready?',           placeholder:'e.g. I have draft content / Need help with content too' },
+      { id:'bStyle',      label:'Design Style / Theme',     placeholder:'e.g. Corporate blue, Bold & modern, Minimal' },
+    ],
+    budget: '₹500–₹1,500 / deck', budgetHint: 'Final price based on slides & design level'
+  },
+  customBusiness: {
+    title: 'Custom Digital Work', color: 'b', type: 'custom',
+    sub: 'Describe your unique requirement — we\'ll make it happen.',
+    workTypePlaceholder: 'e.g. Logo Animation, Video Editing, WhatsApp Catalogue, Menu Card'
+  }
+});
+</script>
+
+<!-- FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp, getDocs, query, orderBy }
+  from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+
+const app = initializeApp({
+  apiKey:"AIzaSyCXNOtwDrX6rzu2PqbQpiQGgUlnBCYZbw4",
+  authDomain:"instaassign.firebaseapp.com",
+  projectId:"instaassign",
+  storageBucket:"instaassign.firebasestorage.app",
+  messagingSenderId:"609807767906",
+  appId:"1:609807767906:web:342cadbf3a174f6a8cf43b"
+});
+const db   = getFirestore(app);
+const grid = document.getElementById('reviewsGrid');
+
+async function loadReviews() {
+  try {
+    const qs = await getDocs(query(collection(db,'reviews'), orderBy('timestamp','desc')));
+    if (!qs.empty) grid.innerHTML = '';
+    qs.forEach(doc => {
+      const d = doc.data();
+      grid.innerHTML += `<div class="review-card reveal"><div class="rev-top"><div class="rev-avatar" style="background:var(--accent2-dim);border-color:rgba(176,96,245,.2)">👤</div><div><div class="rev-name">${d.name}</div><div class="rev-stars">${d.rating}</div></div></div><p class="rev-text">"${d.review}"</p></div>`;
+    });
+    grid.querySelectorAll('.reveal').forEach(el => {
+      const o = new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});},{threshold:.07});
+      o.observe(el);
+    });
+  } catch(e){ console.error(e); }
+}
+loadReviews();
+
+document.getElementById('reviewForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const name=document.getElementById('rName').value.trim(), rating=document.getElementById('rRating').value, text=document.getElementById('rText').value.trim();
+  if(!name||!text) return alert('Please fill in all fields');
+  try {
+    await addDoc(collection(db,'reviews'),{name,rating,review:text,timestamp:serverTimestamp()});
+    document.getElementById('reviewForm').reset(); alert('Thank you! 🙏'); loadReviews();
+  } catch(err){console.error(err);alert('Error. Try again.');}
+});
+</script>
+</body>
+</html>
