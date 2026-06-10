@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="InstaAssign – Professional Academic & Business Services. Homework, Projects, Web Development. Kanpur & Beyond.">
+<title>Welcome to InstaAssign – Flawless Submissions, Premium Solutions</title>
+<link rel="icon" type="image/png" href="Logo1.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --academic: #00c896; --academic-dark: #009e78; --academic-dim: rgba(0,200,150,0.1); --academic-glow: rgba(0,200,150,0.3);
+  --business: #4f8ef7; --business-dark: #2d6de0; --business-dim: rgba(79,142,247,0.1); --business-glow: rgba(79,142,247,0.3);
+  --gold: #f5c842; --gold-dim: rgba(245,200,66,0.1);
+  --bg: #07090f; --bg2: #0e1118; --card: rgba(20,24,34,0.6); --text: #e2e8f0; --text-muted: #8b95a5;
+  --border: rgba(255,255,255,0.07);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Sora',sans-serif; background:var(--bg); color:var(--text);
+  min-height:100vh; display:flex; flex-direction:column; align-items:center;
+  overflow-x:hidden; position:relative;
+}
+
+/* Background effects */
+body::before, body::after {
+  content:''; position:fixed; border-radius:50%; filter:blur(100px); opacity:0.3; z-index:0; animation: floatBg 15s infinite alternate;
+}
+body::before { width:500px; height:500px; background:var(--academic-dark); top:-150px; left:-150px; }
+body::after { width:600px; height:600px; background:var(--business-dark); bottom:-200px; right:-150px; animation-delay:-7s; }
+@keyframes floatBg { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(80px, 80px) scale(1.1); } }
+
+.container { position:relative; z-index:1; max-width:1150px; padding:3rem 1.5rem 5rem; text-align:center; width:100%; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+
+/* Hero Section */
+.hero-badge { display:inline-flex; align-items:center; gap:0.5rem; padding:0.4rem 1rem; background:rgba(255,255,255,0.05); border:1px solid var(--border); border-radius:50px; font-size:0.7rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:1.2rem; color:var(--text-muted); }
+.hero-badge i { color:var(--gold); }
+
+/* Logo - Now circular fits original rectangular PNG */
+.logo-img {
+  width:90px; height:90px;
+  border-radius:50%; /* Image to circle crop */
+  border:2px solid var(--border);
+  box-shadow: 0 0 25px rgba(255,255,255,0.05);
+  margin-bottom:1.5rem;
+  object-fit: cover; /* Circular crop key */
+  background:#fff;
+  animation:float 4s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+
+h1 { font-family:'Playfair Display',serif; font-size:clamp(2.3rem, 6.5vw, 4.2rem); font-weight:900; margin-bottom:0.9rem; line-height:1.2; text-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+.text-grad-brand { background:linear-gradient(135deg, var(--academic), var(--business)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+p.sub { color:var(--text-muted); font-size:1.15rem; max-width:650px; margin:0 auto 3.5rem; line-height:1.6; }
+
+/* Gateway Cards */
+.gateway-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(310px, 1fr)); gap:2rem; margin-bottom:4.5rem; width: 100%; }
+
+.gate-card {
+  background:var(--card); -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px);
+  border:1px solid var(--border); border-radius:26px; padding:3rem 2rem;
+  text-decoration:none; color:var(--text); transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display:flex; flex-direction:column; align-items:center; position:relative; overflow:hidden;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.3);
+}
+.gate-card::before { content:''; position:absolute; inset:0; border-radius:26px; padding:2.5px; background:linear-gradient(135deg, transparent, transparent); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: destination-out; mask-composite: exclude; transition:all 0.4s; }
+.gate-card:hover { transform:translateY(-12px); border-color:transparent; }
+
+.card-badge { position:absolute; top:1.2rem; right:1.2rem; font-size:0.65rem; font-weight:800; padding:0.35rem 0.9rem; border-radius:50px; text-transform:uppercase; letter-spacing:0.5px; }
+
+/* Card Aesthetics */
+.card-school:hover::before { background:linear-gradient(135deg, var(--academic), transparent); }
+.card-school:hover { box-shadow:0 20px 50px var(--academic-dim), 0 0 100px rgba(0,200,150,0.05); }
+.card-school .icon { color:var(--academic); background:var(--academic-dim); border:1px solid rgba(0,200,150,0.15); box-shadow: 0 0 20px var(--academic-glow); }
+.card-school .card-badge { background:var(--academic-dim); color:var(--academic); border:1px solid rgba(0,200,150,0.15); }
+
+.card-college:hover::before { background:linear-gradient(135deg, var(--gold), transparent); }
+.card-college:hover { box-shadow:0 20px 50px var(--gold-dim), 0 0 100px rgba(245,200,66,0.05); }
+.card-college .icon { color:var(--gold); background:var(--gold-dim); border:1px solid rgba(245,200,66,0.15); box-shadow: 0 0 20px rgba(245,200,66,0.2); }
+.card-college .card-badge { background:var(--gold-dim); color:var(--gold); border:1px solid rgba(245,200,66,0.15); }
+
+.card-business:hover::before { background:linear-gradient(135deg, var(--business), transparent); }
+.card-business:hover { box-shadow:0 20px 50px var(--business-dim), 0 0 100px rgba(79,142,247,0.05); }
+.card-business .icon { color:var(--business); background:var(--business-dim); border:1px solid rgba(79,142,247,0.15); box-shadow: 0 0 20px var(--business-glow); }
+.card-business .card-badge { background:var(--business-dim); color:var(--business); border:1px solid rgba(79,142,247,0.15); }
+
+.icon { width:70px; height:70px; display:flex; align-items:center; justify-content:center; font-size:2rem; border-radius:20px; margin-bottom:1.8rem; transition:all 0.3s; }
+.gate-title { font-size:1.4rem; font-weight:800; margin-bottom:0.7rem; letter-spacing:0.5px; }
+.gate-desc { font-size:0.92rem; color:var(--text-muted); line-height:1.7; font-weight:300; }
+
+/* Trust Strip */
+.trust-strip { display:flex; justify-content:center; gap:3.5rem; flex-wrap:wrap; padding-top:2.5rem; border-top:1px solid var(--border); width: 100%; margin-top: auto; }
+.trust-item { display:flex; align-items:center; gap:0.7rem; color:var(--text-muted); font-size:0.88rem; font-weight:600; }
+.trust-item i { color:var(--academic); font-size:1.15rem; }
+
+/* ===== FOOTER (New) ===== */
+footer {
+  width: 100%; background: var(--bg2); padding: 3rem 1.5rem 1.5rem;
+  border-top: 1px solid var(--border); position: relative; z-index: 10;
+  color: var(--text-muted); font-size: 0.85rem; text-align: left;
+}
+.footer-grid {
+  max-width: 1150px; margin: 0 auto; display: grid;
+  grid-template-columns: 2fr 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem;
+}
+.footer-brand .logo-name { font-size: 1.1rem; margin-bottom: 0.5rem; display: block; font-weight: 800; }
+.footer-desc { line-height: 1.6; margin-bottom: 0.8rem; font-weight: 300; max-width: 400px; }
+.footer-title { font-weight: 700; color: var(--text); margin-bottom: 0.8rem; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+.footer-links ul { list-style: none; }
+.footer-links ul li { margin-bottom: 0.5rem; }
+.footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--academic); }
+.social-icons { display: flex; gap: 0.8rem; }
+.social-icons a {
+  display: flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border); border-radius: 8px;
+  color: var(--text-muted); text-decoration: none; transition: all 0.2s; font-size: 1.1rem;
+}
+.social-icons a:hover { border-color: var(--academic); color: #000; background: var(--academic); transform: translateY(-3px); }
+.footer-bottom {
+  max-width: 1150px; margin: 0 auto; padding-top: 1.5rem;
+  border-top: 1px solid var(--border); display: flex;
+  justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-copyright { font-weight: 400; color: var(--text-muted); }
+
+/* Floating WA */
+.floating-wa { position:fixed; bottom:24px; right:24px; z-index:500; width:58px; height:58px; border-radius:50%; background:linear-gradient(135deg,#25d366,#128c7e); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 32px rgba(18,140,126,0.45); border:2px solid rgba(255,255,255,0.25); animation:waFloat 3s ease-in-out infinite; text-decoration:none; transition:all .3s; }
+.floating-wa:hover { transform:scale(1.1) translateY(-4px); box-shadow:0 14px 40px rgba(18,140,126,0.55); }
+@keyframes waFloat { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
+
+/* Responsive */
+@media(max-width: 900px) { .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; } .footer-desc { margin: 0 auto 1rem; } .social-icons { justify-content: center; } .footer-bottom { flex-direction: column; text-align: center; } }
+@media(max-width: 768px) { .gateway-grid { grid-template-columns:1fr; } .trust-strip { gap:1.5rem; flex-direction:column; align-items:center; } .container { padding-bottom: 3rem; } }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="hero-badge"><i class="fa-solid fa-star"></i> Trusted by 500+ Happy Clients</div>
+  
+  <img src="Logo1.png" alt="InstaAssign Logo" class="logo-img">
+  
+  <h1>Welcome to <span class="text-grad-brand">InstaAssign</span></h1>
+  <p class="sub">Your one-stop destination for flawless academic submissions and premium digital business solutions. Choose your path below.</p>
+
+  <div class="gateway-grid">
+    <a href="school.html" class="gate-card card-school">
+      <div class="card-badge">For Parents & Kids</div>
+      <div class="icon"><i class="fa-solid fa-school"></i></div>
+      <div class="gate-title">School Services</div>
+      <div class="gate-desc">Neat homework, creative PPTs, and perfect PDFs. Save time and secure top grades effortlessly. Serving all grades.</div>
+    </a>
+
+    <a href="college.html" class="gate-card card-college">
+      <div class="card-badge">For University</div>
+      <div class="icon"><i class="fa-solid fa-user-graduate"></i></div>
+      <div class="gate-title">College Services</div>
+      <div class="gate-desc">Plagiarism-free project reports, deep research work, and synopsis tailored to university guidelines for BCA, B.Tech, etc.</div>
+    </a>
+
+    <a href="business.html" class="gate-card card-business">
+      <div class="card-badge">For Growth</div>
+      <div class="icon"><i class="fa-solid fa-briefcase"></i></div>
+      <div class="gate-title">Business Solutions</div>
+      <div class="gate-desc">Custom websites, stunning graphic design, SEO, and winning pitch decks to scale your brand digitally.</div>
+    </a>
+  </div>
+
+  <div class="trust-strip">
+    <div class="trust-item"><i class="fa-solid fa-bolt"></i> Fast 24hr Delivery Available</div>
+    <div class="trust-item"><i class="fa-solid fa-shield-halved"></i> 100% Confidential & Secure</div>
+    <div class="trust-item"><i class="fa-solid fa-headset"></i> 24/7 WhatsApp Support</div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo-name text-grad-brand">InstaAssign</span>
+      <p class="footer-desc">Flawless academic submissions & premium digital business solutions. Helping students and businesses succeed.</p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/instaassign.in/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.threads.net/@instaassign" target="_blank" title="Threads"><i class="fa-brands fa-threads"></i></a>
+        <a href="mailto:instaassign01@gmail.com" title="Email Us"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://wa.me/919005315241" target="_blank" title="Direct WhatsApp" style="border-color:var(--academic); color:var(--academic);"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-title">Quick Links</div>
+      <ul>
+        <li><a href="#services">Homepage</a></li>
+        <li><a href="school.html">School Services</a></li>
+        <li><a href="college.html">College Services</a></li>
+        <li><a href="business.html">Business Solutions</a></li>
+      </div>
+    <div class="footer-links">
+      <div class="footer-title">Contact</div>
+      <ul>
+        <li><a href="https://wa.me/919005315241" target="_blank">Chat on WhatsApp</a></li>
+        <li><a href="mailto:instaassign01@gmail.com">instaassign01@gmail.com</a></li>
+        <li>Kanpur, Uttar Pradesh</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copyright">© 2026 InstaAssign. Helping students succeed 🎓</div>
+    <div class="footer-links" style="display:flex; gap:1.2rem;">
+      <a href="privacy.html" style="font-size:0.75rem;">Privacy Policy</a>
+      <a href="terms.html" style="font-size:0.75rem;">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/919005315241" target="_blank" class="floating-wa" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
+  <svg width="29" height="29" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M23.472 19.339c-.355-.177-2.104-1.037-2.43-1.156-.326-.119-.563-.177-.8.178-.237.355-.914 1.156-1.12 1.393-.207.237-.414.267-.769.089-.355-.178-1.5-.553-2.86-1.763-1.057-.944-1.77-2.108-1.98-2.463-.207-.355-.022-.546.155-.723.159-.158.355-.414.533-.622.178-.207.237-.355.355-.592.119-.237.06-.444-.03-.622-.089-.178-.8-1.924-1.096-2.637-.289-.693-.583-.599-.8-.61-.207-.009-.444-.011-.681-.011-.237 0-.622.089-.948.444-.326.355-1.24 1.211-1.24 2.955 0 1.744 1.27 3.429 1.447 3.669.178.237 2.5 3.82 6.063 5.209.849.292 1.51.466 2.026.596.851.204 1.626.175 2.24.106.683-.077 2.104-.859 2.403-1.689.296-.83.296-1.541.207-1.689-.089-.148-.326-.237-.681-.414z" fill="#fff"/></svg>
+</a>
+
+</body>
+</html>
