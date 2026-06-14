@@ -1,499 +1,287 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="InstaAssign School – Assignments, PDFs, PPTs & Projects for Class 1–12 students. Fast, neat & affordable. Based in Kanpur.">
-<meta name="keywords" content="InstaAssign School, School Project Work, Models, charts, Class 10 Assignment, Class 12 Project, School PDF, School PPT, Kanpur">
-<link rel="icon" type="image/png" href="Logo1.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-<title>InstaAssign School – Class 1–12 Academic Help</title>
-<style>
-/* ---- PAGE TOKEN OVERRIDES (school = warm amber + teal) ---- */
-:root {
-  --display-font: 'Nunito', sans-serif;
-  --body-font:    'Space Grotesk', sans-serif;
-  --mono-font:    'JetBrains Mono', monospace;
+/* ============================================================
+   InstaAssign – Shared JS
+   Each page calls initPage({ waNumber, services, pageName })
+   ============================================================ */
 
-  --accent:       #f5a623;
-  --accent-dark:  #d4880e;
-  --accent-dim:   rgba(245,166,35,0.14);
-  --accent-glow:  rgba(245,166,35,0.38);
-  --accent2:      #28c0a8;
-  --accent2-dark: #1a9d8e;
-  --accent2-dim:  rgba(40,192,168,0.13);
-  --accent2-glow: rgba(40,192,168,0.35);
+const WA_NUMBER = '919005315241';
+
+// ---- THEME ----
+const themeBtn = document.getElementById('themeBtn');
+function applyTheme(t) {
+  document.body.classList.toggle('light', t === 'light');
+  if (themeBtn) themeBtn.textContent = t === 'light' ? '🌙' : '☀️';
+  localStorage.setItem('theme', t);
+}
+applyTheme(localStorage.getItem('theme') || 'dark');
+if (themeBtn) themeBtn.addEventListener('click', () => applyTheme(document.body.classList.contains('light') ? 'dark' : 'light'));
+
+// ---- HAMBURGER ----
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileNav    = document.getElementById('mobileNav');
+const mobileClose  = document.getElementById('mobileNavClose');
+function closeMobileNav() {
+  mobileNav?.classList.remove('open');
+  hamburgerBtn?.classList.remove('open');
+  document.body.style.overflow = '';
+}
+hamburgerBtn?.addEventListener('click', () => {
+  const open = mobileNav.classList.toggle('open');
+  hamburgerBtn.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+mobileClose?.addEventListener('click', closeMobileNav);
+
+// ---- ACTIVE NAV ----
+const sections   = document.querySelectorAll('section[id]');
+const dNavLinks  = document.querySelectorAll('.desktop-nav a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 130) cur = s.id; });
+  dNavLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+}, { passive: true });
+
+// ---- ESC ----
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeModal(); closeMobileNav(); }
+});
+
+// ---- SCROLL REVEAL ----
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+// ============================================================
+// MODAL ENGINE
+// ============================================================
+let currentKey = '';
+let PAGE_SERVICES = {};
+
+function initServices(services) { PAGE_SERVICES = services; }
+
+function openModal(key) {
+  const s = PAGE_SERVICES[key];
+  if (!s) return;
+  currentKey = key;
+  document.getElementById('modalTitle').textContent = s.title;
+  document.getElementById('modalSub').textContent   = s.sub;
+  document.getElementById('modalStripe').className  = 'modal-stripe stripe-' + s.color;
+
+  const form = document.getElementById('orderForm');
+  if (s.type === 'academic')  { form.innerHTML = buildAcademicForm(s);  form.onsubmit = submitAcademic; }
+  else if (s.type === 'business') { form.innerHTML = buildBusinessForm(s); form.onsubmit = submitBusiness; }
+  else { form.innerHTML = buildCustomForm(s); form.onsubmit = submitCustom; }
+
+  // set min date
+  const dl = document.getElementById('fDeadline');
+  if (dl) dl.min = new Date().toISOString().split('T')[0];
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 
-/* warm paper tint on light mode for school feel */
-body.light {
-  --bg:    #fdf8ef;
-  --bg2:   #f4edd8;
-  --bg3:   #fffdf7;
-  --border:rgba(0,0,0,0.09);
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('modalOverlay')?.addEventListener('click', e => {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+});
+
+// ---- HELPERS ----
+const fc  = c => c === 'a' ? 'focus-a' : 'focus-b';
+const sc  = c => c === 'a' ? 'sub-a'   : 'sub-b';
+const waN = () => `<div class="wa-note"><i class="fa-brands fa-whatsapp" style="color:#25d366;margin-right:.3rem;"></i> Your details open WhatsApp. Payment discussed before work begins.</div>`;
+
+// ---- FORM BUILDERS ----
+function buildAcademicForm(s) {
+  const f = fc(s.color);
+  return `
+    <div class="form-grid">
+      <div class="form-row"><label class="form-label">Your Name *</label><input type="text" class="form-input ${f}" id="fName" placeholder="Full name" required></div>
+      <div class="form-row"><label class="form-label">WhatsApp Number *</label><input type="tel" class="form-input ${f}" id="fPhone" placeholder="10-digit number" required></div>
+    </div>
+    <div class="form-row"><label class="form-label">Subject / Topic *</label><input type="text" class="form-input ${f}" id="fSubject" placeholder="e.g. Environmental Science, Indian History" required></div>
+    ${s.needsRollNo ? `
+    <div class="form-grid">
+      <div class="form-row"><label class="form-label">Roll No. *</label><input type="text" class="form-input ${f}" id="fRollNo" placeholder="e.g. 12345" required></div>
+      <div class="form-row"><label class="form-label">Enrollment No. (if any)</label><input type="text" class="form-input ${f}" id="fEnrollNo" placeholder="Optional"></div>
+    </div>
+    <div class="form-row"><label class="form-label">Supervisor / Guide Name</label><input type="text" class="form-input ${f}" id="fSupervisor" placeholder="e.g. Dr. Sharma"></div>
+    ` : ''}
+    <div class="form-grid">
+      <div class="form-row"><label class="form-label">${s.pagesLabel || 'Pages / Slides'}</label><input type="number" class="form-input ${f}" id="fPages" placeholder="e.g. 10" min="1"></div>
+      <div class="form-row"><label class="form-label">Deadline *</label><input type="date" class="form-input ${f}" id="fDeadline" required></div>
+    </div>
+    ${s.showLang ? `<div class="form-row"><label class="form-label">Language Preference</label><select class="form-select ${f}" id="fLang"><option value="Hindi">Hindi</option><option value="English">English</option><option value="Hindi + English">Hindi + English</option></select></div>` : ''}
+    <div class="form-row">
+      <label class="form-label">Your Budget *</label>
+      <input type="text" class="form-input ${f}" id="fBudget" placeholder="e.g. ${s.budget}" required>
+      <div class="form-hint">💡 ${s.budgetHint}</div>
+    </div>
+    <div class="form-row"><label class="form-label">Additional Instructions</label><textarea class="form-textarea ${f}" id="fNotes" placeholder="Formatting, references, style, or anything else..."></textarea></div>
+    <button type="submit" class="submit-btn ${sc(s.color)}"><i class="fa-brands fa-whatsapp"></i> Send to WhatsApp</button>
+    ${waN()}
+  `;
 }
 
-/* hero decorative ruled lines (school notebook feel) */
-.hero-lines {
-  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
-  opacity: .04;
+function buildBusinessForm(s) {
+  const f = fc(s.color);
+  const extra = (s.fields || []).map(fld => {
+    const t = fld.type === 'number' ? 'number' : (fld.type === 'url' ? 'url' : 'text');
+    return `<div class="form-row"><label class="form-label">${fld.label}</label><input type="${t}" class="form-input ${f}" id="${fld.id}" placeholder="${fld.placeholder}"></div>`;
+  }).join('');
+  return `
+    <div class="form-grid">
+      <div class="form-row"><label class="form-label">Your Name *</label><input type="text" class="form-input ${f}" id="bName" placeholder="Full name" required></div>
+      <div class="form-row"><label class="form-label">WhatsApp Number *</label><input type="tel" class="form-input ${f}" id="bPhone" placeholder="10-digit number" required></div>
+    </div>
+    ${extra}
+    <div class="form-row">
+      <label class="form-label">Your Budget *</label>
+      <input type="text" class="form-input ${f}" id="bBudget" placeholder="e.g. ${s.budget}" required>
+      <div class="form-hint">💡 ${s.budgetHint}</div>
+    </div>
+    <div class="form-row"><label class="form-label">Additional Notes</label><textarea class="form-textarea ${f}" id="bNotes" placeholder="Deadline, references, special requirements..."></textarea></div>
+    <button type="submit" class="submit-btn ${sc(s.color)}"><i class="fa-brands fa-whatsapp"></i> Send to WhatsApp</button>
+    ${waN()}
+  `;
 }
-.hero-lines::before, .hero-lines::after {
-  content: ''; position: absolute; left: 0; right: 0;
-  height: 1px; background: var(--accent);
-}
-.hero-lines::before { top: 45%; }
-.hero-lines::after  { top: 55%; }
 
-/* pencil squiggle accent on section title */
-.pencil-mark {
-  display: inline-block; position: relative;
-}
-.pencil-mark::after {
-  content: '';
-  position: absolute; left: 0; right: 0; bottom: -4px; height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  border-radius: 3px; opacity: .7;
+function buildCustomForm(s) {
+  const f = fc(s.color);
+  return `
+    <div class="form-row"><label class="form-label">Your Name *</label><input type="text" class="form-input ${f}" id="cName" placeholder="Full name" required></div>
+    <div class="form-grid">
+      <div class="form-row"><label class="form-label">Contact Number *</label><input type="tel" class="form-input ${f}" id="cContact" placeholder="Phone number" required></div>
+      <div class="form-row"><label class="form-label">WhatsApp Number *</label><input type="tel" class="form-input ${f}" id="cWhatsapp" placeholder="WhatsApp number" required></div>
+    </div>
+    <div class="form-row"><label class="form-label">Type of Work *</label><input type="text" class="form-input ${f}" id="cWorkType" placeholder="${s.workTypePlaceholder || 'Describe the work type'}" required></div>
+    <div class="form-row"><label class="form-label">Project Description *</label><textarea class="form-textarea ${f}" id="cDesc" placeholder="Quantity, deadline, format, references, etc." required style="min-height:108px;"></textarea></div>
+    <button type="submit" class="submit-btn ${sc(s.color)}"><i class="fa-brands fa-whatsapp"></i> Send to WhatsApp</button>
+    ${waN()}
+  `;
 }
 
-/* subject badge strip */
-.subject-strip {
-  display: flex; gap: .65rem; flex-wrap: wrap; margin-top: 1.6rem;
-  justify-content: center;
-  animation: fadeUp .6s .35s ease both;
+// ---- SUBMIT HANDLERS ----
+function submitAcademic(e) {
+  e.preventDefault();
+  const s = PAGE_SERVICES[currentKey];
+  const name     = v('fName'), phone = v('fPhone'), subject = v('fSubject');
+  const rollNo   = v('fRollNo'), enroll = v('fEnrollNo'), supervisor = v('fSupervisor');
+  const pages    = v('fPages'), deadline = v('fDeadline');
+  const lang     = v('fLang'), budget = v('fBudget'), notes = v('fNotes');
+
+  let m = `🫡 *InstaAssign – Academic Order*\n\n`;
+  m += `📋 *Service:* ${s.title}\n`;
+  m += `👤 *Name:* ${name}\n📱 *WhatsApp:* ${phone}\n`;
+  m += `📚 *Subject/Topic:* ${subject}\n`;
+  if (rollNo)    m += `🎓 *Roll No.:* ${rollNo}\n`;
+  if (enroll)    m += `📘 *Enrollment No.:* ${enroll}\n`;
+  if (supervisor)m += `👨‍🏫 *Supervisor:* ${supervisor}\n`;
+  if (pages)     m += `📄 *${s.pagesLabel}:* ${pages}\n`;
+  m += `📅 *Deadline:* ${deadline}\n`;
+  if (lang)      m += `🌐 *Language:* ${lang}\n`;
+  if (budget)    m += `💰 *Budget:* ${budget}\n`;
+  if (notes)     m += `📝 *Instructions:* ${notes}\n`;
+  m += `\n⏳ Please confirm & quote!`;
+  openWA(m);
 }
-.sub-badge {
-  font-size: .72rem; font-weight: 700; padding: .28rem .72rem;
-  border-radius: 50px; background: var(--accent-dim);
-  color: var(--accent); border: 1px solid rgba(245,166,35,.22);
-  letter-spacing: .04em;
+
+function submitBusiness(e) {
+  e.preventDefault();
+  const s = PAGE_SERVICES[currentKey];
+  const name = v('bName'), phone = v('bPhone');
+  const budget = v('bBudget'), notes = v('bNotes');
+
+  let m = `🫡 *InstaAssign – Business Enquiry*\n\n`;
+  m += `📋 *Service:* ${s.title}\n`;
+  m += `👤 *Name:* ${name}\n📱 *WhatsApp:* ${phone}\n`;
+  (s.fields || []).forEach(f => {
+    const el = document.getElementById(f.id);
+    if (el?.value?.trim()) m += `🔹 *${f.label}:* ${el.value.trim()}\n`;
+  });
+  if (budget) m += `💰 *Budget:* ${budget}\n`;
+  if (notes)  m += `📝 *Notes:* ${notes}\n`;
+  m += `\n⏳ Please send quote & timeline!`;
+  openWA(m);
 }
-.sub-badge.tl { background: var(--accent2-dim); color: var(--accent2); border-color: rgba(40,192,168,.22); }
-</style>
-</head>
-<body>
 
-<!-- HEADER -->
-<header>
-  <div class="container">
-    <div class="header-inner">
-      <a href="index.html" class="logo-area" aria-label="InstaAssign School Home">
-        <img src="Logo1.png" alt="InstaAssign" class="logo-img">
-        <div>
-          <span class="logo-name">InstaAssign</span>
-          <span class="logo-tag">School</span>
-        </div>
-      </a>
-      <nav class="desktop-nav">
-        <a href="#services" class="nav-accent">Services</a>
-        <a href="#why-us">Why Us</a>
-        <a href="#reviews">Reviews</a>
-      </nav>
-      <div class="site-switcher">
-        <a href="school.html"   class="site-link active">🎒 School</a>
-        <a href="college.html"  class="site-link">🎓 College</a>
-        <a href="business.html" class="site-link">💼 Business</a>
-      </div>
-      <div class="header-actions">
-        <a href="https://wa.me/919005315241" target="_blank" class="btn-wa-hdr">
-          <i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span>
-        </a>
-        <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
-        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </div>
-</header>
+function submitCustom(e) {
+  e.preventDefault();
+  const s    = PAGE_SERVICES[currentKey];
+  const name = v('cName'), contact = v('cContact');
+  const wa   = v('cWhatsapp'), work = v('cWorkType'), desc = v('cDesc');
 
-<!-- MOBILE NAV -->
-<div class="mobile-nav" id="mobileNav">
-  <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu"></button><i class="fa-solid fa-xmark"></i></button>
-  <a href="#services" class="nav-accent" onclick="closeMobileNav()">📚 Services</a>
-  <a href="#why-us"   onclick="closeMobileNav()">🌟 Why Us</a>
-  <a href="#reviews"  onclick="closeMobileNav()">⭐ Reviews</a>
-  <a href="college.html"  style="color:var(--accent2)">🎓 Go to College</a>
-  <a href="business.html" style="color:#4f8ef7">💼 Go to Business</a>
-  <a href="https://wa.me/919005315241" target="_blank" class="mobile-nav-wa" onclick="closeMobileNav()">
-    <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-  </a>
-</div>
+  let m = `🫡 *InstaAssign – Custom Work Request*\n\n`;
+  m += `📋 *Category:* ${s.title}\n`;
+  m += `👤 *Name:* ${name}\n📞 *Contact:* ${contact}\n📱 *WhatsApp:* ${wa}\n`;
+  m += `🔧 *Work Type:* ${work}\n📝 *Description:* ${desc}\n`;
+  m += `\n⏳ Awaiting quote!`;
+  openWA(m);
+}
 
-<!-- HERO -->
-<section class="hero container" style="position:relative;">
-  <div class="hero-lines"></div>
-  <div class="hero-eyebrow">🎒 For Class 1 to 12 Students &amp; Parents</div>
-  <h1>School work sorted.<br><span class="hl-a pencil-mark">Neat</span>, fast &amp; <span class="hl-b">affordable</span>.</h1>
-  <p class="hero-sub">Handwritten &amp; typed assignments, project files, PDFs and PPTs — done properly, submitted on time. We handle the hard part, you focus on learning.</p>
-  <div class="hero-ctas">
-    <a href="#services" class="btn-primary"><i class="fa-solid fa-book-open"></i> See Services</a>
-    <a href="https://wa.me/919005315241" target="_blank" class="btn-outline"><i class="fa-brands fa-whatsapp"></i> Quick Chat</a>
-  </div>
-  <div class="subject-strip">
-    <span class="sub-badge">Maths</span>
-    <span class="sub-badge">Science</span>
-    <span class="sub-badge">SST</span>
-    <span class="sub-badge">Hindi</span>
-    <span class="sub-badge">English</span>
-    <span class="sub-badge tl">Computer</span>
-    <span class="sub-badge tl">EVS</span>
-    <span class="sub-badge tl">Drawing/Art</span>
-    <span class="sub-badge">Any Subject ✓</span>
-  </div>
-  <div class="stats-bar">
-    <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Happy Students</span></div>
-    <div class="stat"><span class="stat-num">24hr</span><span class="stat-label">Delivery</span></div>
-    <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Confidential</span></div>
-    <div class="stat"><span class="stat-num">₹0</span><span class="stat-label">Hidden Charges</span></div>
-  </div>
-</section>
+function v(id) { return document.getElementById(id)?.value?.trim() || ''; }
+function openWA(msg) {
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  closeModal();
+}
 
-<!-- SERVICES -->
-<section class="content-section" id="services">
-  <div class="container">
-    <div class="sec-header">
-      <div class="sec-eyebrow ey-a"><i class="fa-solid fa-book"></i> School Services</div>
-      <h2 class="sec-title">Everything your school needs</h2>
-      <p class="sec-sub">Pick a service below, fill the quick form — we quote on WhatsApp in minutes.</p>
-    </div>
-    <div class="cards-grid">
+// ============================================================
+// LIVE INPUT VALIDATION ENGINE (Strict Data Types & Phone Rules)
+// ============================================================
+document.addEventListener('input', function(e) {
+  const target = e.target;
+  if (!target || !target.id) return;
 
-      <!-- Assignment Writing -->
-      <div class="svc-card ac reveal">
-        <div class="card-top">
-          <div class="card-ico ico-a">✍️</div>
-          <div class="card-titles">
-            <div class="card-name">Assignment Writing</div>
-            <div class="card-price pr-a">₹15–₹35 / page</div>
-          </div>
-        </div>
-        <div class="card-bot">
-          <p class="card-desc">Neat handwritten or typed assignments — proper heading, diagrams where needed, on-time every time. Any class, any subject.</p>
-          <div class="tags">
-            <span class="tag tag-gold">Class 6–8</span>
-            <span class="tag tag-acc">Class 9–10</span>
-            <span class="tag tag-acc">Class 11–12</span>
-          </div>
-          <button class="btn-card btn-a" onclick="openModal('assignment')"><i class="fa-brands fa-whatsapp"></i> Order via Form</button>
-        </div>
-      </div>
+  const id = target.id.toLowerCase();
 
-      <!-- PDF Making -->
-      <div class="svc-card ac reveal">
-        <div class="card-top">
-          <div class="card-ico ico-a">📄</div>
-          <div class="card-titles">
-            <div class="card-name">PDF / Document Making</div>
-            <div class="card-price pr-a">₹150–₹300+ / document</div>
-          </div>
-        </div>
-        <div class="card-bot">
-          <p class="card-desc">Holiday homework, project files, e-books, worksheet PDFs — formatted, neat and ready to submit or print.</p>
-          <div class="tags">
-            <span class="tag tag-gold">Any Class</span>
-            <span class="tag tag-acc">Parents</span>
-            <span class="tag tag-acc2">Print-ready</span>
-          </div>
-          <button class="btn-card btn-a" onclick="openModal('pdf')"><i class="fa-brands fa-whatsapp"></i> Order via Form</button>
-        </div>
-      </div>
+  // 1. Mobile & Phone validation (+91 fixed, starts with 6-9, max 10 digits)
+  if (id.includes('phone') || id.includes('mobile') || id.includes('contact') || target.type === 'tel') {
+      let val = target.value;
+      if (!val.startsWith('+91 ')) {
+          val = '+91 ' + val.replace(/^\+91\s*/, ''); 
+      }
+      let numbersOnly = val.substring(4).replace(/\D/g, '');
+      if (numbersOnly.length > 0 && !/^[6789]/.test(numbersOnly[0])) {
+          numbersOnly = numbersOnly.substring(1); 
+      }
+      numbersOnly = numbersOnly.substring(0, 10);
+      target.value = '+91 ' + numbersOnly;
+  }
 
-      <!-- PPT -->
-      <div class="svc-card ac reveal">
-        <div class="card-top">
-          <div class="card-ico ico-a">📊</div>
-          <div class="card-titles">
-            <div class="card-name">PowerPoint Presentations</div>
-            <div class="card-price pr-a">₹200–₹500+ / deck</div>
-          </div>
-        </div>
-        <div class="card-bot">
-          <p class="card-desc">Colourful, informative slides for school projects and seminars. Custom graphics, animations and simple layouts kids love to present.</p>
-          <div class="tags">
-            <span class="tag tag-acc">School Project</span>
-            <span class="tag tag-acc">Seminar</span>
-            <span class="tag tag-gold">Science Fair</span>
-          </div>
-          <button class="btn-card btn-a" onclick="openModal('ppt')"><i class="fa-brands fa-whatsapp"></i> Order via Form</button>
-        </div>
-      </div>
+  // 2. Name fields validation (Only letters and spaces allowed)
+  if ((id.includes('name') && !id.includes('brand')) || id === 'fname' || id === 'bname' || id === 'cname') {
+      target.value = target.value.replace(/[^a-zA-Z\s]/g, '');
+  }
 
-      <!-- Project File -->
-      <div class="svc-card ac reveal">
-        <div class="card-top">
-          <div class="card-ico ico-a">📋</div>
-          <div class="card-titles">
-            <div class="card-name">Project File / Report</div>
-            <div class="card-price pr-a">₹250–₹700+ / project</div>
-          </div>
-        </div>
-        <div class="card-bot">
-          <p class="card-desc">Science experiments, social studies maps, holiday projects, Investigatory Projects (IP) — complete with index, certificate and bibliography.</p>
-          <div class="tags">
-            <span class="tag tag-acc">Class 9–12</span>
-            <span class="tag tag-acc2">CBSE / ICSE</span>
-            <span class="tag tag-gold">IP / SIP</span>
-          </div>
-          <button class="btn-card btn-a" onclick="openModal('schoolProject')"><i class="fa-brands fa-whatsapp"></i> Order via Form</button>
-        </div>
-      </div>
-
-      <!-- Drawing / Chart -->
-      <div class="svc-card ac reveal">
-        <div class="card-top">
-          <div class="card-ico ico-a">🎨</div>
-          <div class="card-titles">
-            <div class="card-name">Charts, Maps &amp; Drawing Work</div>
-            <div class="card-price pr-a">₹100–₹350+ / sheet</div>
-          </div>
-        </div>
-        <div class="card-bot">
-          <p class="card-desc">Diagrams, map-pointing, bar graphs, pie charts, biology diagrams, and decorative project front pages — done on chart paper or digital.</p>
-          <div class="tags">
-            <span class="tag tag-gold">Geography</span>
-            <span class="tag tag-acc">Biology</span>
-            <span class="tag tag-acc2">Art & Craft</span>
-          </div>
-          <button class="btn-card btn-a" onclick="openModal('chart')"><i class="fa-brands fa-whatsapp"></i> Order via Form</button>
-        </div>
-      </div>
-
-      <!-- Custom School -->
-      <div class="svc-card ac reveal">
-        <div class="card-top">
-          <div class="card-ico ico-a">⭐</div>
-          <div class="card-titles">
-            <div class="card-name">Custom School Work</div>
-            <div class="card-price pr-a">As per Requirements</div>
-          </div>
-        </div>
-        <div class="card-bot">
-          <p class="card-desc">Notes, flashcards, revision sheets, MCQ practice sets, holiday homework bundles, school diary entries — anything academic, just ask!</p>
-          <div class="tags">
-            <span class="tag tag-acc">Flexible</span>
-            <span class="tag tag-gold">Any Class</span>
-          </div>
-          <button class="btn-card btn-a" onclick="openModal('customSchool')"><i class="fa-brands fa-whatsapp"></i> Request Custom Work</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="container"><div class="divider"></div></div>
-
-<!-- WHY US -->
-<section class="content-section" id="why-us">
-  <div class="container">
-    <div class="sec-header">
-      <div class="sec-eyebrow ey-a"><i class="fa-solid fa-shield-halved"></i> Why InstaAssign School</div>
-      <h2 class="sec-title">Our promise to students &amp; parents</h2>
-    </div>
-    <div class="why-grid">
-      <div class="why-card reveal"><span class="why-ico">⚡</span><div class="why-title">Same-Day Delivery</div><p class="why-text">Last-minute homework? We handle rush orders. Most school work is done within hours.</p></div>
-      <div class="why-card reveal"><span class="why-ico">✏️</span><div class="why-title">Neat &amp; Clear Work</div><p class="why-text">Proper handwriting style, clean margins, correct headings — exactly what teachers want to see.</p></div>
-      <div class="why-card reveal"><span class="why-ico">💰</span><div class="why-title">Student-Friendly Rates</div><p class="why-text">Pocket money pricing. No hidden fees — everything agreed on WhatsApp before work starts.</p></div>
-      <div class="why-card reveal"><span class="why-ico">🔒</span><div class="why-title">100% Confidential</div><p class="why-text">Your child's name and school details are never shared with anyone, ever.</p></div>
-      <div class="why-card reveal"><span class="why-ico">🔄</span><div class="why-title">Free Corrections</div><p class="why-text">Teacher asked for changes? We revise within 2 days of delivery at zero extra cost.</p></div>
-      <div class="why-card reveal"><span class="why-ico">📞</span><div class="why-title">Parent-Friendly Support</div><p class="why-text">Parents can reach us directly on WhatsApp — we give updates at every step.</p></div>
-    </div>
-  </div>
-</section>
-
-<div class="container"><div class="divider"></div></div>
-
-<!-- REVIEWS -->
-<section class="content-section" id="reviews">
-  <div class="container">
-    <div class="sec-header">
-      <div class="sec-eyebrow ey-a"><i class="fa-solid fa-star"></i> Testimonials</div>
-      <h2 class="sec-title">What students &amp; parents say</h2>
-    </div>
-    <div class="reviews-grid" id="reviewsGrid"></div>
-    <div class="review-form-box">
-      <div class="rev-form-title">📝 Share Your Experience</div>
-      <form id="reviewForm">
-        <div class="form-grid">
-          <div class="form-row"><label class="form-label">Your Name</label><input type="text" class="form-input focus-a" id="rName" placeholder="Your name" required></div>
-          <div class="form-row"><label class="form-label">Rating</label>
-            <select class="form-select focus-a" id="rRating">
-              <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ Excellent</option>
-              <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ Very Good</option>
-              <option value="⭐⭐⭐">⭐⭐⭐ Good</option>
-              <option value="⭐⭐">⭐⭐ Average</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-row"><label class="form-label">Your Review</label><textarea class="form-textarea focus-a" id="rText" placeholder="Tell us about your experience..." required></textarea></div>
-        <button type="submit" class="submit-btn sub-a"><i class="fa-solid fa-paper-plane"></i> Submit Review</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- CTA BAND -->
-<section class="cta-band">
-  <div class="container">
-    <div class="cta-box">
-      <h2 class="cta-title">Assignment due tomorrow? 📚</h2>
-      <p class="cta-sub">Fill the form in 2 minutes — we'll have it ready before your deadline. 40% Advance Payment Mandatory.</p>
-      <div class="cta-btns">
-        <a href="#services" class="btn-primary"><i class="fa-solid fa-book-open"></i> Order a Service</a>
-        <a href="https://wa.me/919005315241" target="_blank" class="btn-outline"><i class="fa-brands fa-whatsapp"></i> Direct WhatsApp</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <span class="logo-name">InstaAssign – School</span>
-        <p class="footer-desc">Academic help for Class 1–12 students across Kanpur and beyond. Quality work, delivered fast, trusted by hundreds of parents.</p>
-        <p class="footer-address">📍 <a href="https://www.google.com/maps/search/?api=1&query=CSJM+University+Kanpur" target="_blank">CSJM University, Kalyanpur, Kanpur, UP 208024</a></p>
-      </div>
-      <div class="footer-links">
-        <a href="#services" class="footer-link">School Services</a>
-        <a href="#why-us"   class="footer-link">Why Us</a>
-        <a href="#reviews"  class="footer-link">Reviews</a>
-        <a href="college.html"  class="footer-link">College Division</a>
-        <a href="business.html" class="footer-link">Business Division</a>
-        <a href="https://wa.me/919005315241" target="_blank" class="footer-link" style="color:var(--accent);">WhatsApp Us</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2026 InstaAssign. All rights reserved. 🎒 Helping students succeed.</p>
-      <div class="social-row">
-        <a href="https://www.instagram.com/instaassign.in" target="_blank" class="soc-btn" aria-label="Follow us on Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.threads.net/@instaassign"    target="_blank" class="soc-btn" aria-label="Follow us on Threads"><i class="fa-brands fa-threads"></i></a>
-        <a href="mailto:instaassign01@gmail.com"                          class="soc-btn" aria-label="Email us"><i class="fa-solid fa-envelope"></i></a>
-        <a href="https://wa.me/919005315241"              target="_blank" class="soc-btn" style="background:var(--accent);color:#000;border-color:var(--accent);" aria-label="Chat with us on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- ORDER MODAL -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <div class="modal-stripe" id="modalStripe"></div>
-    <div class="modal-head">
-      <div>
-        <div class="modal-title" id="modalTitle">Order Service</div>
-        <div class="modal-sub"   id="modalSub">Fill in the details. We quote on WhatsApp.</div>
-      </div>
-      <button class="modal-close" onclick="closeModal()" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-    <div class="modal-body">
-      <form id="orderForm"></form>
-    </div>
-  </div>
-</div>
-
-<!-- SHARED JS -->
-<link rel="stylesheet" href="style.css">
-<script src="shared.js"></script>
-<script>
-// ---- SCHOOL SERVICES ----
-initServices({
-  assignment: {
-    title: 'Assignment Writing', color: 'a', type: 'academic',
-    sub: 'Tell us your class, subject and deadline.',
-    pagesLabel: 'Number of Pages', showLang: true,
-    budget: '₹150–₹350 (estimate)', budgetHint: 'Based on ₹15–₹35/page'
-  },
-  pdf: {
-    title: 'PDF / Document Making', color: 'a', type: 'academic',
-    sub: 'Share your content or topic — we format it perfectly.',
-    pagesLabel: 'Number of Pages / Docs', showLang: true,
-    budget: '₹150–₹300 (estimate)', budgetHint: '₹150–₹300 per document'
-  },
-  ppt: {
-    title: 'PowerPoint Presentation', color: 'a', type: 'academic',
-    sub: 'Share the topic and how many slides you need.',
-    pagesLabel: 'Number of Slides', showLang: true,
-    budget: '₹200–₹500 (estimate)', budgetHint: '₹200–₹500 per deck'
-  },
-  schoolProject: {
-    title: 'Project File / Report', color: 'a', type: 'academic',
-    sub: 'Mention your class, board and project topic.',
-    pagesLabel: 'Number of Pages', showLang: true, needsRollNo: false,
-    budget: '₹250–₹700 (estimate)', budgetHint: '₹250–₹700 per project'
-  },
-  chart: {
-    title: 'Charts, Maps & Drawing', color: 'a', type: 'academic',
-    sub: 'Tell us the subject and what needs to be drawn.',
-    pagesLabel: 'Number of Sheets / Diagrams', showLang: false,
-    budget: '₹100–₹350 (estimate)', budgetHint: '₹100–₹350 per sheet'
-  },
-  customSchool: {
-    title: 'Custom School Work', color: 'a', type: 'custom',
-    sub: 'Describe what you need — notes, flashcards, MCQs, etc.',
-    workTypePlaceholder: 'e.g. Revision Notes, Flashcards, Holiday HW Bundle'
+  // 3. Integer validation (Pages, Slides, Quantity)
+  if (target.type === 'number' || id.includes('pages') || id.includes('slides') || id.includes('qty') || id.includes('timeline')) {
+      target.value = target.value.replace(/\D/g, '');
   }
 });
-</script>
 
-<!-- FIREBASE -->
-<script type="module">
-import { initializeApp }  from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp, getDocs, query, orderBy }
-  from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+document.addEventListener('keydown', function(e) {
+  const target = e.target;
+  if (!target || !target.id) return;
 
-const app = initializeApp({
-  apiKey: "AIzaSyCXNOtwDrX6rzu2PqbQpiQGgUlnBCYZbw4",
-  authDomain:    "instaassign.firebaseapp.com",
-  projectId:     "instaassign",
-  storageBucket: "instaassign.firebasestorage.app",
-  messagingSenderId: "609807767906",
-  appId: "1:609807767906:web:342cadbf3a174f6a8cf43b"
+  const id = target.id.toLowerCase();
+  if (id.includes('phone') || id.includes('mobile') || id.includes('contact') || target.type === 'tel') {
+      if (e.key === 'Backspace' && target.value.length <= 4) {
+          e.preventDefault();
+      }
+  }
 });
-const db = getFirestore(app);
-const grid = document.getElementById('reviewsGrid');
 
-async function loadReviews() {
-  try {
-    const q  = query(collection(db,'reviews_school'), orderBy('timestamp','desc'));
-    const qs = await getDocs(q);
-    if (!qs.empty) grid.innerHTML = '';
-    qs.forEach(doc => {
-      const d = doc.data();
-      grid.innerHTML += `
-        <div class="review-card reveal">
-          <div class="rev-top">
-            <div class="rev-avatar">👤</div>
-            <div><div class="rev-name">${d.name}</div><div class="rev-stars">${d.rating}</div></div>
-          </div>
-          <p class="rev-text">"${d.review}"</p>
-        </div>`;
-    });
-    // re-observe new cards
-    grid.querySelectorAll('.reveal').forEach(el => {
-      const obs = new IntersectionObserver(en => { en.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); },{threshold:.07});
-      obs.observe(el);
-    });
-  } catch(err){ console.error(err); }
-}
-loadReviews();
+document.addEventListener('focusout', function(e) {
+  const target = e.target;
+  if (!target || !target.id) return;
 
-document.getElementById('reviewForm').addEventListener('submit', async e => {
-  e.preventDefault();
-  const name   = document.getElementById('rName').value.trim();
-  const rating = document.getElementById('rRating').value;
-  const text   = document.getElementById('rText').value.trim();
-  if (!name || !text) return alert('Please fill in all fields');
-  try {
-    await addDoc(collection(db,'reviews_school'), { name, rating, review:text, timestamp: serverTimestamp() });
-    document.getElementById('reviewForm').reset();
-    alert('Thank you for your review! 🙏');
-    loadReviews();
-  } catch(err){ console.error(err); alert('Error submitting. Please try again.'); }
+  // Auto-format URLs in reference inputs
+  if (target.type === 'url' || target.id.toLowerCase().includes('ref')) {
+      let val = target.value.trim();
+      if (val.length > 0 && !val.startsWith('http://') && !val.startsWith('https://')) {
+          target.value = 'https://' + val;
+      }
+  }
 });
-</script>
-</body>
-</html>
