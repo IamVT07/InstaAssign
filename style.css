@@ -196,8 +196,14 @@ body.light header { background: rgba(243,245,252,.97); }
   display: none; flex-direction: column;
   justify-content: center; gap: 5px;
   width: 36px; height: 36px; padding: 8px; flex-shrink: 0;
+  z-index: 210; /* Ye bahut zaroori hai taki nav ke upar dikhe */
+  background: transparent;
 }
-.hamburger-btn span { display: block; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }
+.hamburger-btn span { 
+  display: block; height: 2px; width: 100%;
+  background: var(--text); /* Theme ke hisaab se text color lega */
+  border-radius: 2px; transition: all .3s; 
+}
 .hamburger-btn.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
 .hamburger-btn.open span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
 .hamburger-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
@@ -219,13 +225,16 @@ body.light .mobile-nav { background: rgba(243,245,252,.98); }
 .mobile-nav a:hover { background: var(--border); color: var(--text); }
 .mobile-nav .nav-accent  { color: var(--accent); }
 .mobile-nav .nav-accent2 { color: var(--accent2); }
+
+/* Updated Close Button */
 .mobile-nav-close {
-  position: absolute; top: 1.1rem; right: 1.1rem;
-  background: none; border: 1px solid var(--border); color: var(--muted);
-  width: 38px; height: 38px; border-radius: 10px; cursor: pointer;
-  font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all .2s;
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  background: var(--bg2); border: 1px solid var(--border); color: var(--text);
+  width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+  font-size: 1.2rem; display: flex; align-items: center; justify-content: center; 
+  transition: all .2s; z-index: 200;
 }
-.mobile-nav-close:hover { background: var(--border); color: var(--text); }
+.mobile-nav-close:hover { background: var(--accent); color: #000; border-color: var(--accent); }
 .mobile-nav-wa {
   margin-top: .4rem; display: inline-flex; align-items: center; gap: .55rem;
   background: var(--accent); color: #000; font-weight: 700;
