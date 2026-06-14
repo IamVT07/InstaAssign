@@ -405,10 +405,10 @@ initServices({
     title: 'Website Development', color: 'b', type: 'business',
     sub: 'Tell us about your business and the kind of website you need.',
     fields: [
-      { id:'bWebType',  label:'Type of Website',             placeholder:'e.g. Business site, Portfolio, E-commerce, School website' },
-      { id:'bPages',    label:'Number of Pages / Sections',  placeholder:'e.g. 5 pages — Home, About, Services, Gallery, Contact' },
-      { id:'bRef',      label:'Reference Websites (optional)',placeholder:'Links of sites you like for design inspiration' },
-      { id:'bTimeline', label:'Expected Timeline',           placeholder:'e.g. Within 2 weeks, By [date]' },
+      { id:'bWebType',  label:'Type of Website',              placeholder:'e.g. Business site, Portfolio, E-commerce, School website' },
+      { id:'bPages',    label:'Number of Pages / Sections',   placeholder:'e.g. 5', type: 'number' },
+      { id:'bRef',      label:'Reference Websites (optional)',placeholder:'Links of sites you like for design inspiration', type: 'url' },
+      { id:'bTimeline', label:'Expected Timeline (in Days)',  placeholder:'e.g. 10', type: 'number' },
     ],
     budget: '₹4,000–₹8,000+', budgetHint: 'Final quote based on features and pages'
   },
@@ -417,10 +417,10 @@ initServices({
     sub: 'Share your brand details and what you need designed.',
     fields: [
       { id:'bDesignType', label:'Type of Design',              placeholder:'e.g. Logo, Banner, Brochure, Poster, Business Card' },
-      { id:'bQty',        label:'Quantity',                    placeholder:'e.g. 1 logo + 2 banner sizes' },
+      { id:'bQty',        label:'Quantity',                    placeholder:'e.g. 3', type: 'number' },
       { id:'bBrand',      label:'Brand / Business Name',       placeholder:'Your brand name' },
       { id:'bColors',     label:'Preferred Colours / Style',   placeholder:'e.g. Blue & white, Minimalist, Vibrant' },
-      { id:'bRef2',       label:'Reference Images (optional)', placeholder:'Visual references or style inspirations' },
+      { id:'bRef2',       label:'Reference Images (optional)', placeholder:'Visual references or style inspirations', type: 'url' },
     ],
     budget: '₹300–₹1,000 / design', budgetHint: 'Final price based on complexity'
   },
@@ -430,7 +430,7 @@ initServices({
     fields: [
       { id:'bPlatform',  label:'Platform(s)',           placeholder:'e.g. Instagram, Facebook, LinkedIn' },
       { id:'bPostType',  label:'Type of Posts',         placeholder:'e.g. Feed post, Story, Reel thumbnail, Carousel' },
-      { id:'bPostQty',   label:'Number of Posts',       placeholder:'e.g. 10 posts / month' },
+      { id:'bPostQty',   label:'Number of Posts',       placeholder:'e.g. 10', type: 'number' },
       { id:'bBrand2',    label:'Brand / Page Name',     placeholder:'Your brand or page name' },
       { id:'bTheme',     label:'Theme / Tone',          placeholder:'e.g. Minimal, Colourful, Professional, Festive' },
     ],
@@ -441,7 +441,7 @@ initServices({
     sub: 'Share your content — we design a deck that wins.',
     fields: [
       { id:'bPptPurpose', label:'Purpose of Presentation',  placeholder:'e.g. Investor pitch, Company profile, Client proposal' },
-      { id:'bSlides',     label:'Number of Slides (approx)',placeholder:'e.g. 15–20 slides', type:'number' },
+      { id:'bSlides',     label:'Number of Slides (approx)',placeholder:'e.g. 15', type:'number' },
       { id:'bContent',    label:'Content Ready?',           placeholder:'e.g. I have draft content / Need help with content too' },
       { id:'bStyle',      label:'Design Style / Theme',     placeholder:'e.g. Corporate blue, Bold & modern, Minimal' },
     ],
