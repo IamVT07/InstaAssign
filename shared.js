@@ -116,7 +116,7 @@ function buildAcademicForm(s) {
     ${s.showLang ? `<div class="form-row"><label class="form-label">Language Preference</label><select class="form-select ${f}" id="fLang"><option value="Hindi">Hindi</option><option value="English">English</option><option value="Hindi + English">Hindi + English</option></select></div>` : ''}
     <div class="form-row">
       <label class="form-label">Your Budget *</label>
-      <input type="text" class="form-input ${f}" id="fBudget" placeholder="e.g. ${s.budget}" required>
+      <input type="number" class="form-input ${f}" id="fBudget" placeholder="e.g. ${s.budget}" required>
       <div class="form-hint">💡 ${s.budgetHint}</div>
     </div>
     <div class="form-row"><label class="form-label">Additional Instructions</label><textarea class="form-textarea ${f}" id="fNotes" placeholder="Formatting, references, style, or anything else..."></textarea></div>
@@ -139,7 +139,7 @@ function buildBusinessForm(s) {
     ${extra}
     <div class="form-row">
       <label class="form-label">Your Budget *</label>
-      <input type="text" class="form-input ${f}" id="bBudget" placeholder="e.g. ${s.budget}" required>
+      <input type="number" class="form-input ${f}" id="bBudget" placeholder="e.g. ${s.budget}" required>
       <div class="form-hint">💡 ${s.budgetHint}</div>
     </div>
     <div class="form-row"><label class="form-label">Additional Notes</label><textarea class="form-textarea ${f}" id="bNotes" placeholder="Deadline, references, special requirements..."></textarea></div>
@@ -256,7 +256,7 @@ document.addEventListener('input', function(e) {
   }
 
   // 3. Integer validation (Pages, Slides, Quantity)
-  if (target.type === 'number' || id.includes('pages') || id.includes('slides') || id.includes('qty') || id.includes('timeline')) {
+  if (target.type === 'number' || id.includes('pages') || id.includes('slides') || id.includes('qty') || id.includes('timeline') || id.includes('budget')) {
       target.value = target.value.replace(/\D/g, '');
   }
 });
